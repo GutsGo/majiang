@@ -36,6 +36,10 @@ const rotateTileSuit = (tile: string, offset: number) => {
 
 const rotateHand = (hand: string[], variant: number) => hand.map((tile) => rotateTileSuit(tile, variant % 3));
 
+const rotateSuitInText = (text: string, variant: number) => {
+  return text.replace(/[万条筒]/g, (suit) => rotateTileSuit(suit, variant % 3));
+};
+
 const difficultyByIndex = (index: number): 1 | 2 | 3 => {
   const mod = index % 3;
   if (mod === 0) return 1;
@@ -47,7 +51,8 @@ const createExplanationSteps = (
   questionId: string,
   ruleRefs: string[],
   options: QuestionOption[],
-  correctOptionIds: string[]
+  correctOptionIds: string[],
+  variant: number
 ): ExplanationStep[] => {
   const firstRule = ruleMap.get(ruleRefs[0]);
   const secondRule = ruleRefs[1] ? ruleMap.get(ruleRefs[1]) : undefined;
@@ -60,13 +65,13 @@ const createExplanationSteps = (
     {
       id: `${questionId}-step-1`,
       title: '先看结构',
-      detail: '先判断当前手牌是提速局还是防守局，再决定保留中张、拆边张或转守。'
+      detail: rotateSuitInText('先判断当前手牌是提速局还是防守局，再决定保留中张、拆边张或转守。', variant)
     },
     {
       id: `${questionId}-step-2`,
       title: '套用口诀',
       detail: firstRule
-        ? `${firstRule.title}。${firstRule.mnemonic}${secondRule ? `；并结合${secondRule.mnemonic}` : ''}`
+        ? rotateSuitInText(`${firstRule.title}。${firstRule.mnemonic}${secondRule ? `；并结合${secondRule.mnemonic}` : ''}`, variant)
         : '优先遵循阶段口诀，避免凭感觉打牌。'
     },
     {
@@ -80,33 +85,33 @@ const createExplanationSteps = (
 const openingTemplates: QuestionTemplate[] = [
   {
     type: 'dingque_or_huansan',
-    prompt: () => '换三张后，你手里筒子最少且多为边张，最优定缺应选哪门？',
+    prompt: (variant) => rotateSuitInText('换三张后，你手里筒子最少且多为边张，最优定缺应选哪门？', variant),
     hand: (variant) =>
       rotateHand(['1万', '3万', '4万', '7万', '8万', '2条', '3条', '6条', '7条', '2筒', '5筒', '8筒', '9筒'], variant),
-    options: () => [
-      { id: 'A', label: '缺万', note: '万子张数偏多且有中张潜力。' },
-      { id: 'B', label: '缺条', note: '条子结构可联动，不宜先弃。' },
-      { id: 'C', label: '缺筒', note: '筒子最少且效率偏低。' },
+    options: (variant) => [
+      { id: 'A', label: `缺${rotateTileSuit('万', variant)}`, note: `${rotateTileSuit('万', variant)}子张数偏多且有中张潜力。` },
+      { id: 'B', label: `缺${rotateTileSuit('条', variant)}`, note: `${rotateTileSuit('条', variant)}子结构可联动，不宜先弃。` },
+      { id: 'C', label: `缺${rotateTileSuit('筒', variant)}`, note: `${rotateTileSuit('筒', variant)}子最少且效率偏低。` },
       { id: 'D', label: '不定缺，先看两巡', note: '血战开局应尽快定方向。' }
     ],
     correctOptionIds: () => ['C'],
     ruleRefs: ['opening-01', 'opening-02'],
-    pitfalls: () => ['为了“看起来顺”而定缺多张花色，导致中后盘清缺困难。']
+    pitfalls: (variant) => [rotateSuitInText('为了“看起来顺”而定缺多张花色，导致中后盘清缺困难。', variant)]
   },
   {
     type: 'dingque_or_huansan',
     prompt: () => '换三张时，下列哪组更适合优先换出？',
     hand: (variant) =>
       rotateHand(['2万', '4万', '5万', '6万', '7万', '2条', '3条', '5条', '7条', '1筒', '1筒', '9筒', '9筒'], variant),
-    options: () => [
-      { id: 'A', label: '4万5万6万', note: '中张给出去会打乱对手顺子效率。' },
-      { id: 'B', label: '1筒1筒9筒', note: '对子和边张更适合自己留。' },
-      { id: 'C', label: '2条3条5条', note: '条子有搭子价值。' },
-      { id: 'D', label: '7万2条9筒', note: '无结构随机换通常收益低。' }
+    options: (variant) => [
+      { id: 'A', label: rotateSuitInText('4万5万6万', variant), note: '中张给出去会打乱对手顺子效率。' },
+      { id: 'B', label: rotateSuitInText('1筒1筒9筒', variant), note: '对子和边张更适合自己留。' },
+      { id: 'C', label: rotateSuitInText('2条3条5条', variant), note: `${rotateTileSuit('条', variant)}子有搭子价值。` },
+      { id: 'D', label: rotateSuitInText('7万2条9筒', variant), note: '无结构随机换通常收益低。' }
     ],
     correctOptionIds: () => ['A'],
     ruleRefs: ['opening-01', 'opening-03'],
-    pitfalls: () => ['把对子和边张一起换走，导致后续防守和凑对能力变差。']
+    pitfalls: (variant) => [rotateSuitInText('把对子和边张一起换走，导致后续防守和凑对能力变差。', variant)]
   },
   {
     type: 'discard_best',
@@ -125,21 +130,21 @@ const openingTemplates: QuestionTemplate[] = [
     },
     correctOptionIds: () => ['A'],
     ruleRefs: ['opening-02'],
-    pitfalls: () => ['清缺速度慢会被迫在危险巡目打生张。']
+    pitfalls: (variant) => [rotateSuitInText('清缺速度慢会被迫在危险巡目打生张。', variant)]
   },
   {
     type: 'discard_best',
     prompt: () => '根据“金三银七臭二八”，此时优先处理哪张？',
     hand: (variant) => rotateHand(['2万', '3万', '4万', '7万', '7万', '8万', '2条', '3条', '7条', '8条', '2筒', '3筒', '7筒'], variant),
-    options: () => [
-      { id: 'A', label: '3万' },
-      { id: 'B', label: '7条' },
-      { id: 'C', label: '2万' },
-      { id: 'D', label: '7筒' }
+    options: (variant) => [
+      { id: 'A', label: rotateTileSuit('3万', variant) },
+      { id: 'B', label: rotateTileSuit('7条', variant) },
+      { id: 'C', label: rotateTileSuit('2万', variant) },
+      { id: 'D', label: rotateTileSuit('7筒', variant) }
     ],
     correctOptionIds: () => ['C'],
     ruleRefs: ['opening-04'],
-    pitfalls: () => ['误把2当中张保留，导致进张效率偏低。']
+    pitfalls: (variant) => [rotateSuitInText('误把2当中张保留，导致进张效率偏低。', variant)]
   }
 ];
 
@@ -148,58 +153,58 @@ const midgameTemplates: QuestionTemplate[] = [
     type: 'discard_best',
     prompt: () => '按照“一四七打一”，这手牌应优先舍哪张？',
     hand: (variant) => rotateHand(['1万', '4万', '7万', '3万', '4万', '5万', '2条', '3条', '4条', '6条', '7条', '8条', '5筒'], variant),
-    options: () => [
-      { id: 'A', label: '1万' },
-      { id: 'B', label: '4万' },
-      { id: 'C', label: '7万' },
-      { id: 'D', label: '5筒' }
+    options: (variant) => [
+      { id: 'A', label: rotateTileSuit('1万', variant) },
+      { id: 'B', label: rotateTileSuit('4万', variant) },
+      { id: 'C', label: rotateTileSuit('7万', variant) },
+      { id: 'D', label: rotateTileSuit('5筒', variant) }
     ],
     correctOptionIds: () => ['A'],
     ruleRefs: ['midgame-01'],
-    pitfalls: () => ['拆掉中张会减少后续两面听机会。']
+    pitfalls: (variant) => [rotateSuitInText('拆掉中张会减少后续两面听机会。', variant)]
   },
   {
     type: 'discard_best',
     prompt: () => '你同时有12边搭与46卡张，拆哪组更优？',
     hand: (variant) => rotateHand(['1万', '2万', '4万', '6万', '3万', '4万', '5万', '6条', '7条', '8条', '2筒', '3筒', '4筒'], variant),
-    options: () => [
-      { id: 'A', label: '拆12边搭' },
-      { id: 'B', label: '拆46卡张' },
-      { id: 'C', label: '拆678顺子' },
-      { id: 'D', label: '拆234顺子' }
+    options: (variant) => [
+      { id: 'A', label: rotateSuitInText('拆12边搭', variant) },
+      { id: 'B', label: rotateSuitInText('拆46卡张', variant) },
+      { id: 'C', label: rotateSuitInText('拆678顺子', variant) },
+      { id: 'D', label: rotateSuitInText('拆234顺子', variant) }
     ],
     correctOptionIds: () => ['A'],
     ruleRefs: ['midgame-03', 'midgame-02'],
-    pitfalls: () => ['误拆卡张会让听口从多面退化为单吊。']
+    pitfalls: (variant) => [rotateSuitInText('误拆卡张会让听口从多面退化为单吊。', variant)]
   },
   {
     type: 'wait_tiles',
     multiSelect: true,
-    prompt: () => '此手牌已到一向听，若弃9万，哪些进张最多？',
-    hand: (variant) => rotateHand(['3万', '4万', '5万', '5万', '6万', '7万', '2条', '3条', '4条', '7筒', '8筒', '9筒', '9万'], variant),
-    options: () => [
-      { id: 'A', label: '2万 / 5万' },
-      { id: 'B', label: '3万 / 6万' },
-      { id: 'C', label: '4万 / 7万' },
-      { id: 'D', label: '仅9万' }
+    prompt: (variant) => rotateSuitInText('此手牌已到一向听，若弃9万，哪些进张最多？', variant),
+    hand: (variant) => rotateHand(['1万', '2万', '3万', '4万', '5万', '6万', '7万', '8万', '9万', '4条', '5条', '5条', '6条'], variant),
+    options: (variant) => [
+      { id: 'A', label: rotateSuitInText('2万 / 5万', variant) },
+      { id: 'B', label: rotateSuitInText('3万 / 6万', variant) },
+      { id: 'C', label: rotateSuitInText('4万 / 7万', variant) },
+      { id: 'D', label: rotateSuitInText('仅9万', variant) }
     ],
     correctOptionIds: () => ['B'],
     ruleRefs: ['midgame-05', 'midgame-01'],
-    pitfalls: () => ['只盯单张听口，没有评估连张整体进张面。']
+    pitfalls: (variant) => [rotateSuitInText('只盯单张听口，没有评估连张整体进张面。', variant)]
   },
   {
     type: 'discard_best',
     prompt: () => '手里已有3个对子，当前最该拆的是？',
     hand: (variant) => rotateHand(['2万', '2万', '5万', '5万', '8万', '8万', '3条', '4条', '5条', '6条', '7条', '3筒', '4筒'], variant),
-    options: () => [
-      { id: 'A', label: '拆2万对子' },
-      { id: 'B', label: '拆5万对子' },
-      { id: 'C', label: '拆8万对子' },
+    options: (variant) => [
+      { id: 'A', label: `拆${rotateTileSuit('2万', variant)}对子` },
+      { id: 'B', label: `拆${rotateTileSuit('5万', variant)}对子` },
+      { id: 'C', label: `拆${rotateTileSuit('8万', variant)}对子` },
       { id: 'D', label: '不拆对子' }
     ],
     correctOptionIds: () => ['C'],
     ruleRefs: ['midgame-04', 'midgame-05'],
-    pitfalls: () => ['对子过多却不拆，容易错过入听窗口。']
+    pitfalls: (variant) => [rotateSuitInText('对子过多却不拆，容易错过入听窗口。', variant)]
   },
   {
     type: 'safe_discard',
@@ -209,7 +214,7 @@ const midgameTemplates: QuestionTemplate[] = [
     options: (variant) => rotateHand(['9条', '2万', '7万', '8筒'], variant).map((tile, index) => ({ id: String.fromCharCode(65 + index), label: tile })),
     correctOptionIds: () => ['A'],
     ruleRefs: ['midgame-06'],
-    pitfalls: () => ['后盘还在打生张，容易给听牌家放炮。']
+    pitfalls: (variant) => [rotateSuitInText('后盘还在打生张，容易给听牌家放炮。', variant)]
   }
 ];
 
@@ -226,7 +231,7 @@ const meldTemplates: QuestionTemplate[] = [
     ],
     correctOptionIds: () => ['A'],
     ruleRefs: ['meld-01'],
-    pitfalls: () => ['牌差还一味贪门清，错过改变节奏机会。']
+    pitfalls: (variant) => [rotateSuitInText('牌差还一味贪门清，错过改变节奏机会。', variant)]
   },
   {
     type: 'peng_or_pass',
@@ -240,7 +245,7 @@ const meldTemplates: QuestionTemplate[] = [
     ],
     correctOptionIds: () => ['B'],
     ruleRefs: ['meld-02', 'meld-04'],
-    pitfalls: () => ['过早碰牌会降低可调整空间。']
+    pitfalls: (variant) => [rotateSuitInText('过早碰牌会降低可调整空间。', variant)]
   },
   {
     type: 'peng_or_pass',
@@ -254,7 +259,7 @@ const meldTemplates: QuestionTemplate[] = [
     ],
     correctOptionIds: () => ['A'],
     ruleRefs: ['meld-03'],
-    pitfalls: () => ['为了提番选择明杠，导致手牌意图暴露。']
+    pitfalls: (variant) => [rotateSuitInText('为了提番选择明杠，导致手牌意图暴露。', variant)]
   },
   {
     type: 'peng_or_pass',
@@ -268,7 +273,7 @@ const meldTemplates: QuestionTemplate[] = [
     ],
     correctOptionIds: () => ['B'],
     ruleRefs: ['meld-04', 'meld-02'],
-    pitfalls: () => ['犹豫时强行碰牌，可能把好型碰坏。']
+    pitfalls: (variant) => [rotateSuitInText('犹豫时强行碰牌，可能把好型碰坏。', variant)]
   }
 ];
 
@@ -281,22 +286,22 @@ const defenseTemplates: QuestionTemplate[] = [
     options: (variant) => rotateHand(['4万', '9万', '3条', '8筒'], variant).map((tile, index) => ({ id: String.fromCharCode(65 + index), label: tile })),
     correctOptionIds: () => ['A'],
     ruleRefs: ['defense-01'],
-    pitfalls: () => ['忽略熟牌价值，用生张冒险。']
+    pitfalls: (variant) => [rotateSuitInText('忽略熟牌价值，用生张冒险。', variant)]
   },
   {
     type: 'safe_discard',
     prompt: () => '下家持续打万字，你当前更适合跟哪门？',
     hand: (variant) => rotateHand(['2万', '3万', '7万', '8万', '3条', '4条', '5条', '6条', '2筒', '3筒', '4筒', '7筒', '9筒'], variant),
     discards: (variant) => rotateHand(['1万', '4万', '7万', '2万', '8万'], variant),
-    options: () => [
-      { id: 'A', label: '继续打万，顺其牌路' },
-      { id: 'B', label: '专打条，逼其换门' },
-      { id: 'C', label: '专打筒，抢先送张' },
+    options: (variant) => [
+      { id: 'A', label: `继续打${rotateTileSuit('万', variant)}，顺其牌路` },
+      { id: 'B', label: `专打${rotateTileSuit('条', variant)}，逼其换门` },
+      { id: 'C', label: `专打${rotateTileSuit('筒', variant)}，抢先送张` },
       { id: 'D', label: '打中张试探' }
     ],
     correctOptionIds: () => ['A'],
     ruleRefs: ['defense-02'],
-    pitfalls: () => ['逆着下家牌路打，提升被碰风险。']
+    pitfalls: (variant) => [rotateSuitInText('逆着下家牌路打，提升被碰风险。', variant)]
   },
   {
     type: 'safe_discard',
@@ -311,7 +316,7 @@ const defenseTemplates: QuestionTemplate[] = [
     ],
     correctOptionIds: () => ['A'],
     ruleRefs: ['defense-03'],
-    pitfalls: () => ['不看对手出牌顺序，丢失关键推理信息。']
+    pitfalls: (variant) => [rotateSuitInText('不看对手出牌顺序，丢失关键推理信息。', variant)]
   },
   {
     type: 'safe_discard',
@@ -326,7 +331,7 @@ const defenseTemplates: QuestionTemplate[] = [
     ],
     correctOptionIds: () => ['A'],
     ruleRefs: ['defense-04', 'defense-01'],
-    pitfalls: () => ['忽略“不见牌”信号，直接送危险张。']
+    pitfalls: (variant) => [rotateSuitInText('忽略“不见牌”信号，直接送危险张。', variant)]
   }
 ];
 
@@ -343,27 +348,27 @@ const listeningTemplates: QuestionTemplate[] = [
     ],
     correctOptionIds: () => ['B'],
     ruleRefs: ['listening-01'],
-    pitfalls: () => ['中后盘仍贪大牌，错过先胡时机。']
+    pitfalls: (variant) => [rotateSuitInText('中后盘仍贪大牌，错过先胡时机。', variant)]
   },
   {
     type: 'wait_tiles',
     multiSelect: true,
     prompt: () => '当前可形成两种听口，哪种更符合“多门听优先”？',
-    hand: (variant) => rotateHand(['3万', '4万', '5万', '6万', '7万', '8万', '2条', '3条', '5条', '6条', '7筒', '8筒', '9筒'], variant),
-    options: () => [
-      { id: 'A', label: '听3条/6条/9条' },
-      { id: 'B', label: '对倒听7筒' },
-      { id: 'C', label: '边张听1万' },
-      { id: 'D', label: '单吊听5条' }
+    hand: (variant) => rotateHand(['1万', '2万', '3万', '4万', '5万', '6万', '4条', '5条', '6条', '7条', '8条', '9筒', '9筒'], variant),
+    options: (variant) => [
+      { id: 'A', label: rotateSuitInText('听3条/6条/9条', variant) },
+      { id: 'B', label: `对倒听${rotateTileSuit('7筒', variant)}` },
+      { id: 'C', label: `边张听${rotateTileSuit('1万', variant)}` },
+      { id: 'D', label: `单吊听${rotateTileSuit('5条', variant)}` }
     ],
     correctOptionIds: () => ['A'],
     ruleRefs: ['listening-02'],
-    pitfalls: () => ['只看当前番型，不比较听口宽度。']
+    pitfalls: (variant) => [rotateSuitInText('只看当前番型，不比较听口宽度。', variant)]
   },
   {
     type: 'discard_best',
     prompt: () => '你目前是对倒听，哪种处理更优？',
-    hand: (variant) => rotateHand(['2万', '3万', '4万', '5万', '6万', '7万', '3条', '4条', '5条', '6筒', '7筒', '8筒', '8筒'], variant),
+    hand: (variant) => rotateHand(['1万', '2万', '3万', '4万', '5万', '6万', '7条', '7条', '9条', '9条', '3筒', '4筒', '5筒'], variant),
     options: () => [
       { id: 'A', label: '坚持对倒不动' },
       { id: 'B', label: '拆对转边张听' },
@@ -372,7 +377,7 @@ const listeningTemplates: QuestionTemplate[] = [
     ],
     correctOptionIds: () => ['B'],
     ruleRefs: ['listening-03', 'listening-02'],
-    pitfalls: () => ['对倒听口过窄，胡牌速度明显变慢。']
+    pitfalls: (variant) => [rotateSuitInText('对倒听口过窄，胡牌速度明显变慢。', variant)]
   },
   {
     type: 'safe_discard',
@@ -387,7 +392,7 @@ const listeningTemplates: QuestionTemplate[] = [
     ],
     correctOptionIds: () => ['A'],
     ruleRefs: ['listening-04', 'defense-01'],
-    pitfalls: () => ['回头牌直接再丢，丢失安全张储备。']
+    pitfalls: (variant) => [rotateSuitInText('回头牌直接再丢，丢失安全张储备。', variant)]
   }
 ];
 
@@ -418,7 +423,7 @@ const buildStageQuestions = (
       correctOptionIds,
       multiSelect: template.multiSelect ?? false,
       ruleRefs: template.ruleRefs,
-      explanationSteps: createExplanationSteps(id, template.ruleRefs, options, correctOptionIds),
+      explanationSteps: createExplanationSteps(id, template.ruleRefs, options, correctOptionIds, variant),
       pitfalls: template.pitfalls(variant)
     });
   }
