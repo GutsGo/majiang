@@ -34,6 +34,11 @@ const router = createRouter({
       component: () => import('@/pages/SettingsPage.vue')
     },
     {
+      path: '/progress',
+      name: 'progress',
+      component: () => import('@/pages/ProgressPage.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('@/pages/NotFoundPage.vue')
