@@ -35,30 +35,30 @@ const chineseNums = ['零', '一', '二', '三', '四', '五', '六', '七', '�
 
 const dotMap: Record<number, number[]> = {
   1: [4],
-  2: [1, 7],
-  3: [1, 4, 7],
-  4: [0, 2, 6, 8],
-  5: [0, 2, 4, 6, 8],
-  6: [0, 2, 3, 5, 6, 8],
-  7: [0, 2, 3, 4, 5, 6, 8],
-  8: [0, 1, 2, 3, 5, 6, 7, 8],
-  9: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  2: [0, 8], // 对角排列
+  3: [0, 4, 8], // 对角排列
+  4: [0, 2, 6, 8], // 四角排列
+  5: [0, 2, 4, 6, 8], // 四角 + 中心
+  6: [0, 2, 3, 5, 6, 8], // 两列各三
+  7: [0, 3, 4, 5, 6, 7, 8], // 六筒排列 + 一个偏置
+  8: [0, 1, 2, 3, 5, 6, 7, 8], // 两列各四
+  9: [0, 1, 2, 3, 4, 5, 6, 7, 8] // 九宫格全满
 };
 
 const tongDots = computed(() => dotMap[tileMeta.value.rank] ?? []);
 const tongFiveDots = [0, 2, 4, 6, 8];
 const tongNineDots = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-const tongEightDots = [0, 1, 2, 3, 4, 5, 6, 7];
+const tongEightDots = [0, 1, 2, 3, 4, 5, 6, 7]; // 2x4 grid
 
 const tiaoLayoutMap: Record<number, number[]> = {
-  2: [1, 7],
-  3: [0, 4, 8],
-  4: [0, 2, 6, 8],
-  5: [0, 2, 4, 6, 8],
-  6: [0, 2, 3, 5, 6, 8],
-  7: [0, 2, 3, 4, 5, 6, 8],
-  8: [0, 1, 2, 3, 5, 6, 7, 8],
-  9: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  2: [1, 7], // 上下各一
+  3: [1, 6, 8], // 上一底二
+  4: [0, 2, 6, 8], // 四角
+  5: [0, 2, 4, 6, 8], // 四角 + 中心
+  6: [0, 2, 3, 5, 6, 8], // 两列各三
+  7: [1, 3, 4, 5, 6, 7, 8], // 上一底六
+  8: [0, 2, 3, 4, 5, 6, 7, 8], // 两列各四
+  9: [0, 1, 2, 3, 4, 5, 6, 7, 8] // 九宫格
 };
 
 const tiaoBars = computed(() => {
@@ -74,7 +74,8 @@ const tongDotColor = (index: number, rank: number) => {
   if (rank === 1) return 'dot-red';
   if (rank === 2) return index === 0 ? 'dot-green' : 'dot-blue';
   if (rank === 5 && index === 2) return 'dot-red';
-  const cycle = ['dot-red', 'dot-green', 'dot-blue'] as const;
+  if (rank === 7 && index === 0) return 'dot-green';
+  const cycle = ['dot-blue', 'dot-green', 'dot-red'] as const;
   return cycle[index % cycle.length];
 };
 
@@ -89,7 +90,8 @@ const tongSpecialDotClass = (rank: number, index: number) => {
 
 const tiaoBarClass = (rank: number, index: number) => {
   if (rank === 5 && index === 2) return 'bar-red';
-  if (rank === 7 && index === 3) return 'bar-red';
+  if (rank === 7 && index === 0) return 'bar-red';
+  if (rank === 3 && index === 0) return 'bar-red';
   if (rank === 8 && (index === 1 || index === 6)) return 'bar-blue';
   if (index % 3 === 0) return 'bar-green';
   if (index % 3 === 1) return 'bar-blue';
@@ -105,319 +107,190 @@ const tongEightDotClass = (index: number) => {
 
 <template>
   <div :class="['mahjong-tile', { back: props.back, compact: props.compact }]" :aria-label="props.back ? '牌背' : props.tile">
-    <div v-if="!props.back" :class="['tile-face', suitClass]">
-      <span class="corner top">{{ tileMeta.rank || '' }}{{ tileMeta.suit || '' }}</span>
-      <div class="center-art">
-        <template v-if="tileMeta.suit === '万'">
-          <span class="wan-num">{{ chineseNums[tileMeta.rank] }}</span>
-          <span class="wan-char">萬</span>
-        </template>
+    <div class="tile-body">
+      <div v-if="!props.back" :class="['tile-face', suitClass]">
+        <div class="center-art">
+          <template v-if="tileMeta.suit === '万'">
+            <span class="wan-num">{{ chineseNums[tileMeta.rank] }}</span>
+            <span class="wan-char">萬</span>
+          </template>
 
-        <template v-else-if="tileMeta.suit === '条'">
-          <div v-if="tileMeta.rank === 1" class="tiao-one">
-            <span class="tiao-stem" />
-            <span class="tiao-node node-top" />
-            <span class="tiao-node node-mid" />
-            <span class="tiao-node node-bottom" />
-            <span class="tiao-leaf leaf-left-top" />
-            <span class="tiao-leaf leaf-right-top" />
-            <span class="tiao-leaf leaf-left-bottom" />
-            <span class="tiao-leaf leaf-right-bottom" />
-          </div>
+          <template v-else-if="tileMeta.suit === '条'">
+            <div v-if="tileMeta.rank === 1" class="tiao-one">
+              <div class="bird-head"></div>
+              <div class="bird-body"></div>
+              <div class="bird-wing"></div>
+              <div class="bird-tail"></div>
+            </div>
 
-          <div v-else class="tiao-grid">
-            <span
-              v-for="bar in tiaoBars"
-              :key="`tiao-${props.tile}-${bar.slot}-${bar.index}`"
-              :class="['tiao-bar', tiaoBarClass(tileMeta.rank, bar.index)]"
-              :style="{
-                gridColumn: `${(bar.slot % 3) + 1}`,
-                gridRow: `${Math.floor(bar.slot / 3) + 1}`
-              }"
-            />
-          </div>
-        </template>
+            <div v-else class="tiao-grid">
+              <span
+                v-for="bar in tiaoBars"
+                :key="`tiao-${props.tile}-${bar.slot}-${bar.index}`"
+                :class="['tiao-bar', tiaoBarClass(tileMeta.rank, bar.index)]"
+                :style="{
+                  gridColumn: `${(bar.slot % 3) + 1}`,
+                  gridRow: `${Math.floor(bar.slot / 3) + 1}`
+                }"
+              />
+            </div>
+          </template>
 
-        <template v-else-if="tileMeta.suit === '筒'">
-          <div v-if="tileMeta.rank === 1" class="tong-special tong-one">
-            <span class="tong-ring ring-outer" />
-            <span class="tong-ring ring-mid" />
-            <span class="tong-ring ring-inner" />
-            <span class="tong-core" />
-          </div>
+          <template v-else-if="tileMeta.suit === '筒'">
+            <div v-if="tileMeta.rank === 1" class="tong-special tong-one">
+              <span class="tong-ring ring-outer" />
+              <span class="tong-ring ring-mid" />
+              <span class="tong-ring ring-inner" />
+              <span class="tong-core" />
+            </div>
 
-          <div v-else-if="tileMeta.rank === 5" class="tong-grid tong-grid-special">
-            <span
-              v-for="(slot, index) in tongFiveDots"
-              :key="`tong-five-${props.tile}-${slot}-${index}`"
-              :class="['tong-dot', 'tong-dot-special', tongSpecialDotClass(5, index)]"
-              :style="{
-                gridColumn: `${(slot % 3) + 1}`,
-                gridRow: `${Math.floor(slot / 3) + 1}`
-              }"
-            />
-          </div>
+            <div v-else-if="tileMeta.rank === 5" class="tong-grid tong-grid-special">
+              <span
+                v-for="(slot, index) in tongFiveDots"
+                :key="`tong-five-${props.tile}-${slot}-${index}`"
+                :class="['tong-dot', 'tong-dot-special', tongSpecialDotClass(5, index)]"
+                :style="{
+                  gridColumn: `${(slot % 3) + 1}`,
+                  gridRow: `${Math.floor(slot / 3) + 1}`
+                }"
+              />
+            </div>
 
-          <div v-else-if="tileMeta.rank === 9" class="tong-grid tong-grid-special">
-            <span
-              v-for="(slot, index) in tongNineDots"
-              :key="`tong-nine-${props.tile}-${slot}-${index}`"
-              :class="['tong-dot', 'tong-dot-special', tongSpecialDotClass(9, index)]"
-              :style="{
-                gridColumn: `${(slot % 3) + 1}`,
-                gridRow: `${Math.floor(slot / 3) + 1}`
-              }"
-            />
-          </div>
+            <div v-else-if="tileMeta.rank === 9" class="tong-grid tong-grid-special">
+              <span
+                v-for="(slot, index) in tongNineDots"
+                :key="`tong-nine-${props.tile}-${slot}-${index}`"
+                :class="['tong-dot', 'tong-dot-special', tongSpecialDotClass(9, index)]"
+                :style="{
+                  gridColumn: `${(slot % 3) + 1}`,
+                  gridRow: `${Math.floor(slot / 3) + 1}`
+                }"
+              />
+            </div>
 
-          <div v-else-if="tileMeta.rank === 8" class="tong-eight-grid">
-            <span
-              v-for="(slot, index) in tongEightDots"
-              :key="`tong-eight-${props.tile}-${slot}-${index}`"
-              :class="['tong-dot', 'tong-dot-special', tongEightDotClass(index)]"
-              :style="{
-                gridColumn: `${(slot % 2) + 1}`,
-                gridRow: `${Math.floor(slot / 2) + 1}`
-              }"
-            />
-          </div>
+            <div v-else-if="tileMeta.rank === 8" class="tong-eight-grid">
+              <span
+                v-for="(slot, index) in tongEightDots"
+                :key="`tong-eight-${props.tile}-${slot}-${index}`"
+                :class="['tong-dot', 'tong-dot-special', tongEightDotClass(index)]"
+                :style="{
+                  gridColumn: `${(slot % 2) + 1}`,
+                  gridRow: `${Math.floor(slot / 2) + 1}`
+                }"
+              />
+            </div>
 
-          <div v-else class="tong-grid">
-            <span
-              v-for="(slot, index) in tongDots"
-              :key="`tong-${props.tile}-${slot}-${index}`"
-              :class="['tong-dot', tongDotColor(index, tileMeta.rank)]"
-              :style="{
-                gridColumn: `${(slot % 3) + 1}`,
-                gridRow: `${Math.floor(slot / 3) + 1}`
-              }"
-            />
-          </div>
-        </template>
+            <div v-else class="tong-grid">
+              <span
+                v-for="(slot, index) in tongDots"
+                :key="`tong-${props.tile}-${slot}-${index}`"
+                :class="['tong-dot', tongDotColor(index, tileMeta.rank)]"
+                :style="{
+                  gridColumn: `${(slot % 3) + 1}`,
+                  gridRow: `${Math.floor(slot / 3) + 1}`
+                }"
+              />
+            </div>
+          </template>
 
-        <span v-else class="tile-label">{{ props.tile }}</span>
+          <span v-else class="tile-label">{{ props.tile }}</span>
+        </div>
       </div>
-      <span class="corner bottom">{{ tileMeta.rank || '' }}{{ tileMeta.suit || '' }}</span>
+      <div v-else class="tile-back-content">
+        <span class="tile-bamboo" />
+      </div>
     </div>
-
-    <span v-else class="tile-bamboo" />
   </div>
 </template>
 
 <style scoped>
 .mahjong-tile {
-  width: 54px;
-  height: 74px;
-  border-radius: 12px;
-  border: 1px solid rgba(95, 77, 48, 0.32);
-  background: linear-gradient(150deg, #fffefb, #f3ebd8 70%, #ebdfc3);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset -1px -1px 0 rgba(167, 136, 84, 0.25),
-    0 6px 12px rgba(28, 47, 39, 0.16);
+  width: 52px;
+  height: 72px;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+  cursor: pointer;
 }
 
-.mahjong-tile::before {
-  content: '';
-  position: absolute;
-  left: 3px;
-  top: 3px;
-  right: 3px;
-  bottom: 3px;
-  border-radius: 10px;
-  border: 1px solid rgba(126, 102, 67, 0.18);
-  pointer-events: none;
-}
-
-.mahjong-tile.compact {
-  width: 46px;
-  height: 64px;
-}
-
-.mahjong-tile.compact .tile-face {
-  padding: 6px 5px;
-}
-
-.mahjong-tile.compact .center-art {
-  width: 28px;
-  height: 32px;
-}
-
-.mahjong-tile.compact .wan-num {
-  font-size: 15px;
-}
-
-.mahjong-tile.compact .wan-char {
-  font-size: 11px;
-}
-
-.mahjong-tile.compact .tong-dot {
-  width: 7px;
-  height: 7px;
-}
-
-.mahjong-tile.compact .tong-dot-special {
-  width: 8px;
-  height: 8px;
-}
-
-.mahjong-tile.compact .tong-special {
-  width: 28px;
-  height: 32px;
-}
-
-.mahjong-tile.compact .tong-eight-grid {
-  width: 24px;
-  height: 31px;
-}
-
-.mahjong-tile.compact .tiao-one {
-  width: 24px;
-  height: 30px;
-}
-
-.mahjong-tile.compact .tiao-bar {
-  width: 6px;
-  height: 10px;
-}
-
-.mahjong-tile.compact .tong-one .ring-outer {
-  width: 25px;
-  height: 25px;
-  border-width: 3px;
-}
-
-.mahjong-tile.compact .tong-one .ring-mid {
-  width: 18px;
-  height: 18px;
-  border-width: 2px;
-}
-
-.mahjong-tile.compact .tong-one .ring-inner {
-  width: 11px;
-  height: 11px;
-  border-width: 2px;
-}
-
-.mahjong-tile.compact .tong-one .tong-core {
-  width: 3px;
-  height: 3px;
-}
-
-.mahjong-tile.compact .tiao-stem {
-  width: 6px;
-  height: 26px;
-}
-
-.mahjong-tile.compact .tiao-node {
-  width: 10px;
-  height: 3px;
-}
-
-.mahjong-tile.compact .node-top {
-  top: 7px;
-}
-
-.mahjong-tile.compact .node-mid {
-  top: 13px;
-}
-
-.mahjong-tile.compact .node-bottom {
-  top: 19px;
-}
-
-.mahjong-tile.compact .tiao-leaf {
-  width: 7px;
-  height: 4px;
-}
-
-.mahjong-tile.compact .leaf-left-top,
-.mahjong-tile.compact .leaf-left-bottom {
-  left: 2px;
-}
-
-.mahjong-tile.compact .leaf-right-top,
-.mahjong-tile.compact .leaf-right-bottom {
-  right: 2px;
-}
-
-.mahjong-tile.compact .leaf-left-top,
-.mahjong-tile.compact .leaf-right-top {
-  top: 9px;
-}
-
-.mahjong-tile.compact .leaf-left-bottom,
-.mahjong-tile.compact .leaf-right-bottom {
-  top: 17px;
-}
-
-.mahjong-tile:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset -1px -1px 0 rgba(167, 136, 84, 0.25),
-    0 10px 14px rgba(28, 47, 39, 0.2);
+.tile-body {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  background: #2a7e5a; /* 默认绿色牌身 */
+  padding-bottom: 5px; /* 这里形成厚度感 */
+  box-shadow: 
+    0 1px 0 #1b533a,
+    0 2px 0 #1b533a,
+    0 3px 0 #15422e,
+    0 4px 6px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .tile-face {
-  width: 100%;
-  height: 100%;
-  padding: 7px 6px;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  border-radius: 10px;
+  flex: 1;
+  background: linear-gradient(135deg, #ffffff 0%, #fefcf5 100%);
+  border-radius: 4px;
+  margin: 1px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
 }
 
-.corner {
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1;
+.mahjong-tile.compact {
+  width: 44px;
+  height: 60px;
 }
 
-.corner.bottom {
-  justify-self: end;
-  transform: rotate(180deg);
+.mahjong-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 .center-art {
-  place-self: center;
-  width: 34px;
-  height: 40px;
-  display: grid;
-  place-items: center;
+  width: 38px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.suit-wan .corner,
+/* 万字 */
 .suit-wan .wan-num,
 .suit-wan .wan-char {
   color: #bf2f29;
+  display: block;
+  text-align: center;
+  font-family: "STXingkai", "华文行楷", "Xingkai SC", "Kaiti", "楷体", cursive;
 }
 
 .wan-num {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 800;
   line-height: 1;
 }
 
 .wan-char {
-  margin-top: 2px;
-  font-size: 13px;
-  font-weight: 700;
+  margin-top: -2px;
+  font-size: 17px;
+  font-weight: 800;
   line-height: 1;
 }
 
-.suit-tiao .corner {
-  color: #1f7049;
-}
-
+/* 条子 */
 .tiao-grid {
-  width: 30px;
-  height: 36px;
+  width: 32px;
+  height: 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -425,103 +298,77 @@ const tongEightDotClass = (index: number) => {
 }
 
 .tiao-bar {
-  width: 7px;
-  height: 12px;
-  border-radius: 4px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.42),
-    inset 0 -1px 0 rgba(16, 78, 46, 0.5);
+  width: 8px;
+  height: 14px;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .bar-green {
-  background: linear-gradient(180deg, #5bb380, #277d4f);
+  background: linear-gradient(135deg, #4da472, #216d44);
 }
 
 .bar-blue {
-  background: linear-gradient(180deg, #87b9ec, #3f6fb0);
+  background: linear-gradient(135deg, #6ba1e4, #2a5a9c);
 }
 
 .bar-red {
-  background: linear-gradient(180deg, #f1938c, #c44a3e);
+  background: linear-gradient(135deg, #e67c74, #b4352a);
 }
 
+/* 么鸡 (一条) */
 .tiao-one {
-  width: 28px;
-  height: 34px;
+  width: 32px;
+  height: 42px;
   position: relative;
+  background-image: radial-gradient(circle at 50% 50%, rgba(77, 164, 114, 0.1) 20%, transparent 60%);
 }
 
-.tiao-stem {
+.bird-head {
   position: absolute;
-  left: 50%;
-  top: 2px;
-  width: 7px;
-  height: 30px;
-  transform: translateX(-50%);
-  border-radius: 4px;
-  background: linear-gradient(180deg, #68b98b, #2e8458);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1px 0 rgba(16, 78, 46, 0.45);
+  top: 6px;
+  left: 14px;
+  width: 6px;
+  height: 6px;
+  background: #bf2f29;
+  border-radius: 50%;
 }
 
-.tiao-node {
+.bird-body {
   position: absolute;
-  left: 50%;
-  width: 12px;
-  height: 4px;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: #2d7c52;
-}
-
-.node-top {
-  top: 8px;
-}
-
-.node-mid {
-  top: 16px;
-}
-
-.node-bottom {
-  top: 24px;
-}
-
-.tiao-leaf {
-  position: absolute;
-  width: 9px;
-  height: 5px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #88c7f1, #4a7eb9);
-}
-
-.leaf-left-top {
-  left: 3px;
   top: 10px;
+  left: 10px;
+  width: 14px;
+  height: 18px;
+  background: #2a7e5a;
+  border-radius: 40% 40% 50% 50%;
 }
 
-.leaf-right-top {
-  right: 3px;
-  top: 10px;
+.bird-wing {
+  position: absolute;
+  top: 12px;
+  left: 4px;
+  width: 26px;
+  height: 10px;
+  background: #246aa3;
+  border-radius: 50% 50% 50% 50%;
+  opacity: 0.8;
 }
 
-.leaf-left-bottom {
-  left: 3px;
-  top: 20px;
+.bird-tail {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  width: 14px;
+  height: 6px;
+  background: #2a7e5a;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
 }
 
-.leaf-right-bottom {
-  right: 3px;
-  top: 20px;
-}
-
-.suit-tong .corner {
-  color: #246aa3;
-}
-
+/* 筒子 */
 .tong-grid {
-  width: 30px;
-  height: 36px;
+  width: 34px;
+  height: 42px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -529,8 +376,8 @@ const tongEightDotClass = (index: number) => {
 }
 
 .tong-eight-grid {
-  width: 28px;
-  height: 36px;
+  width: 30px;
+  height: 42px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -538,116 +385,96 @@ const tongEightDotClass = (index: number) => {
 }
 
 .tong-dot {
-  width: 8px;
-  height: 8px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .tong-dot-special {
-  width: 9px;
-  height: 9px;
-  border: 1px solid rgba(18, 47, 83, 0.18);
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.tong-special {
-  width: 32px;
-  height: 36px;
+.tong-one {
+  width: 38px;
+  height: 38px;
   position: relative;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tong-one .tong-ring {
   position: absolute;
   border-radius: 50%;
+  border-style: solid;
 }
 
-.tong-one .ring-outer {
-  width: 30px;
-  height: 30px;
-  border: 4px solid #c9463d;
-  background: transparent;
-  box-shadow: none;
+.ring-outer {
+  width: 36px;
+  height: 36px;
+  border-width: 4px;
+  border-color: #bf2f29;
 }
 
-.tong-one .ring-mid {
-  width: 21px;
-  height: 21px;
-  border: 3px solid #3978be;
-  background: transparent;
+.ring-mid {
+  width: 24px;
+  height: 24px;
+  border-width: 3px;
+  border-color: #246aa3;
 }
 
-.tong-one .ring-inner {
-  width: 13px;
-  height: 13px;
-  border: 3px solid #3a9865;
-  background: transparent;
+.ring-inner {
+  width: 14px;
+  height: 14px;
+  border-width: 3px;
+  border-color: #2a7e5a;
 }
 
-.tong-one .tong-core {
+.tong-core {
   width: 4px;
   height: 4px;
+  background: #bf2f29;
   border-radius: 50%;
-  background: #2d3d36;
-  box-shadow: none;
 }
 
-.dot-red {
-  background: radial-gradient(circle at 35% 35%, #ffd8d4, #cb4a3f 70%);
+/* 颜色 */
+.dot-red { background: radial-gradient(circle at 30% 30%, #f1938c, #bf2f29); }
+.dot-green { background: radial-gradient(circle at 30% 30%, #a2d9b1, #2a7e5a); }
+.dot-blue { background: radial-gradient(circle at 30% 30%, #87b9ec, #246aa3); }
+.dot-gold { background: radial-gradient(circle at 30% 30%, #f7e39c, #c5902f); }
+
+/* 牌背 */
+.mahjong-tile.back .tile-body {
+  padding-bottom: 0;
+  background: #2a7e5a;
 }
 
-.dot-green {
-  background: radial-gradient(circle at 35% 35%, #d7f4e2, #3f9665 70%);
-}
-
-.dot-blue {
-  background: radial-gradient(circle at 35% 35%, #d8ecff, #4b78be 70%);
-}
-
-.dot-gold {
-  background: radial-gradient(circle at 35% 35%, #fff2c8, #c5902f 72%);
-}
-
-.tile-label {
-  font-weight: 700;
-  color: #2f4d3d;
-}
-
-.mahjong-tile.back {
-  background:
-    linear-gradient(160deg, rgba(116, 172, 148, 0.24), rgba(66, 116, 94, 0.2)),
-    url('../assets/panda/bamboo-pattern.svg');
-  background-size: cover;
-  border-color: rgba(42, 89, 68, 0.35);
+.tile-back-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2a7e5a 0%, #1b533a 100%);
+  border-radius: 4px;
+  margin: 2px;
 }
 
 .tile-bamboo {
-  width: 24px;
-  height: 30px;
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgba(44, 126, 90, 0.65), rgba(26, 94, 64, 0.9));
-  box-shadow:
-    inset 0 2px 1px rgba(255, 255, 255, 0.4),
-    inset 0 -2px 1px rgba(0, 0, 0, 0.16);
-  position: relative;
+  width: 28px;
+  height: 36px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M0 0h10v10H0z' fill='none'/%3E%3Cpath d='M5 0v10' stroke='rgba(255,255,255,0.1)' stroke-width='1'/%3E%3C/svg%3E");
+  opacity: 0.3;
 }
 
-.tile-bamboo::before,
-.tile-bamboo::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.7);
+/* 紧凑模式 */
+.mahjong-tile.compact .center-art {
+  transform: scale(0.85);
 }
 
-.tile-bamboo::before {
-  top: 10px;
-}
-
-.tile-bamboo::after {
-  top: 20px;
+.mahjong-tile.compact .tile-body {
+  padding-bottom: 4px;
 }
 </style>

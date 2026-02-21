@@ -1,11 +1,11 @@
 :root {
-  --bg-top: #f6fbf5;
-  --bg-mid: #edf7ef;
-  --bg-bottom: #fef7ea;
-  --text-main: #1d3a2f;
-  --text-muted: #5a7e6a;
-  --panel-bg: rgba(255, 253, 245, 0.92);
-  --panel-border: rgba(51, 83, 69, 0.2);
+  --bg-top: #f5f8f2;
+  --bg-mid: #ebf3e8;
+  --bg-bottom: #f9f5e0;
+  --text-main: #1a332a;
+  --text-muted: #537562;
+  --panel-bg: rgba(250, 247, 230, 0.95);
+  --panel-border: rgba(40, 84, 62, 0.22);
 }
 
 * {
@@ -43,7 +43,7 @@ a {
   top: 0;
   z-index: 30;
   backdrop-filter: blur(8px);
-  background: rgba(250, 247, 235, 0.85);
+  background: rgba(250, 245, 225, 0.9);
   border-bottom: 1px solid var(--panel-border);
   display: flex;
   justify-content: space-between;
@@ -73,14 +73,14 @@ a {
   color: #5d7f6e;
 }
 
-nav {
+.topbar nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
 }
 
-nav a {
+.topbar nav a {
   text-decoration: none;
   color: #2f5847;
   border-radius: 999px;
@@ -92,7 +92,7 @@ nav a {
   align-items: center;
 }
 
-nav a.router-link-active {
+.topbar nav a.router-link-active {
   background: linear-gradient(135deg, #4d9571, #2f6a4e);
   color: #fff;
 }
@@ -133,12 +133,26 @@ nav a.router-link-active {
 
 @media (max-width: 768px) {
   .topbar {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    padding: 8px 12px;
+  }
+
+  .brand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand strong {
+    font-size: 16px;
+  }
+
+  .brand small {
+    display: none;
   }
 
   nav {
-    width: 100%;
-    justify-content: flex-start;
+    width: auto;
+    justify-content: flex-end;
   }
 }
