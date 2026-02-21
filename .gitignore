@@ -1,0 +1,19 @@
+node_modules
+.DS_Store
+dist
+coverage
+.playwright
+playwright-report
+test-results
+.vscode
+.idea
+*.log
+
+# vue-tsc/tsc emit artifacts (should not be committed)
+*.vue.js
+*.js.map
+src/**/*.d.ts
+tests/**/*.d.ts
+playwright.config.d.ts
+vite.config.d.ts
+!src/env.d.ts
