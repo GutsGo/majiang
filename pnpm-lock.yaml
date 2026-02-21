@@ -36,12 +36,18 @@ importers:
       '@types/node':
         specifier: ^22.13.13
         version: 22.19.11
+      '@types/web-bluetooth':
+        specifier: ^0.0.21
+        version: 0.0.21
       '@vitejs/plugin-vue':
         specifier: ^5.2.1
         version: 5.2.4(vite@6.4.1(@types/node@22.19.11))(vue@3.5.28(typescript@5.7.3))
       jsdom:
         specifier: ^26.0.0
         version: 26.1.0
+      type-fest:
+        specifier: ^2.19.0
+        version: 2.19.0
       typescript:
         specifier: ~5.7.2
         version: 5.7.3
@@ -1290,6 +1296,10 @@ packages:
   tr46@5.1.1:
     resolution: {integrity: sha512-hdF5ZgjTqgAntKkklYw0R03MG2x/bSzTtkxmIRw/sTNV8YXsCJ1tfLAX23lhxhHJlEf3CRCOCGGWw3vI3GaSPw==}
     engines: {node: '>=18'}
+
+  type-fest@2.19.0:
+    resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
+    engines: {node: '>=12.20'}
 
   typescript@5.7.3:
     resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
@@ -2676,6 +2686,8 @@ snapshots:
   tr46@5.1.1:
     dependencies:
       punycode: 2.3.1
+
+  type-fest@2.19.0: {}
 
   typescript@5.7.3: {}
 
