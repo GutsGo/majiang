@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useMediaQuery } from '@vueuse/core';
 import QuestionCard from '@/components/QuestionCard.vue';
 import RulePill from '@/components/RulePill.vue';
 import { useTrainingStore } from '@/app/stores/useTrainingStore';
@@ -14,6 +15,8 @@ const store = useTrainingStore();
 const stageFilter = ref<RuleStageId | 'all'>('all');
 const typeFilter = ref<QuestionType | 'all'>('all');
 const questionIndex = ref(0);
+const showFilters = ref(false);
+const isLargeScreen = useMediaQuery('(min-width: 768px)');
 
 const selectedOptionIds = ref<string[]>([]);
 const submitted = ref(false);
@@ -139,45 +142,59 @@ const typeOptions: Array<QuestionType | 'all'> = ['all', 'discard_best', 'wait_t
 </script>
 
 <template>
-  <section class="panel explain-trainer">
-    <header class="panel-head">
-      <h2>讲解模式</h2>
-      <p>先作答，再学习口诀与推理路径。</p>
+  <section class="explain-trainer">
+    <header class="page-header">
+      <div class="title-section">
+        <span class="mode-icon">📖</span>
+        <div class="text">
+          <h2>讲解模式</h2>
+          <p>深度解析，掌握麻将口诀之秘</p>
+        </div>
+      </div>
     </header>
 
-    <div class="filters">
-      <label>
-        阶段筛选
-        <select v-model="stageFilter">
-          <option v-for="item in stageOptions" :key="item" :value="item">
-            {{ item === 'all' ? '全部阶段' : item }}
-          </option>
-        </select>
-      </label>
-      <label>
-        题型筛选
-        <select v-model="typeFilter">
-          <option v-for="item in typeOptions" :key="item" :value="item">
-            {{ item === 'all' ? '全部题型' : item }}
-          </option>
-        </select>
-      </label>
-      <small>当前题库 {{ filteredQuestions.length }} 题</small>
-    </div>
+    <div class="control-bar" :class="{ collapsed: !showFilters }">
+      <div class="mobile-header" @click="showFilters = !showFilters">
+        <div class="current-progress">
+          <span class="idx">第 {{ questionIndex + 1 }} / {{ filteredQuestions.length }} 题</span>
+          <span class="type-badge" v-if="currentQuestion">{{ currentQuestion.stageId }}</span>
+        </div>
+        <button class="toggle-btn">{{ showFilters ? '收起设置' : '调整设置' }}</button>
+      </div>
 
-    <div v-if="currentQuestion" class="question-nav">
-      <span>第 {{ questionIndex + 1 }} / {{ filteredQuestions.length }} 题</span>
-      <label>
-        选择题目
-        <select v-model="currentQuestionId">
-          <option v-for="(item, index) in filteredQuestions" :key="item.id" :value="item.id">
-            第{{ index + 1 }}题 · {{ item.id }}
-          </option>
-        </select>
-      </label>
-      <div class="nav-actions">
-        <button type="button" class="ghost-btn" @click="skipQuestion">跳过本题</button>
-        <button type="button" class="ghost-btn" @click="restartFromFirst">重新开始</button>
+      <div class="control-content" v-show="showFilters || isLargeScreen">
+        <div class="filter-group">
+          <label>
+            <span>阶段</span>
+            <select v-model="stageFilter" class="style-select">
+              <option v-for="item in stageOptions" :key="item" :value="item">
+                {{ item === 'all' ? '全部' : item }}
+              </option>
+            </select>
+          </label>
+          <label>
+            <span>题型</span>
+            <select v-model="typeFilter" class="style-select">
+              <option v-for="item in typeOptions" :key="item" :value="item">
+                {{ item === 'all' ? '全部' : item }}
+              </option>
+            </select>
+          </label>
+        </div>
+
+        <div v-if="currentQuestion" class="nav-group">
+          <div class="progress-info">
+            <select v-model="currentQuestionId" class="jump-select">
+              <option v-for="(item, index) in filteredQuestions" :key="item.id" :value="item.id">
+                跳转至第 {{ index + 1 }} 题
+              </option>
+            </select>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="action-btn next-step" @click="skipQuestion">跳过此题</button>
+            <button type="button" class="action-btn" @click="restartFromFirst">重头开始</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -200,17 +217,24 @@ const typeOptions: Array<QuestionType | 'all'> = ['all', 'discard_best', 'wait_t
     </div>
 
     <section class="rule-grid" v-if="ruleTags.length">
-      <h3>本题关联口诀</h3>
-      <div class="rules">
+      <div class="section-title">
+        <span class="title-bg"></span>
+        <h3>本题核心口诀</h3>
+      </div>
+      <div class="rules-container">
         <RulePill v-for="rule in ruleTags" :key="rule.id" :rule="rule" />
       </div>
     </section>
 
     <section class="related" v-if="relatedQuestions.length">
-      <h3>同类题推荐</h3>
+      <div class="section-title">
+        <span class="title-bg"></span>
+        <h3>专项巩固推荐</h3>
+      </div>
       <div class="related-list">
-        <button v-for="item in relatedQuestions" :key="item.id" type="button" @click="jumpToQuestion(item.id)">
-          {{ item.prompt }}
+        <button v-for="item in relatedQuestions" :key="item.id" type="button" class="related-card" @click="jumpToQuestion(item.id)">
+          <span class="prompt-text">{{ item.prompt }}</span>
+          <span class="arrow">→</span>
         </button>
       </div>
     </section>
@@ -220,129 +244,294 @@ const typeOptions: Array<QuestionType | 'all'> = ['all', 'discard_best', 'wait_t
 <style scoped>
 .explain-trainer {
   display: grid;
+  gap: 24px;
+  padding-bottom: 40px;
+}
+
+/* Page Header */
+.page-header {
+  padding: 16px 8px;
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
   gap: 16px;
 }
 
-.panel-head h2 {
+.mode-icon {
+  font-size: 32px;
+  background: #f7f4e7; /* 拒绝纯白 */
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(47, 106, 79, 0.08);
+  border: 1px solid rgba(58, 96, 80, 0.15);
+}
+
+.title-section h2 {
   margin: 0;
-  color: #1f3c31;
+  color: #1a2e25;
+  font-size: 24px;
+  font-weight: 800;
 }
 
-.panel-head p {
-  margin: 8px 0 0;
-  color: #567a68;
+.title-section p {
+  margin: 4px 0 0;
+  color: #5d7a6e;
+  font-size: 14px;
 }
 
-.filters {
+/* Control Bar */
+.control-bar {
+  background: var(--panel-bg, #fffdf1);
+  padding: 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  border: 1px solid var(--panel-border, rgba(58, 96, 80, 0.1));
+}
+
+.mobile-header {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.current-progress {
+  display: flex;
+  align-items: center;
   gap: 12px;
-  align-items: end;
 }
 
-.filters label {
-  display: grid;
-  gap: 6px;
-  color: #355a48;
-  font-weight: 600;
+.idx {
+  font-weight: 800;
+  color: #1a2e25;
+  font-size: 16px;
 }
 
-.question-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: end;
-  color: #355a48;
-}
-
-.question-nav label {
-  display: grid;
-  gap: 6px;
-  font-weight: 600;
-}
-
-.nav-actions {
-  display: flex;
-  gap: 8px;
-}
-
-select {
-  min-height: 44px;
-  min-width: 160px;
-  border-radius: 10px;
-  border: 1px solid rgba(58, 96, 80, 0.3);
-  padding: 0 10px;
-}
-
-.ghost-btn {
-  min-height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(47, 106, 79, 0.35);
-  background: #fff;
+.type-badge {
+  font-size: 11px;
+  padding: 2px 10px;
+  background: #f1f8f5;
   color: #2f6a4f;
-  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
-.empty-state {
+.toggle-btn {
+  font-size: 12px;
+  color: #5d7a6e;
+  background: #f7f4e7;
+  border: 1px solid rgba(58, 96, 80, 0.15);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.control-content {
+  display: grid;
+  gap: 16px;
+}
+
+.filter-group {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(58, 96, 80, 0.1);
+}
+
+.filter-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #355a48;
+}
+
+.style-select {
+  background: #f7f4e7;
+  border: 1px solid rgba(58, 96, 80, 0.2);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #2f6a4f;
+  font-weight: 700;
+}
+
+.nav-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-info {
+  background: #f7f4e7;
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(58, 96, 80, 0.08);
+}
+
+.jump-select {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #2f6a4f;
+  font-weight: 700;
+  padding-right: 8px;
+  cursor: pointer;
+}
+
+.btn-group {
+  display: flex;
+  gap: 12px; /* 增加间距，防止触控误操作 */
+  margin-left: 20px; /* 远离左边的跳转下拉框 */
+}
+
+.action-btn {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(58, 96, 80, 0.18);
+  background: #f7f4e7;
+  color: #2c4e3f;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.action-btn.next-step {
+  background: #2f6a4f;
+  color: white;
+  border: none;
+}
+
+.action-btn:hover {
+  border-color: #2f6a4f;
+  background: #f1f8f5;
+  color: #2f6a4f;
+}
+
+.action-btn.next-step:hover {
+  background: #28543e;
+  color: white;
+}
+
+/* Sections Styling */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.title-bg {
+  width: 4px;
+  height: 18px;
+  background: #2f6a4f;
+  border-radius: 2px;
+}
+
+.section-title h3 {
   margin: 0;
-  color: #58796a;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a2e25;
+}
+
+.rule-grid, .related {
+  padding: 0 8px;
+}
+
+.rules-container {
+  display: grid;
+  gap: 12px;
+}
+
+.related-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.related-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f7f4e7;
+  border: 1px solid rgba(58, 96, 80, 0.15);
+  border-radius: 16px;
+  text-align: left;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.related-card:hover {
+  border-color: #2f6a4f;
+  background: #f1ede0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.prompt-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c3e36;
+}
+
+.arrow {
+  color: #2f6a4f;
+  font-weight: 800;
 }
 
 .result {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  border-radius: 14px;
-  border: 1px dashed rgba(56, 93, 77, 0.35);
-  padding: 12px;
+  padding: 16px 20px;
+  background: #e4f0e9;
+  border-radius: 20px;
+  border: 1px solid rgba(56, 93, 77, 0.3);
 }
 
-.ok {
-  color: #2f6b4f;
+.result strong {
+  font-size: 15px;
+  font-weight: 700;
 }
 
-.bad {
-  color: #a3584f;
-}
+.ok { color: #2e7d32; }
+.bad { color: #d32f2f; }
 
 .next-btn {
-  min-height: 44px;
-  border: none;
-  border-radius: 999px;
-  padding: 10px 16px;
+  padding: 10px 24px;
   background: #2f6a4f;
-  color: #fff;
-}
-
-.rule-grid,
-.related {
-  display: grid;
-  gap: 10px;
-}
-
-.rule-grid h3,
-.related h3 {
-  margin: 0;
-  color: #2b4a3d;
-}
-
-.rules {
-  display: grid;
-  gap: 10px;
-}
-
-.related-list {
-  display: grid;
-  gap: 8px;
-}
-
-.related-list button {
-  text-align: left;
+  color: white;
+  border: none;
   border-radius: 12px;
-  border: 1px solid rgba(53, 90, 74, 0.2);
-  background: rgba(248, 244, 228, 0.8);
-  padding: 10px;
-  min-height: 44px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(47, 106, 79, 0.2);
+}
+
+@media (min-width: 768px) {
+  .mobile-header { display: none; }
+  .control-content {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .filter-group {
+    border-bottom: none;
+    padding: 0;
+  }
+}
+
+select {
+  cursor: pointer;
 }
 </style>

@@ -11,13 +11,22 @@ const router = useRouter();
 const store = useTrainingStore();
 
 const stageFilter = ref<RuleStageId | 'all'>('all');
+const showOnlyFavorites = ref(false);
 const favorites = useStorage<string[]>('panda-majiang-rule-favorites', []);
 
-const filteredRules = computed(() =>
-  store.ruleTagsWithExamples.filter((rule) =>
-    stageFilter.value === 'all' ? true : rule.stageId === stageFilter.value
-  )
-);
+const filteredRules = computed(() => {
+  let rules = store.ruleTagsWithExamples;
+  
+  if (stageFilter.value !== 'all') {
+    rules = rules.filter(r => r.stageId === stageFilter.value);
+  }
+  
+  if (showOnlyFavorites.value) {
+    rules = rules.filter(r => favorites.value.includes(r.id));
+  }
+  
+  return rules;
+});
 
 const favoriteSet = computed(() => new Set(favorites.value));
 
@@ -43,13 +52,20 @@ const viewExample = (questionId: string) => {
       <p>口诀卡片 + 对应牌例，反复朗读更容易记牢。</p>
     </header>
 
-    <label class="filter-label">
-      阶段筛选
-      <select v-model="stageFilter">
-        <option value="all">全部阶段</option>
-        <option v-for="(meta, key) in stageMeta" :key="key" :value="key">{{ meta.name }}</option>
-      </select>
-    </label>
+    <div class="filters">
+      <label class="filter-label">
+        阶段筛选
+        <select v-model="stageFilter">
+          <option value="all">全部阶段</option>
+          <option v-for="(meta, key) in stageMeta" :key="key" :value="key">{{ meta.name }}</option>
+        </select>
+      </label>
+
+      <label class="fav-toggle">
+        <input type="checkbox" v-model="showOnlyFavorites" />
+        <span>仅看收藏 ({{ favorites.length }})</span>
+      </label>
+    </div>
 
     <div class="rule-cards">
       <article class="rule-card" v-for="rule in filteredRules" :key="rule.id">
@@ -57,8 +73,14 @@ const viewExample = (questionId: string) => {
         <p>{{ rule.description }}</p>
 
         <div class="actions">
-          <button type="button" @click="toggleFavorite(rule.id)">
-            {{ favoriteSet.has(rule.id) ? '取消收藏' : '收藏口诀' }}
+          <button 
+            type="button" 
+            class="fav-btn"
+            :class="{ active: favoriteSet.has(rule.id) }"
+            @click="toggleFavorite(rule.id)"
+          >
+            <span class="icon">{{ favoriteSet.has(rule.id) ? '★' : '☆' }}</span>
+            {{ favoriteSet.has(rule.id) ? '已收藏' : '收藏口诀' }}
           </button>
         </div>
 
@@ -94,11 +116,40 @@ header p {
   color: #5a7f6b;
 }
 
+.filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .filter-label {
   display: grid;
   gap: 6px;
   color: #345948;
   font-weight: 600;
+  flex: 1;
+  min-width: 200px;
+}
+
+.fav-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 10px 16px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid rgba(59, 95, 80, 0.2);
+  user-select: none;
+  font-weight: 600;
+  color: #345948;
+}
+
+.fav-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: #f1c40f;
 }
 
 select {
@@ -106,6 +157,7 @@ select {
   border-radius: 10px;
   border: 1px solid rgba(59, 95, 80, 0.3);
   padding: 0 10px;
+  background: white;
 }
 
 .rule-cards {
@@ -127,14 +179,56 @@ select {
   color: #4f715f;
 }
 
-.actions button,
+.fav-btn {
+  min-height: 40px;
+  border-radius: 99px;
+  border: 1px solid rgba(54, 89, 74, 0.2);
+  background: white;
+  color: #5a7f6b;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.fav-btn .icon {
+  font-size: 18px;
+  color: #bdc3c7;
+  transition: color 0.2s ease;
+}
+
+.fav-btn.active {
+  background: #fdf9e1;
+  border-color: #f1c40f;
+  color: #967e00;
+}
+
+.fav-btn.active .icon {
+  color: #f1c40f;
+}
+
+.fav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
 .examples button {
-  min-height: 44px;
-  border-radius: 10px;
-  border: 1px solid rgba(54, 89, 74, 0.22);
-  background: rgba(244, 239, 219, 0.8);
+  min-height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(54, 89, 74, 0.15);
+  background: #f8f9fa;
   color: #2a4739;
-  padding: 8px 12px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.examples button:hover {
+  background: #edf7ef;
+  border-color: #4d9571;
 }
 
 .examples {

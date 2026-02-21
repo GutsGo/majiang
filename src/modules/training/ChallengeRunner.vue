@@ -158,9 +158,14 @@ const resetToMap = () => {
 
 <template>
   <section class="panel challenge-runner">
-    <header>
-      <h2>闯关模式</h2>
-      <p>每关 10 题，正确率与用时共同决定星级。</p>
+    <header class="page-header">
+      <div class="title-section">
+        <span class="mode-icon">⚔️</span>
+        <div class="text">
+          <h2>闯关模式</h2>
+          <p>每关 10 题，挑战速记与决策极限</p>
+        </div>
+      </div>
     </header>
 
     <section v-if="!selectedStage" class="stage-map">
@@ -186,11 +191,29 @@ const resetToMap = () => {
     </section>
 
     <section v-else-if="currentQuestion && !stageFinished" class="stage-playing">
-      <div class="status-row">
-        <strong>{{ selectedStage.title }}</strong>
-        <span>第 {{ questionIndex + 1 }} / {{ selectedStage.questionIds.length }} 题</span>
-        <span>已作答 {{ stageAnswered }} 题</span>
-        <span>已答对 {{ stageCorrect }} 题</span>
+      <div class="stage-progress-bar">
+        <div class="progress-track">
+          <div class="progress-fill" :style="{ width: `${((questionIndex + 1) / selectedStage.questionIds.length) * 100}%` }"></div>
+        </div>
+        <div class="progress-labels">
+          <span class="stage-title">{{ selectedStage.title }}</span>
+          <span class="step-info">第 {{ questionIndex + 1 }} / {{ selectedStage.questionIds.length }} 题</span>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="label">当前进度</span>
+          <span class="value">{{ Math.round(((questionIndex + 1) / selectedStage.questionIds.length) * 100) }}%</span>
+        </div>
+        <div class="stat-card highlight">
+          <span class="label">已答对</span>
+          <span class="value">{{ stageCorrect }}</span>
+        </div>
+        <div class="stat-card">
+          <span class="label">准确率</span>
+          <span class="value">{{ Math.round((stageCorrect / (stageAnswered || 1)) * 100) }}%</span>
+        </div>
       </div>
 
       <div class="stage-nav">
@@ -217,20 +240,42 @@ const resetToMap = () => {
         @submit="submitCurrent"
       />
 
-      <div v-if="submitted" class="feedback">
-        <p :class="currentCorrect ? 'ok' : 'bad'">
-          {{ currentCorrect ? '本题正确，继续推进。' : '本题错误，已加入错题本。' }}
-        </p>
-        <button type="button" @click="nextQuestion">{{ questionIndex + 1 === selectedStage.questionIds.length ? '结算本关' : '下一题' }}</button>
-      </div>
+      <Transition name="bounce">
+        <div v-if="submitted" class="feedback-overlay" :class="currentCorrect ? 'correct' : 'wrong'">
+          <div class="feedback-content">
+            <span class="feedback-icon">{{ currentCorrect ? '✨ 正确' : '❌ 错误' }}</span>
+            <p>{{ currentCorrect ? '完美决策！继续保持。' : '有些遗憾，这题值得深思。' }}</p>
+            <button type="button" class="next-step-btn" @click="nextQuestion">
+              {{ questionIndex + 1 === selectedStage.questionIds.length ? '查看本关成就' : '下一题' }}
+            </button>
+          </div>
+        </div>
+      </Transition>
     </section>
 
-    <section v-else-if="selectedStage && stageFinished" class="stage-result">
-      <h3>{{ selectedStage.title }} 结算</h3>
-      <p>正确率：{{ Math.round(stageAccuracy * 100) }}%</p>
-      <p>用时：{{ Math.ceil(stageElapsedMs / 1000) }} 秒</p>
-      <p>星级：{{ '★'.repeat(stageStars) || '无星' }}</p>
-      <button type="button" @click="resetToMap">返回关卡地图</button>
+    <section v-else-if="selectedStage && stageFinished" class="stage-result-card">
+      <div class="result-header">
+        <div class="stars-display">
+          <span v-for="i in 3" :key="i" class="star" :class="{ earned: i <= stageStars }">★</span>
+        </div>
+        <h3>{{ selectedStage.title }} 通关</h3>
+      </div>
+      
+      <div class="result-stats">
+        <div class="res-item">
+          <span class="label">正确率</span>
+          <span class="value">{{ Math.round(stageAccuracy * 100) }}%</span>
+        </div>
+        <div class="res-item">
+          <span class="label">总用时</span>
+          <span class="value">{{ Math.ceil(stageElapsedMs / 1000) }} 秒</span>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button type="button" class="primary-btn" @click="resetToMap">返回地图</button>
+        <button type="button" class="secondary-btn" @click="restartStage">再次挑战</button>
+      </div>
     </section>
   </section>
 </template>
@@ -238,38 +283,72 @@ const resetToMap = () => {
 <style scoped>
 .challenge-runner {
   display: grid;
+  gap: 24px;
+  padding-bottom: 40px;
+}
+
+/* Page Header */
+.page-header {
+  padding: 16px 8px;
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
   gap: 16px;
 }
 
-header h2 {
+.mode-icon {
+  font-size: 32px;
+  background: #f7f4e7;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+  border: 1px solid rgba(58, 96, 80, 0.1);
+}
+
+.title-section h2 {
   margin: 0;
-  color: #1f3c31;
+  color: #1a2e25;
+  font-size: 24px;
+  font-weight: 800;
 }
 
-header p {
-  margin: 8px 0 0;
-  color: #5d816e;
+.title-section p {
+  margin: 4px 0 0;
+  color: #5d7a6e;
+  font-size: 14px;
 }
 
+/* Stage Map */
 .stage-map {
   display: grid;
-  gap: 18px;
+  gap: 32px;
 }
 
 .chapter {
   display: grid;
-  gap: 10px;
+  gap: 16px;
 }
 
 .chapter h3 {
   margin: 0;
-  color: #2c4e3f;
+  color: #1a2e25;
+  font-size: 18px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .stage-grid {
   display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
 .stage-btn {
@@ -277,36 +356,129 @@ header p {
   background: transparent;
   padding: 0;
   text-align: left;
+  transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
-.status-row {
+.stage-btn:hover:not(:disabled) {
+  transform: translateY(-4px);
+}
+
+/* Playing Mode */
+.stage-playing {
+  display: grid;
+  gap: 20px;
+  position: relative;
+}
+
+.stage-progress-bar {
+  background: #fcfaf0;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  border: 1px solid rgba(58, 96, 80, 0.1);
+}
+
+.progress-track {
+  height: 8px;
+  background: rgba(47, 106, 79, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #42b983, #2f6a4f);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-labels {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  justify-content: space-between;
   align-items: center;
-  color: #355a48;
 }
 
+.stage-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #1a2e25;
+}
+
+.step-info {
+  font-size: 13px;
+  font-weight: 600;
+  color: #5d7a6e;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.stat-card {
+  background: #f7f4e7;
+  padding: 12px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgba(58, 96, 80, 0.15);
+}
+
+.stat-card.highlight {
+  background: #e4f0e9;
+  border-color: #2f6a4f;
+}
+
+.stat-card .label {
+  font-size: 11px;
+  color: #8c9b94;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.stat-card .value {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a2e25;
+}
+
+.stat-card.highlight .value {
+  color: #2f6a4f;
+}
+
+/* Stage Nav */
 .stage-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: end;
+  justify-content: space-between;
+  align-items: center;
+  background: #fcfaf0;
+  padding: 12px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(58, 96, 80, 0.1);
 }
 
 .stage-nav label {
-  display: grid;
-  gap: 6px;
-  color: #355a48;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
+  color: #5d7a6e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .stage-nav select {
-  min-height: 44px;
-  min-width: 190px;
-  border-radius: 10px;
-  border: 1px solid rgba(58, 96, 80, 0.3);
-  padding: 0 10px;
+  border: none;
+  background: #f7f4e7;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2f6a4f;
+  border: 1px solid rgba(58, 96, 80, 0.15);
 }
 
 .stage-actions {
@@ -315,60 +487,160 @@ header p {
 }
 
 .ghost-btn {
-  min-height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(47, 106, 79, 0.35);
-  background: #fff;
-  color: #2f6a4f;
-  padding: 10px 14px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(58, 96, 80, 0.2);
+  background: #f7f4e7;
+  color: #5d7a6e;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.feedback {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  border-radius: 12px;
-  border: 1px dashed rgba(52, 85, 69, 0.35);
-  padding: 10px;
+/* Feedback Overlay */
+.feedback-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 320px;
+  background: #fffdf1;
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  z-index: 100;
+  text-align: center;
+  border: 1px solid rgba(58, 96, 80, 0.1);
 }
 
-.feedback p {
-  margin: 0;
+.feedback-overlay.correct { border-top: 6px solid #42b983; }
+.feedback-overlay.wrong { border-top: 6px solid #ea4335; }
+
+.feedback-icon {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  display: block;
 }
 
-.feedback button,
-.stage-result button {
-  min-height: 44px;
-  border-radius: 999px;
-  border: none;
-  padding: 10px 16px;
+.feedback-overlay.correct .feedback-icon { color: #42b983; }
+.feedback-overlay.wrong .feedback-icon { color: #ea4335; }
+
+.feedback-overlay p {
+  color: #5d7a6e;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.next-step-btn {
+  width: 100%;
+  height: 48px;
   background: #2f6a4f;
-  color: #fff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
-.ok {
-  color: #2f6b4f;
+/* Result Card */
+.stage-result-card {
+  background: #fffdf1;
+  padding: 40px;
+  border-radius: 32px;
+  text-align: center;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid rgba(58, 96, 80, 0.15);
 }
 
-.bad {
-  color: #aa5f53;
+.result-header h3 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a2e25;
+  margin: 16px 0;
 }
 
-.stage-result {
-  border-radius: 16px;
-  border: 1px solid rgba(53, 89, 74, 0.24);
-  padding: 16px;
-  background: #fffdf6;
+.stars-display {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 }
 
-.stage-result h3 {
-  margin: 0 0 10px;
-  color: #2b4b3d;
+.star {
+  font-size: 48px;
+  color: rgba(58, 96, 80, 0.1);
 }
 
-.stage-result p {
-  margin: 6px 0;
-  color: #506f60;
+.star.earned {
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.result-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 32px 0;
+  padding: 24px;
+  background: #f7f4e7;
+  border-radius: 20px;
+  border: 1px solid rgba(58, 96, 80, 0.08);
+}
+
+.res-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.res-item .label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8c9b94;
+  text-transform: uppercase;
+}
+
+.res-item .value {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a2e25;
+}
+
+.result-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.primary-btn {
+  height: 52px;
+  background: #2f6a4f;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  height: 52px;
+  background: #f7f4e7;
+  color: #2f6a4f;
+  border: 2px solid #2f6a4f;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* Transitions */
+.bounce-enter-active { animation: bounce-in 0.5s; }
+.bounce-leave-active { animation: bounce-in 0.5s reverse; }
+@keyframes bounce-in {
+  0% { transform: translate(-50%, -50%) scale(0); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
 }
 </style>
