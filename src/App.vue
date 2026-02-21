@@ -20,10 +20,6 @@ const appClass = computed(() => [`font-${store.settings.fontScale}`, `hand-${sto
         </div>
       </RouterLink>
       <nav>
-        <RouterLink to="/explain">讲解</RouterLink>
-        <RouterLink to="/challenge">闯关</RouterLink>
-        <RouterLink to="/kouji">口技</RouterLink>
-        <RouterLink to="/mistakes">错题</RouterLink>
         <RouterLink to="/settings">设置</RouterLink>
       </nav>
     </header>
