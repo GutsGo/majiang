@@ -275,7 +275,7 @@ const tongEightDotClass = (index: number) => {
   color: #bf2f29;
   display: block;
   text-align: center;
-  font-family: "Xingkai", "STXingkai", "华文行楷", "Xingkai SC", "Kaiti", "楷体", cursive;
+  font-family: "Xingkai1";
 }
 
 .wan-num {

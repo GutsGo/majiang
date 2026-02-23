@@ -98,6 +98,27 @@ const buildExplanationSteps = (
 
 const formatQuestionId = (id: number) => `q-${String(id).padStart(3, '0')}`;
 
+const tileRegex = /^([1-9])([万条筒])$/;
+const suitOrder: Record<string, number> = { 万: 0, 条: 1, 筒: 2 };
+
+const sortHand = (hand: string[]) => {
+  return hand
+    .map((tile, index) => {
+      const match = tileRegex.exec(tile);
+      if (!match) {
+        return { tile, index, rank: 99, suit: 99 };
+      }
+      return {
+        tile,
+        index,
+        rank: Number(match[1]),
+        suit: suitOrder[match[2]] ?? 99,
+      };
+    })
+    .sort((a, b) => a.suit - b.suit || a.rank - b.rank || a.index - b.index)
+    .map((item) => item.tile);
+};
+
 export const trainingQuestions: TrainingQuestion[] = questionBank.questions.map(
   (question) => {
     const id = formatQuestionId(question.id);
@@ -113,10 +134,10 @@ export const trainingQuestions: TrainingQuestion[] = questionBank.questions.map(
       type: typeMap[question.type] ?? 'analyze_situation',
       difficulty: difficultyMap[question.difficulty],
       prompt: question.prompt,
-      hand: question.hand,
+      hand: sortHand(question.hand),
       discards:
         question.discards && question.discards.length
-          ? question.discards
+          ? sortHand(question.discards)
           : undefined,
       options,
       correctOptionIds,

@@ -9,8 +9,8 @@
 }
 
 @font-face {
-  font-family: 'Xingkai';
-  src: url('../assets/fonts/Xingkai.otf') format('opentype');
+  font-family: 'Xingkai1';
+  src: url('../assets/fonts/xk2.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -23,15 +23,20 @@
 body {
   margin: 0;
   font-family:
-    'LXGW WenKai',
-    'PingFang SC',
-    'Hiragino Sans GB',
-    'Microsoft YaHei',
+    'LXGW WenKai', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
     sans-serif;
   color: var(--text-main);
   background:
-    radial-gradient(circle at 0% 0%, rgba(120, 184, 150, 0.22), transparent 35%),
-    radial-gradient(circle at 100% 20%, rgba(252, 214, 155, 0.18), transparent 30%),
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(120, 184, 150, 0.22),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 100% 20%,
+      rgba(252, 214, 155, 0.18),
+      transparent 30%
+    ),
     linear-gradient(180deg, var(--bg-top), var(--bg-mid) 40%, var(--bg-bottom));
   min-height: 100vh;
 }
