@@ -54,10 +54,8 @@ const currentQuestionId = computed({
 
 const buildLatestResultMap = () => {
   const latestMap = new Map<string, boolean>();
-  for (const record of store.progress.answerHistory) {
-    if (!latestMap.has(record.questionId)) {
-      latestMap.set(record.questionId, record.isCorrect);
-    }
+  for (const [questionId, record] of store.answeredRecordMapByMode.challenge) {
+    latestMap.set(questionId, record.isCorrect);
   }
   return latestMap;
 };

@@ -1,17 +1,27 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useTrainingStore } from '@/app/stores/useTrainingStore';
 import { stageMeta } from '@/data/rules';
 import type { RuleStageId } from '@/types/training';
 
 const store = useTrainingStore();
 const appLogo = '/logo.webp';
+const modeFilter = ref<'explain' | 'challenge'>('explain');
+
+const modeLabels: Record<'explain' | 'challenge', string> = {
+  explain: '讲解模式',
+  challenge: '闯关模式'
+};
+
+const activeStageProgressMap = computed(
+  () => store.stageProgressMapByMode[modeFilter.value]
+);
 
 const stageRate = computed(() => {
   const stageIds = Object.keys(store.questionStats.byStage) as RuleStageId[];
   const result = stageIds.map((stageId) => {
     const total = store.questionStats.byStage[stageId];
-    const done = store.stageProgressMap[stageId] ?? 0;
+    const done = activeStageProgressMap.value[stageId] ?? 0;
     return {
       stageId,
       total,
@@ -32,24 +42,44 @@ const stageRate = computed(() => {
       <h1>训练进度详情</h1>
     </header>
 
+    <div class="mode-switch">
+      <button
+        type="button"
+        :class="{ active: modeFilter === 'explain' }"
+        @click="modeFilter = 'explain'"
+      >
+        讲解模式
+      </button>
+      <button
+        type="button"
+        :class="{ active: modeFilter === 'challenge' }"
+        @click="modeFilter = 'challenge'"
+      >
+        闯关模式
+      </button>
+    </div>
+
     <div class="content-grid">
       <article class="panel stats-panel">
         <header>
           <img :src="appLogo" alt="站点 Logo" />
-          <h2>今日训练概览</h2>
+          <div class="title-stack">
+            <h2>{{ modeLabels[modeFilter] }} · 今日训练概览</h2>
+            <span class="subtitle">统计仅包含当前模式答题记录</span>
+          </div>
         </header>
         <ul class="stats-list">
           <li>
             <span class="label">今日答题</span>
-            <span class="value">{{ store.todayAnswerCount }} 题</span>
+            <span class="value">{{ store.todayAnswerCountByMode[modeFilter] }} 题</span>
           </li>
           <li>
             <span class="label">累计答题</span>
-            <span class="value">{{ store.totalAnswered }} 题</span>
+            <span class="value">{{ store.totalAnsweredByMode[modeFilter] }} 题</span>
           </li>
           <li>
             <span class="label">累计正确率</span>
-            <span class="value high">{{ Math.round(store.accuracy * 100) }}%</span>
+            <span class="value high">{{ Math.round(store.accuracyByMode[modeFilter] * 100) }}%</span>
           </li>
           <li>
             <span class="label">题库总量</span>
@@ -79,7 +109,6 @@ const stageRate = computed(() => {
 
 <style scoped>
 .progress-page {
-  max-width: 800px;
   margin: 0 auto;
   padding: 24px 16px;
 }
@@ -89,6 +118,37 @@ const stageRate = computed(() => {
   align-items: center;
   gap: 16px;
   margin-bottom: 32px;
+}
+
+.mode-switch {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px;
+  background: #f7f4e7;
+  border-radius: 999px;
+  border: 1px solid rgba(58, 96, 80, 0.15);
+  margin-bottom: 20px;
+}
+
+.mode-switch button {
+  border: none;
+  background: transparent;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #5d7a6e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-switch button.active {
+  background: #2f6a4f;
+  color: #ffffff;
+  box-shadow: 0 6px 12px rgba(47, 106, 79, 0.2);
+}
+
+.mode-switch button:not(.active):hover {
+  color: #2c4e3f;
 }
 
 .back-btn {
@@ -134,6 +194,17 @@ const stageRate = computed(() => {
   align-items: center;
   gap: 12px;
   margin-bottom: 20px;
+}
+
+.title-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: #7f8c8d;
 }
 
 .stats-panel img {

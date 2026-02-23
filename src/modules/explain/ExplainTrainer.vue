@@ -57,28 +57,44 @@ const goToQuestionIndex = (index: number) => {
   }
 };
 
-watch(filteredQuestions, () => {
-  if (!filteredQuestions.value.length) {
-    questionIndex.value = 0;
-    resetQuestionState();
-    return;
-  }
+watch(
+  filteredQuestions,
+  () => {
+    if (!filteredQuestions.value.length) {
+      questionIndex.value = 0;
+      resetQuestionState();
+      return;
+    }
 
-  const queryId = route.query.questionId as string | undefined;
-  const queryIndex = queryId ? filteredQuestions.value.findIndex((question) => question.id === queryId) : -1;
-  const firstUnansweredIndex = filteredQuestions.value.findIndex(
-    (question) => !store.answeredQuestionIdSet.has(question.id)
-  );
-  const nextIndex = queryIndex >= 0 ? queryIndex : firstUnansweredIndex >= 0 ? firstUnansweredIndex : 0;
-  goToQuestionIndex(nextIndex);
-}, { immediate: true });
+    const queryId = route.query.questionId as string | undefined;
+    const queryIndex = queryId
+      ? filteredQuestions.value.findIndex((question) => question.id === queryId)
+      : -1;
+    const firstUnansweredIndex = filteredQuestions.value.findIndex(
+      (question) => !store.answeredQuestionIdSetByMode.explain.has(question.id),
+    );
+    const nextIndex =
+      queryIndex >= 0
+        ? queryIndex
+        : firstUnansweredIndex >= 0
+          ? firstUnansweredIndex
+          : 0;
+    goToQuestionIndex(nextIndex);
+  },
+  { immediate: true },
+);
 
-watch(() => route.query.questionId, (questionId) => {
-  if (!questionId || !filteredQuestions.value.length) return;
-  const index = filteredQuestions.value.findIndex((question) => question.id === questionId);
-  if (index < 0 || index === questionIndex.value) return;
-  goToQuestionIndex(index);
-});
+watch(
+  () => route.query.questionId,
+  (questionId) => {
+    if (!questionId || !filteredQuestions.value.length) return;
+    const index = filteredQuestions.value.findIndex(
+      (question) => question.id === questionId,
+    );
+    if (index < 0 || index === questionIndex.value) return;
+    goToQuestionIndex(index);
+  },
+);
 
 const relatedQuestions = computed(() => {
   if (!currentQuestion.value) return [];

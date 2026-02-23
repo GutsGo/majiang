@@ -10,7 +10,7 @@ describe('useTrainingStore', () => {
     setActivePinia(createPinia());
   });
 
-  it('deduplicates overview stats by question id', () => {
+  it('deduplicates overview stats by question id and mode', () => {
     const today = new Date().toISOString();
     const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
     saveProgress({
@@ -44,12 +44,19 @@ describe('useTrainingStore', () => {
     });
 
     const store = useTrainingStore();
-    const totalByStage = Object.values(store.stageProgressMap).reduce((sum, count) => sum + count, 0);
+    const explainStageTotal = Object.values(store.stageProgressMapByMode.explain).reduce((sum, count) => sum + count, 0);
+    const challengeStageTotal = Object.values(store.stageProgressMapByMode.challenge).reduce((sum, count) => sum + count, 0);
 
-    expect(store.totalAnswered).toBe(2);
-    expect(store.totalCorrect).toBe(1);
-    expect(store.todayAnswerCount).toBe(1);
-    expect(store.accuracy).toBe(0.5);
-    expect(totalByStage).toBe(2);
+    expect(store.totalAnsweredByMode.explain).toBe(1);
+    expect(store.totalCorrectByMode.explain).toBe(0);
+    expect(store.todayAnswerCountByMode.explain).toBe(1);
+    expect(store.accuracyByMode.explain).toBe(0);
+    expect(explainStageTotal).toBe(1);
+
+    expect(store.totalAnsweredByMode.challenge).toBe(1);
+    expect(store.totalCorrectByMode.challenge).toBe(1);
+    expect(store.todayAnswerCountByMode.challenge).toBe(1);
+    expect(store.accuracyByMode.challenge).toBe(1);
+    expect(challengeStageTotal).toBe(1);
   });
 });
