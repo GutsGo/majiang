@@ -151,6 +151,7 @@ const submitAnswer = () => {
 const nextQuestion = () => {
   if (!filteredQuestions.value.length) return;
   goToQuestionIndex(questionIndex.value + 1);
+  scrollToTop();
 };
 
 const skipQuestion = () => {
@@ -174,6 +175,10 @@ const scrollToExplanation = () => {
   if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 };
 
 const currentQuestionId = computed({

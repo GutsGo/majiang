@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: 'Xingkai';
-  src: url('/fonts/Xingkai.otf') format('opentype');
+  src: url('../assets/fonts/Xingkai.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;

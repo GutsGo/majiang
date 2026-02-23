@@ -148,6 +148,7 @@ const nextQuestion = () => {
   selectedOptionIds.value = [];
   submitted.value = false;
   currentCorrect.value = false;
+  scrollToTop();
 };
 
 const skipQuestion = () => {
@@ -180,6 +181,10 @@ const scrollToExplanation = () => {
   if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 };
 </script>
 

@@ -60,11 +60,16 @@ const next = () => {
   submitted.value = false;
   lastCorrect.value = null;
   startAt.value = Date.now();
+  scrollToTop();
 };
 
 const clearAll = () => {
   const next = clearMistakes();
   store.updateProgress(next);
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 };
 </script>
 
