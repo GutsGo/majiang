@@ -124,7 +124,7 @@ import { RouterLink } from 'vue-router';
   padding: 0 24px;
   gap: 20px;
   background: white;
-  box-shadow: 
+  box-shadow:
     0 10px 20px rgba(0, 0, 0, 0.05),
     inset 0 -4px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -134,7 +134,7 @@ import { RouterLink } from 'vue-router';
 
 .item-icon {
   font-size: 44px;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
   transition: transform 0.3s ease;
 }
 
@@ -156,13 +156,30 @@ import { RouterLink } from 'vue-router';
 }
 
 /* Color Variants */
-.cta-explain .item-inner { background: linear-gradient(135deg, #fff, #e3f2fd); border-color: #bbdefb; }
-.cta-challenge .item-inner { background: linear-gradient(135deg, #fff, #e8f5e9); border-color: #c8e6c9; }
-.cta-kouji .item-inner { background: linear-gradient(135deg, #fff, #f3e5f5); border-color: #e1bee7; }
-.cta-mistakes .item-inner { background: linear-gradient(135deg, #fff, #fff3e0); border-color: #ffe0b2; }
-.cta-progress .item-inner { background: linear-gradient(135deg, #fff, #f1f8e9); border-color: #dcedc8; }
+.cta-explain .item-inner {
+  background: linear-gradient(135deg, #fff, #e3f2fd);
+  border-color: #bbdefb;
+}
 
-.cta-explain .item-icon { background: #1976d2; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.cta-challenge .item-inner {
+  background: linear-gradient(135deg, #fff, #e8f5e9);
+  border-color: #c8e6c9;
+}
+
+.cta-kouji .item-inner {
+  background: linear-gradient(135deg, #fff, #f3e5f5);
+  border-color: #e1bee7;
+}
+
+.cta-mistakes .item-inner {
+  background: linear-gradient(135deg, #fff, #fff3e0);
+  border-color: #ffe0b2;
+}
+
+.cta-progress .item-inner {
+  background: linear-gradient(135deg, #fff, #f1f8e9);
+  border-color: #dcedc8;
+}
 
 /* Hover Effects */
 .menu-item:hover {
@@ -170,7 +187,7 @@ import { RouterLink } from 'vue-router';
 }
 
 .menu-item:hover .item-inner {
-  box-shadow: 
+  box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.1),
     inset 0 -2px 0 rgba(0, 0, 0, 0.05);
 }
@@ -179,18 +196,34 @@ import { RouterLink } from 'vue-router';
   transform: scale(1.2) rotate(10deg);
 }
 
-.cta-explain:hover .item-inner { border-color: #1976d2; }
-.cta-challenge:hover .item-inner { border-color: #2e7d32; }
-.cta-kouji:hover .item-inner { border-color: #7b1fa2; }
-.cta-mistakes:hover .item-inner { border-color: #e65100; }
-.cta-progress:hover .item-inner { border-color: #558b2f; }
+.cta-explain:hover .item-inner {
+  border-color: #1976d2;
+}
+
+.cta-challenge:hover .item-inner {
+  border-color: #2e7d32;
+}
+
+.cta-kouji:hover .item-inner {
+  border-color: #7b1fa2;
+}
+
+.cta-mistakes:hover .item-inner {
+  border-color: #e65100;
+}
+
+.cta-progress:hover .item-inner {
+  border-color: #558b2f;
+}
 
 /* Glare Animation */
 .hover-glare {
   position: absolute;
-  top: 0; left: -100%;
-  width: 50%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
   transition: all 0.6s ease;
   transform: skewX(-25deg);
 }
@@ -204,6 +237,7 @@ import { RouterLink } from 'vue-router';
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -214,6 +248,7 @@ import { RouterLink } from 'vue-router';
   .game-menu {
     grid-template-columns: 1fr;
   }
+
   .item-inner {
     height: 100px;
   }

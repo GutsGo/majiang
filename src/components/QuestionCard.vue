@@ -15,8 +15,8 @@ const props = withDefaults(
   {
     submitLabel: '提交答案',
     showExplanation: true,
-    disabled: false
-  }
+    disabled: false,
+  },
 );
 
 const emit = defineEmits<{
@@ -54,7 +54,10 @@ const optionClass = (optionId: string) => {
   return '';
 };
 
-const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.submitted && !props.disabled);
+const canSubmit = computed(
+  () =>
+    props.selectedOptionIds.length > 0 && !props.submitted && !props.disabled,
+);
 </script>
 
 <template>
@@ -77,12 +80,8 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
             <h4>我的手牌</h4>
           </div>
           <div class="tiles hand-tiles">
-            <MahjongTile
-              v-for="(tile, index) in props.question.hand"
-              :key="`${props.question.id}-${tile}-${index}`"
-              :tile="tile"
-              class="tile-3d"
-            />
+            <MahjongTile v-for="(tile, index) in props.question.hand" :key="`${props.question.id}-${tile}-${index}`"
+              :tile="tile" class="tile-3d hand-tile" />
           </div>
         </div>
 
@@ -92,13 +91,8 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
             <h4>弃牌堆</h4>
           </div>
           <div class="tiles compact-tiles">
-            <MahjongTile
-              v-for="(tile, index) in props.question.discards"
-              :key="`${props.question.id}-discard-${tile}-${index}`"
-              :tile="tile"
-              compact
-              class="tile-3d-compact"
-            />
+            <MahjongTile v-for="(tile, index) in props.question.discards"
+              :key="`${props.question.id}-discard-${tile}-${index}`" :tile="tile" compact class="tile-3d-compact" />
           </div>
         </div>
       </div>
@@ -107,13 +101,8 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
     <section class="options-container">
       <div class="options-header">请选择最佳答案：</div>
       <div class="options">
-        <button
-          v-for="option in props.question.options"
-          :key="option.id"
-          type="button"
-          :class="['option-item', optionClass(option.id)]"
-          @click="toggleOption(option.id)"
-        >
+        <button v-for="option in props.question.options" :key="option.id" type="button"
+          :class="['option-item', optionClass(option.id)]" @click="toggleOption(option.id)">
           <div class="option-indicator">{{ option.id }}</div>
           <div class="option-content">
             <span class="label">{{ option.label }}</span>
@@ -137,7 +126,7 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
       <section v-if="props.submitted && props.showExplanation" class="explain-card">
         <div class="explain-header">
           <span class="icon">💡</span>
-          <h4>解题深度讲解</h4>
+          <h4>答题提示与深度解析</h4>
         </div>
         <div class="explain-body">
           <div class="step-list">
@@ -163,7 +152,8 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
 .question-card {
   border-radius: 24px;
   background: #fffdf1;
-  box-shadow: 0 12px 32px rgba(30, 50, 40, 0.12); /* 降低发光，改用偏深绿的投影 */
+  box-shadow: 0 12px 32px rgba(30, 50, 40, 0.12);
+  /* 降低发光，改用偏深绿的投影 */
   padding: 0;
   display: grid;
   overflow: hidden;
@@ -228,13 +218,16 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
 }
 
 .tile-board {
-  background: #2d5a3f; /* Deep felt green */
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 80%),
-    repeating-conic-gradient(rgba(0,0,0,0.1) 0% 25%, transparent 0% 50%) 50% / 20px 20px;
+  background: #2d5a3f;
+  /* Deep felt green */
+  background-image:
+    radial-gradient(circle at 50% 50%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 80%),
+    repeating-conic-gradient(rgba(0, 0, 0, 0.1) 0% 25%, transparent 0% 50%) 50% / 20px 20px;
   border-radius: 16px;
   padding: 20px;
-  box-shadow: 
+  box-shadow:
     inset 0 4px 12px rgba(0, 0, 0, 0.3),
     0 4px 20px rgba(0, 0, 0, 0.1);
   display: grid;
@@ -279,18 +272,20 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
 }
 
 .hand-tiles {
-  gap: 4px; /* Tighter gap for hand */
+  gap: 4px;
+  /* Tighter gap for hand */
 }
 
 /* 3D Effect for Tiles on the table */
-.tile-3d, .tile-3d-compact {
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+.tile-3d,
+.tile-3d-compact {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .tile-3d:hover {
   transform: translateY(-6px) scale(1.05);
-  filter: drop-shadow(0 12px 12px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 12px 12px rgba(0, 0, 0, 0.5));
 }
 
 /* Options Styling */
@@ -313,7 +308,8 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
 .option-item {
   border: 1px solid rgba(58, 96, 80, 0.25);
   border-radius: 16px;
-  background: #f7f4e7; /* 恢复黄色底色 */
+  background: #f7f4e7;
+  /* 恢复黄色底色 */
   padding: 14px 16px;
   display: flex;
   align-items: center;
@@ -370,7 +366,8 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
 }
 
 .option-item.selected .option-indicator {
-  background: #28543e; /* 更深的绿，增加对比 */
+  background: #28543e;
+  /* 更深的绿，增加对比 */
   color: white;
 }
 
@@ -400,8 +397,13 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
   font-weight: 800;
 }
 
-.option-item.correct .result-icon { color: #34a853; }
-.option-item.wrong .result-icon { color: #ea4335; }
+.option-item.correct .result-icon {
+  color: #34a853;
+}
+
+.option-item.wrong .result-icon {
+  color: #ea4335;
+}
 
 /* Submit Button */
 .submit-wrapper {
@@ -438,7 +440,8 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
 .explain-card {
   margin: 0 24px 24px;
   padding: 20px;
-  background: #fdfaf0; /* 恢复黄色底色，拒绝全白/冷灰界面 */
+  background: #fdfaf0;
+  /* 恢复黄色底色，拒绝全白/冷灰界面 */
   border-radius: 20px;
   border: 1px solid rgba(58, 96, 80, 0.15);
 }
@@ -517,11 +520,13 @@ const canSubmit = computed(() => props.selectedOptionIds.length > 0 && !props.su
 }
 
 /* Transitions */
-.fade-slide-enter-active, .fade-slide-leave-active {
+.fade-slide-enter-active,
+.fade-slide-leave-active {
   transition: all 0.3s ease;
 }
 
-.fade-slide-enter-from, .fade-slide-leave-to {
+.fade-slide-enter-from,
+.fade-slide-leave-to {
   opacity: 0;
   transform: translateY(10px);
 }

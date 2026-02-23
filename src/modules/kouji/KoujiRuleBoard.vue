@@ -16,15 +16,15 @@ const favorites = useStorage<string[]>('panda-majiang-rule-favorites', []);
 
 const filteredRules = computed(() => {
   let rules = store.ruleTagsWithExamples;
-  
+
   if (stageFilter.value !== 'all') {
     rules = rules.filter(r => r.stageId === stageFilter.value);
   }
-  
+
   if (showOnlyFavorites.value) {
     rules = rules.filter(r => favorites.value.includes(r.id));
   }
-  
+
   return rules;
 });
 
@@ -73,12 +73,8 @@ const viewExample = (questionId: string) => {
         <p>{{ rule.description }}</p>
 
         <div class="actions">
-          <button 
-            type="button" 
-            class="fav-btn"
-            :class="{ active: favoriteSet.has(rule.id) }"
-            @click="toggleFavorite(rule.id)"
-          >
+          <button type="button" class="fav-btn" :class="{ active: favoriteSet.has(rule.id) }"
+            @click="toggleFavorite(rule.id)">
             <span class="icon">{{ favoriteSet.has(rule.id) ? '★' : '☆' }}</span>
             {{ favoriteSet.has(rule.id) ? '已收藏' : '收藏口诀' }}
           </button>
@@ -86,12 +82,8 @@ const viewExample = (questionId: string) => {
 
         <div class="examples" v-if="rule.exampleQuestionIds.length">
           <strong>牌例：</strong>
-          <button
-            v-for="exampleId in rule.exampleQuestionIds.slice(0, 3)"
-            :key="exampleId"
-            type="button"
-            @click="viewExample(exampleId)"
-          >
+          <button v-for="exampleId in rule.exampleQuestionIds.slice(0, 3)" :key="exampleId" type="button"
+            @click="viewExample(exampleId)">
             看 {{ exampleId }}
           </button>
         </div>
@@ -212,7 +204,7 @@ select {
 
 .fav-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .examples button {
@@ -240,5 +232,39 @@ select {
 
 .examples strong {
   color: #335b49;
+}
+
+@media (max-width: 640px) {
+  .filters {
+    flex-wrap: nowrap;
+    gap: 8px;
+    align-items: flex-end;
+  }
+
+  .filter-label {
+    min-width: 0;
+    flex: 1 1 0;
+    font-size: 13px;
+    gap: 4px;
+  }
+
+  .filter-label select {
+    width: 100%;
+    min-height: 36px;
+    padding: 0 8px;
+    font-size: 13px;
+  }
+
+  .fav-toggle {
+    padding: 6px 8px;
+    white-space: nowrap;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .fav-toggle input {
+    width: 16px;
+    height: 16px;
+  }
 }
 </style>

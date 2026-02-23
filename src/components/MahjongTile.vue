@@ -57,7 +57,6 @@ const tiaoLayoutMap: Record<number, number[]> = {
   5: [0, 2, 4, 6, 8], // 四角 + 中心
   6: [0, 2, 3, 5, 6, 8], // 两列各三
   7: [1, 3, 4, 5, 6, 7, 8], // 上一底六
-  8: [0, 2, 3, 4, 5, 6, 7, 8], // 两列各四
   9: [0, 1, 2, 3, 4, 5, 6, 7, 8] // 九宫格
 };
 
@@ -69,6 +68,14 @@ const tiaoBars = computed(() => {
     index
   }));
 });
+
+const tiaoEightSlots = [0, 1, 2, 3, 4, 5, 6, 7]; // 2x4 grid
+const tiaoEightBars = computed(() =>
+  tiaoEightSlots.map((slot, index) => ({
+    slot,
+    index
+  }))
+);
 
 const tongDotColor = (index: number, rank: number) => {
   if (rank === 1) return 'dot-red';
@@ -106,7 +113,8 @@ const tongEightDotClass = (index: number) => {
 </script>
 
 <template>
-  <div :class="['mahjong-tile', { back: props.back, compact: props.compact }]" :aria-label="props.back ? '牌背' : props.tile">
+  <div :class="['mahjong-tile', { back: props.back, compact: props.compact }]"
+    :aria-label="props.back ? '牌背' : props.tile">
     <div class="tile-body">
       <div v-if="!props.back" :class="['tile-face', suitClass]">
         <div class="center-art">
@@ -123,16 +131,20 @@ const tongEightDotClass = (index: number) => {
               <div class="bird-tail"></div>
             </div>
 
+            <div v-else-if="tileMeta.rank === 8" class="tiao-eight-grid">
+              <span v-for="bar in tiaoEightBars" :key="`tiao-8-${props.tile}-${bar.slot}-${bar.index}`"
+                :class="['tiao-bar', tiaoBarClass(tileMeta.rank, bar.index)]" :style="{
+                  gridColumn: `${(bar.slot % 2) + 1}`,
+                  gridRow: `${Math.floor(bar.slot / 2) + 1}`
+                }" />
+            </div>
+
             <div v-else class="tiao-grid">
-              <span
-                v-for="bar in tiaoBars"
-                :key="`tiao-${props.tile}-${bar.slot}-${bar.index}`"
-                :class="['tiao-bar', tiaoBarClass(tileMeta.rank, bar.index)]"
-                :style="{
+              <span v-for="bar in tiaoBars" :key="`tiao-${props.tile}-${bar.slot}-${bar.index}`"
+                :class="['tiao-bar', tiaoBarClass(tileMeta.rank, bar.index)]" :style="{
                   gridColumn: `${(bar.slot % 3) + 1}`,
                   gridRow: `${Math.floor(bar.slot / 3) + 1}`
-                }"
-              />
+                }" />
             </div>
           </template>
 
@@ -145,51 +157,35 @@ const tongEightDotClass = (index: number) => {
             </div>
 
             <div v-else-if="tileMeta.rank === 5" class="tong-grid tong-grid-special">
-              <span
-                v-for="(slot, index) in tongFiveDots"
-                :key="`tong-five-${props.tile}-${slot}-${index}`"
-                :class="['tong-dot', 'tong-dot-special', tongSpecialDotClass(5, index)]"
-                :style="{
+              <span v-for="(slot, index) in tongFiveDots" :key="`tong-five-${props.tile}-${slot}-${index}`"
+                :class="['tong-dot', 'tong-dot-special', tongSpecialDotClass(5, index)]" :style="{
                   gridColumn: `${(slot % 3) + 1}`,
                   gridRow: `${Math.floor(slot / 3) + 1}`
-                }"
-              />
+                }" />
             </div>
 
             <div v-else-if="tileMeta.rank === 9" class="tong-grid tong-grid-special">
-              <span
-                v-for="(slot, index) in tongNineDots"
-                :key="`tong-nine-${props.tile}-${slot}-${index}`"
-                :class="['tong-dot', 'tong-dot-special', tongSpecialDotClass(9, index)]"
-                :style="{
+              <span v-for="(slot, index) in tongNineDots" :key="`tong-nine-${props.tile}-${slot}-${index}`"
+                :class="['tong-dot', 'tong-dot-special', tongSpecialDotClass(9, index)]" :style="{
                   gridColumn: `${(slot % 3) + 1}`,
                   gridRow: `${Math.floor(slot / 3) + 1}`
-                }"
-              />
+                }" />
             </div>
 
             <div v-else-if="tileMeta.rank === 8" class="tong-eight-grid">
-              <span
-                v-for="(slot, index) in tongEightDots"
-                :key="`tong-eight-${props.tile}-${slot}-${index}`"
-                :class="['tong-dot', 'tong-dot-special', tongEightDotClass(index)]"
-                :style="{
+              <span v-for="(slot, index) in tongEightDots" :key="`tong-eight-${props.tile}-${slot}-${index}`"
+                :class="['tong-dot', 'tong-dot-special', tongEightDotClass(index)]" :style="{
                   gridColumn: `${(slot % 2) + 1}`,
                   gridRow: `${Math.floor(slot / 2) + 1}`
-                }"
-              />
+                }" />
             </div>
 
             <div v-else class="tong-grid">
-              <span
-                v-for="(slot, index) in tongDots"
-                :key="`tong-${props.tile}-${slot}-${index}`"
-                :class="['tong-dot', tongDotColor(index, tileMeta.rank)]"
-                :style="{
+              <span v-for="(slot, index) in tongDots" :key="`tong-${props.tile}-${slot}-${index}`"
+                :class="['tong-dot', tongDotColor(index, tileMeta.rank)]" :style="{
                   gridColumn: `${(slot % 3) + 1}`,
                   gridRow: `${Math.floor(slot / 3) + 1}`
-                }"
-              />
+                }" />
             </div>
           </template>
 
@@ -212,15 +208,20 @@ const tongEightDotClass = (index: number) => {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   user-select: none;
   cursor: pointer;
+  --tile-face-margin: 1px;
+  --tile-face-pad: 1px;
+  --tile-art-scale: 1;
 }
 
 .tile-body {
   width: 100%;
   height: 100%;
   border-radius: 6px;
-  background: #2a7e5a; /* 默认绿色牌身 */
-  padding-bottom: 5px; /* 这里形成厚度感 */
-  box-shadow: 
+  background: #2a7e5a;
+  /* 默认绿色牌身 */
+  padding-bottom: 5px;
+  /* 这里形成厚度感 */
+  box-shadow:
     0 1px 0 #1b533a,
     0 2px 0 #1b533a,
     0 3px 0 #15422e,
@@ -234,12 +235,12 @@ const tongEightDotClass = (index: number) => {
   flex: 1;
   background: linear-gradient(135deg, #ffffff 0%, #fefcf5 100%);
   border-radius: 4px;
-  margin: 1px;
+  margin: var(--tile-face-margin);
   margin-bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 
+  box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.8),
     inset 0 -1px 2px rgba(0, 0, 0, 0.05);
   position: relative;
@@ -262,7 +263,10 @@ const tongEightDotClass = (index: number) => {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   position: relative;
+  transform: scale(var(--tile-art-scale));
+  transform-origin: center;
 }
 
 /* 万字 */
@@ -271,7 +275,7 @@ const tongEightDotClass = (index: number) => {
   color: #bf2f29;
   display: block;
   text-align: center;
-  font-family: "STXingkai", "华文行楷", "Xingkai SC", "Kaiti", "楷体", cursive;
+  font-family: "Xingkai", "STXingkai", "华文行楷", "Xingkai SC", "Kaiti", "楷体", cursive;
 }
 
 .wan-num {
@@ -297,11 +301,24 @@ const tongEightDotClass = (index: number) => {
   place-items: center;
 }
 
+.tiao-eight-grid {
+  width: 28px;
+  height: 42px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  place-items: center;
+}
+
 .tiao-bar {
   width: 8px;
   height: 14px;
   border-radius: 3px;
   box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.tiao-eight-grid .tiao-bar {
+  height: 10px;
 }
 
 .bar-green {
@@ -441,10 +458,21 @@ const tongEightDotClass = (index: number) => {
 }
 
 /* 颜色 */
-.dot-red { background: radial-gradient(circle at 30% 30%, #f1938c, #bf2f29); }
-.dot-green { background: radial-gradient(circle at 30% 30%, #a2d9b1, #2a7e5a); }
-.dot-blue { background: radial-gradient(circle at 30% 30%, #87b9ec, #246aa3); }
-.dot-gold { background: radial-gradient(circle at 30% 30%, #f7e39c, #c5902f); }
+.dot-red {
+  background: radial-gradient(circle at 30% 30%, #f1938c, #bf2f29);
+}
+
+.dot-green {
+  background: radial-gradient(circle at 30% 30%, #a2d9b1, #2a7e5a);
+}
+
+.dot-blue {
+  background: radial-gradient(circle at 30% 30%, #87b9ec, #246aa3);
+}
+
+.dot-gold {
+  background: radial-gradient(circle at 30% 30%, #f7e39c, #c5902f);
+}
 
 /* 牌背 */
 .mahjong-tile.back .tile-body {
