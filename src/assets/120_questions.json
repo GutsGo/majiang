@@ -1,0 +1,6477 @@
+{
+  "meta": {
+    "title": "四川麻将三缺一血战到底训练题库",
+    "totalQuestions": 120,
+    "difficulties": {
+      "beginner": {
+        "count": 40,
+        "label": "初级"
+      },
+      "intermediate": {
+        "count": 40,
+        "label": "中级"
+      },
+      "advanced": {
+        "count": 40,
+        "label": "高级"
+      }
+    },
+    "stages": [
+      "opening",
+      "midgame",
+      "meld",
+      "defense",
+      "listening"
+    ],
+    "questionTypes": [
+      "discard_best",
+      "true_false",
+      "wait_tiles",
+      "scenario_analysis"
+    ],
+    "suits": [
+      "万",
+      "条",
+      "筒"
+    ],
+    "notes": "三缺一玩法:108张牌(万条筒各36张),无风牌字牌,不能吃只能碰杠,血战到底"
+  },
+  "ruleTags": [
+    {
+      "id": "opening-01",
+      "stageId": "opening",
+      "title": "换三张，中间扔；定缺少，演戏猛",
+      "mnemonic": "中张优先换，定缺选最少花色",
+      "description": "换三张优先换4-6中张，定缺选择张数最少花色，必要时保留一张迷惑对手。",
+      "exampleQuestionIds": [
+        1,
+        2,
+        5,
+        6,
+        30,
+        36,
+        42,
+        71,
+        81,
+        82,
+        111
+      ]
+    },
+    {
+      "id": "opening-02",
+      "stageId": "opening",
+      "title": "前三巡，清缺门",
+      "mnemonic": "缺门不清，点炮风险高",
+      "description": "开局前三巡优先打掉缺门花色，防止被动点炮。",
+      "exampleQuestionIds": [
+        3,
+        4,
+        7,
+        8,
+        75,
+        88
+      ]
+    },
+    {
+      "id": "opening-03",
+      "stageId": "opening",
+      "title": "中间张当炮弹，边张对子留暗箭",
+      "mnemonic": "中张可换，边张对子可留",
+      "description": "中张对别人更有连接价值，边张和对子在自己手里更稳定。",
+      "exampleQuestionIds": [
+        2,
+        6,
+        81
+      ]
+    },
+    {
+      "id": "opening-04",
+      "stageId": "opening",
+      "title": "金三银七臭二八",
+      "mnemonic": "留3/7，早打2/8",
+      "description": "3、7两侧衔接强；2、8衔接弱，通常先处理2、8。",
+      "exampleQuestionIds": [
+        16,
+        29,
+        48,
+        82
+      ]
+    },
+    {
+      "id": "midgame-01",
+      "stageId": "midgame",
+      "title": "一四七打一，二五八打五，三六九打九",
+      "mnemonic": "保中弃边，优先留靠张多的牌",
+      "description": "按筋线原则保留更容易形成顺子的中间牌。",
+      "exampleQuestionIds": [
+        12,
+        13,
+        14,
+        29,
+        45,
+        76,
+        91
+      ]
+    },
+    {
+      "id": "midgame-02",
+      "stageId": "midgame",
+      "title": "拆边不拆卡，留中不留边",
+      "mnemonic": "先拆12/89，后拆35/46",
+      "description": "边张搭子效率低，卡张和中张更有价值。",
+      "exampleQuestionIds": [
+        9,
+        10,
+        37,
+        44,
+        84,
+        93,
+        108,
+        116
+      ]
+    },
+    {
+      "id": "midgame-03",
+      "stageId": "midgame",
+      "title": "搭子少丢边张，搭子多拆边搭",
+      "mnemonic": "看整体搭子数量再拆",
+      "description": "根据手牌结构动态处理边张。",
+      "exampleQuestionIds": [
+        10,
+        44,
+        67,
+        68,
+        108,
+        116
+      ]
+    },
+    {
+      "id": "midgame-04",
+      "stageId": "midgame",
+      "title": "对子数量要留意，少对留生多对弃",
+      "mnemonic": "1-2对先留，3对以上考虑拆",
+      "description": "对子过多会拖慢成牌速度，需要拆熟对子提速。",
+      "exampleQuestionIds": [
+        15,
+        31,
+        43,
+        46,
+        72,
+        85,
+        112
+      ]
+    },
+    {
+      "id": "midgame-05",
+      "stageId": "midgame",
+      "title": "连张组合力量大，轻易丢弃不可取",
+      "mnemonic": "45/56/67优先保留",
+      "description": "连张提供多面进张，是中盘核心资产。",
+      "exampleQuestionIds": [
+        11,
+        45,
+        47,
+        49,
+        68,
+        84
+      ]
+    },
+    {
+      "id": "midgame-06",
+      "stageId": "midgame",
+      "title": "早打生张，迟打熟张",
+      "mnemonic": "前期快处理风险牌，后期打熟牌",
+      "description": "中后盘防守优先级上升，已现牌更安全。",
+      "exampleQuestionIds": [
+        4,
+        8,
+        21,
+        22,
+        31,
+        38,
+        56,
+        79,
+        88,
+        92,
+        104
+      ]
+    },
+    {
+      "id": "meld-01",
+      "stageId": "meld",
+      "title": "有碰先碰，打乱牌序",
+      "mnemonic": "牌差可碰杠搅局，牌顺慎碰",
+      "description": "碰牌可打断对手摸牌节奏，但会暴露信息。",
+      "exampleQuestionIds": [
+        17,
+        43,
+        70,
+        86
+      ]
+    },
+    {
+      "id": "meld-02",
+      "stageId": "meld",
+      "title": "牌从门前过，不如摸一个",
+      "mnemonic": "非必要不急碰",
+      "description": "保留门清与摸牌弹性，避免过早锁死牌型。",
+      "exampleQuestionIds": [
+        18,
+        50,
+        52,
+        78,
+        83,
+        99,
+        106,
+        119
+      ]
+    },
+    {
+      "id": "meld-03",
+      "stageId": "meld",
+      "title": "暗杠是利剑，明杠露信息",
+      "mnemonic": "暗杠优于明杠",
+      "description": "暗杠收益隐蔽，明杠虽加番但更暴露。",
+      "exampleQuestionIds": [
+        19,
+        20,
+        39,
+        51,
+        53,
+        66,
+        74,
+        94,
+        95,
+        102,
+        110,
+        115
+      ]
+    },
+    {
+      "id": "meld-04",
+      "stageId": "meld",
+      "title": "想碰不碰，再等一巡",
+      "mnemonic": "犹豫先过，再看一轮",
+      "description": "回看一巡桌面信息，再决定碰杠更稳。",
+      "exampleQuestionIds": [
+        34,
+        50
+      ]
+    },
+    {
+      "id": "defense-01",
+      "stageId": "defense",
+      "title": "盯上卡下防对家，熟张保平安",
+      "mnemonic": "先盯危险位，再打熟牌",
+      "description": "以位置关系与出牌节奏判断风险，优先熟牌。",
+      "exampleQuestionIds": [
+        21,
+        39,
+        51,
+        54,
+        69,
+        87,
+        88,
+        92,
+        96,
+        114,
+        118
+      ]
+    },
+    {
+      "id": "defense-02",
+      "stageId": "defense",
+      "title": "下家打一不打三，下家打万我打饼",
+      "mnemonic": "顺下家牌路，避冲突",
+      "description": "观察下家花色偏好，避免给其顺手碰杠。",
+      "exampleQuestionIds": [
+        23,
+        57,
+        75,
+        96,
+        103
+      ]
+    },
+    {
+      "id": "defense-03",
+      "stageId": "defense",
+      "title": "先四后二必有对一，先六后八必有对九",
+      "mnemonic": "顺序反推对子",
+      "description": "根据对手弃牌顺序推断其可能保留对子。",
+      "exampleQuestionIds": [
+        24,
+        55,
+        103,
+        107
+      ]
+    },
+    {
+      "id": "defense-04",
+      "stageId": "defense",
+      "title": "九不见，必定有人要；一路不见，必有大牌",
+      "mnemonic": "长期不见即高风险",
+      "description": "某牌久未出现，通常在他人手里形成关键结构。",
+      "exampleQuestionIds": [
+        32,
+        54,
+        56,
+        58,
+        79,
+        87,
+        100,
+        109,
+        114,
+        118
+      ]
+    },
+    {
+      "id": "listening-01",
+      "stageId": "listening",
+      "title": "早听早胡莫贪大牌，小胡也是胡",
+      "mnemonic": "先效率后牌型",
+      "description": "血战节奏快，先胡收益普遍高于贪大。",
+      "exampleQuestionIds": [
+        25,
+        26,
+        41,
+        61,
+        64,
+        72,
+        73,
+        77,
+        80,
+        83,
+        85,
+        86,
+        106,
+        109,
+        112
+      ]
+    },
+    {
+      "id": "listening-02",
+      "stageId": "listening",
+      "title": "听牌多选多门听，不恋对倒与边张",
+      "mnemonic": "多门听优先",
+      "description": "尽量构建3面及以上听口，降低卡手概率。",
+      "exampleQuestionIds": [
+        27,
+        33,
+        40,
+        59,
+        60,
+        62,
+        63,
+        73,
+        89,
+        90,
+        97,
+        99,
+        101,
+        105,
+        113,
+        117,
+        119,
+        120
+      ]
+    },
+    {
+      "id": "listening-03",
+      "stageId": "listening",
+      "title": "对倒不好胡，边张也要出",
+      "mnemonic": "必要时拆对倒提速",
+      "description": "对倒胡牌率低，必要时拆成更宽听口。",
+      "exampleQuestionIds": [
+        28,
+        60,
+        62
+      ]
+    },
+    {
+      "id": "listening-04",
+      "stageId": "listening",
+      "title": "牌回头，必要留",
+      "mnemonic": "回头牌常是安全张或胡张",
+      "description": "自己打过再摸回的牌，常可作为防守或听口资源。",
+      "exampleQuestionIds": [
+        35,
+        65
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "difficulty": "beginner",
+      "stage": "opening",
+      "type": "discard_best",
+      "prompt": "起手牌如下，定缺应选择哪一门花色？",
+      "hand": [
+        "1万",
+        "3万",
+        "5万",
+        "7万",
+        "9万",
+        "2条",
+        "4条",
+        "6条",
+        "8条",
+        "3筒",
+        "5筒",
+        "7筒",
+        "9筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "缺万(5张)"
+        },
+        {
+          "id": "B",
+          "label": "缺条(4张)"
+        },
+        {
+          "id": "C",
+          "label": "缺筒(4张)"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "opening-01"
+      ],
+      "explanation": "定缺原则:选择张数最少且搭子最差的花色。筒子4张全为单张(3579)衔接差,条子4张(2468)连接性略好。筒子搭子价值最低应定缺筒。",
+      "pitfalls": [
+        "误以为张数少就一定缺,还要看搭子连接性"
+      ]
+    },
+    {
+      "id": 2,
+      "difficulty": "beginner",
+      "stage": "opening",
+      "type": "discard_best",
+      "prompt": "换三张阶段,你手中有3筒5筒7筒需要换出,同时还有1条8条9条也可以换出。应优先换出哪组?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "1条",
+        "8条",
+        "9条",
+        "3筒",
+        "5筒",
+        "7筒",
+        "9筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "换出3筒5筒7筒(中间张)"
+        },
+        {
+          "id": "B",
+          "label": "换出1条8条9条(边张)"
+        },
+        {
+          "id": "C",
+          "label": "换出9筒8条9条"
+        },
+        {
+          "id": "D",
+          "label": "随便换都一样"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-01",
+        "opening-03"
+      ],
+      "explanation": "换三张优先换出中间张。3筒5筒7筒属于中张区域对别人更有连接价值可以干扰对手。边张1/8/9被对手利用概率低留在自己手里更稳定。",
+      "pitfalls": [
+        "误以为边张没用先换掉,实际上中间张给对手的价值更大"
+      ]
+    },
+    {
+      "id": 3,
+      "difficulty": "beginner",
+      "stage": "opening",
+      "type": "true_false",
+      "prompt": "判断题:开局前三巡应优先打掉缺门花色的牌,对还是错?",
+      "hand": [
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "2筒",
+        "5筒",
+        "8筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "对,前三巡必须清缺门"
+        },
+        {
+          "id": "B",
+          "label": "错,缺门牌可以慢慢打"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-02"
+      ],
+      "explanation": "口诀前三巡清缺门。缺门花色不尽早清理后期摸到必须打出容易点炮。此手定缺筒应前三巡打掉2筒5筒8筒。",
+      "pitfalls": [
+        "拖延清缺门会增加中后期被点炮的风险"
+      ]
+    },
+    {
+      "id": 4,
+      "difficulty": "beginner",
+      "stage": "opening",
+      "type": "discard_best",
+      "prompt": "定缺筒后,手中还剩3张筒子(2筒5筒8筒),第一巡应该先打哪张?",
+      "hand": [
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "2筒",
+        "5筒",
+        "8筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "先打5筒(中张危险)"
+        },
+        {
+          "id": "B",
+          "label": "先打2筒(边张安全)"
+        },
+        {
+          "id": "C",
+          "label": "先打8筒(边张安全)"
+        },
+        {
+          "id": "D",
+          "label": "随便打"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-02",
+        "midgame-06"
+      ],
+      "explanation": "5筒为中张对别人连接价值大越早打出越安全。口诀早打生张,前期优先处理风险较高的中张,2筒8筒为边张相对安全可稍后打出。",
+      "pitfalls": [
+        "先打边张看似安全但把危险中张留到后面反而更容易点炮"
+      ]
+    },
+    {
+      "id": 5,
+      "difficulty": "beginner",
+      "stage": "opening",
+      "type": "discard_best",
+      "prompt": "起手13张牌如下,你应该定缺哪一门?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "2条",
+        "3条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "4筒",
+        "6筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "缺万(5张)"
+        },
+        {
+          "id": "B",
+          "label": "缺条(6张)"
+        },
+        {
+          "id": "C",
+          "label": "缺筒(2张)"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "opening-01"
+      ],
+      "explanation": "定缺选张数最少花色。筒子仅2张(4筒6筒),万字5张有顺子,条子6张连接好。定缺筒子最快清理。",
+      "pitfalls": [
+        "不要因为筒子有46卡张就留着,张数少才是首要标准"
+      ]
+    },
+    {
+      "id": 6,
+      "difficulty": "beginner",
+      "stage": "opening",
+      "type": "true_false",
+      "prompt": "判断题:换三张时应优先换出1/9等边张而非4/5/6中间张,对还是错?",
+      "hand": [
+        "1万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "1筒",
+        "5筒",
+        "9筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "对,边张对自己没用"
+        },
+        {
+          "id": "B",
+          "label": "错,应优先换出中间张"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "opening-01",
+        "opening-03"
+      ],
+      "explanation": "口诀换三张中间扔。中间张(4-6)对别人连接价值高,换给对手反而帮助其组搭。应优先将中张换出干扰对手,边张留下更稳。",
+      "pitfalls": [
+        "以为边张没用就换掉其实是把好牌送给对手"
+      ]
+    },
+    {
+      "id": 7,
+      "difficulty": "beginner",
+      "stage": "opening",
+      "type": "discard_best",
+      "prompt": "定缺万后,手上剩余如下牌。摸到一张2万应该怎么处理?",
+      "hand": [
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "2筒",
+        "3筒",
+        "4筒",
+        "6筒",
+        "7筒",
+        "8筒",
+        "2万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "立即打出2万"
+        },
+        {
+          "id": "B",
+          "label": "先留着看看"
+        },
+        {
+          "id": "C",
+          "label": "看场上有没有人要万字再决定"
+        },
+        {
+          "id": "D",
+          "label": "留到最后打"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-02"
+      ],
+      "explanation": "定缺万后手中万字必须尽快清理。缺门牌不能胡牌留着只增加点炮风险。口诀前三巡清缺门,2万必须立即打出。",
+      "pitfalls": [
+        "缺门牌越留越危险绝不能拖延"
+      ]
+    },
+    {
+      "id": 8,
+      "difficulty": "beginner",
+      "stage": "opening",
+      "type": "discard_best",
+      "prompt": "定缺条后前三巡出牌顺序应该是?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "2条",
+        "5条",
+        "8条",
+        "3筒",
+        "4筒",
+        "5筒",
+        "6筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "5条->2条->8条"
+        },
+        {
+          "id": "B",
+          "label": "2条->5条->8条"
+        },
+        {
+          "id": "C",
+          "label": "8条->5条->2条"
+        },
+        {
+          "id": "D",
+          "label": "2条->8条->5条"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-02",
+        "midgame-06"
+      ],
+      "explanation": "清缺门时优先打危险度最高的中张。5条是中张可被多个搭子利用,第一个打出最安全;2条8条都是边张危险度较低可后打。",
+      "pitfalls": [
+        "先打边张而把5条留到后面中后期5条可能点炮"
+      ]
+    },
+    {
+      "id": 9,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手牌如下需拆一组搭子,应该拆哪个?",
+      "hand": [
+        "1万",
+        "2万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "2条",
+        "3条",
+        "5条",
+        "6条",
+        "7条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "拆12万边搭打1万"
+        },
+        {
+          "id": "B",
+          "label": "拆56条连张打5条"
+        },
+        {
+          "id": "C",
+          "label": "拆78万连张打8万"
+        },
+        {
+          "id": "D",
+          "label": "拆23条打2条"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-02"
+      ],
+      "explanation": "口诀拆边不拆卡留中不留边。12万为边搭只听3万一张;56条67条78万都是连张进张面宽。12万效率最低优先拆。",
+      "pitfalls": [
+        "误拆连张会严重降低进张效率"
+      ]
+    },
+    {
+      "id": 10,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手中有12万和89万两组边搭,搭子过多需拆一组,拆哪个?",
+      "hand": [
+        "1万",
+        "2万",
+        "4万",
+        "5万",
+        "6万",
+        "8万",
+        "9万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "拆12万打1万"
+        },
+        {
+          "id": "B",
+          "label": "拆89万打9万"
+        },
+        {
+          "id": "C",
+          "label": "拆45万打4万"
+        },
+        {
+          "id": "D",
+          "label": "两组都拆"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "midgame-02",
+        "midgame-03"
+      ],
+      "explanation": "两组边搭效率相同各听一张,但12万靠近中张456万区域有联动可能。89万处于末端与其他万字无法联动应优先拆。留中不留边。",
+      "pitfalls": [
+        "两组边搭看似相同但要考虑与其他手牌的联动"
+      ]
+    },
+    {
+      "id": 11,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "true_false",
+      "prompt": "判断题:手中有4万5万6万7万连张应优先保留不宜轻易拆掉,对还是错?",
+      "hand": [
+        "1万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "9万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "对,连张价值高不宜拆"
+        },
+        {
+          "id": "B",
+          "label": "错,可以拆一张加速听牌"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-05"
+      ],
+      "explanation": "口诀连张组合力量大轻易丢弃不可取。4567万连张可形成多个顺子组合进张面极宽是中盘核心资产。",
+      "pitfalls": [
+        "贪图快速听牌拆连张反而让牌面效率大幅降低"
+      ]
+    },
+    {
+      "id": 12,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手中有1万4万7万三张散牌,根据筋线原则应保留哪张?",
+      "hand": [
+        "1万",
+        "4万",
+        "7万",
+        "3万",
+        "5万",
+        "6万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条",
+        "2万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "保留4万打1万和7万"
+        },
+        {
+          "id": "B",
+          "label": "保留1万打4万和7万"
+        },
+        {
+          "id": "C",
+          "label": "保留7万打1万和4万"
+        },
+        {
+          "id": "D",
+          "label": "三张都打"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-01"
+      ],
+      "explanation": "口诀一四七打一。4万为中间位衔接能力最强可配35/36/56等形成顺子。1万是边张效率最低优先保留4万。",
+      "pitfalls": [
+        "误打4万会降低万字连接效率"
+      ]
+    },
+    {
+      "id": 13,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手中有2万5万8万同筋三张,手中已有34万67万搭子,需清理一张应先打哪张?",
+      "hand": [
+        "2万",
+        "5万",
+        "8万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打2万"
+        },
+        {
+          "id": "B",
+          "label": "打5万"
+        },
+        {
+          "id": "C",
+          "label": "打8万"
+        },
+        {
+          "id": "D",
+          "label": "打哪张都行"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "midgame-01"
+      ],
+      "explanation": "口诀二五八打五。手牌中有34万(2万可配)和67万(8万可配),2万和8万都有搭子价值。5万被两侧搭子覆盖后多余应打5万。",
+      "pitfalls": [
+        "不看手中已有搭子盲目留中张"
+      ]
+    },
+    {
+      "id": 14,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手中有3万6万9万同筋,已有12万45万搭子,应先打哪张?",
+      "hand": [
+        "3万",
+        "6万",
+        "9万",
+        "1万",
+        "2万",
+        "4万",
+        "5万",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打3万"
+        },
+        {
+          "id": "B",
+          "label": "打6万"
+        },
+        {
+          "id": "C",
+          "label": "打9万"
+        },
+        {
+          "id": "D",
+          "label": "打1万"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "midgame-01"
+      ],
+      "explanation": "口诀三六九打九。9万为边张衔接差。3万可与12万配合形成123顺子,6万可与45万配合形成456顺子。9万孤立应先打。",
+      "pitfalls": [
+        "打3万会破坏123万的顺子结构"
+      ]
+    },
+    {
+      "id": 15,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "true_false",
+      "prompt": "判断题:手中有3对(3万3万/6条6条/8条8条),应考虑拆掉一对加速成牌,对还是错?",
+      "hand": [
+        "3万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "6条",
+        "6条",
+        "8条",
+        "8条",
+        "3条",
+        "4条",
+        "5条",
+        "7条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "对,3对太多应拆一对提速"
+        },
+        {
+          "id": "B",
+          "label": "错,对子越多越好"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-04"
+      ],
+      "explanation": "口诀少对留生多对弃。3对子过多让手牌灵活性差既不好做顺子也不够做七对。拆掉与主牌不配合的对子保留2对+顺子结构更高效。",
+      "pitfalls": [
+        "贪多保留对子结果顺子做不成七对也不够"
+      ]
+    },
+    {
+      "id": 16,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手牌如下。金三银七原则下2万和9万哪张应先打?",
+      "hand": [
+        "2万",
+        "3万",
+        "5万",
+        "7万",
+        "8万",
+        "9万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "先打2万"
+        },
+        {
+          "id": "B",
+          "label": "先打9万"
+        },
+        {
+          "id": "C",
+          "label": "先打9条"
+        },
+        {
+          "id": "D",
+          "label": "两张一起打"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "opening-04"
+      ],
+      "explanation": "金三银七臭二八。9万是最边的边张衔接最差;2万虽也较弱但与3万相连形成23搭子(听14万)。9万完全孤立应先打。",
+      "pitfalls": [
+        "不结合手牌整体结构单独看牌值大小"
+      ]
+    },
+    {
+      "id": 17,
+      "difficulty": "beginner",
+      "stage": "meld",
+      "type": "discard_best",
+      "prompt": "定缺筒,手牌搭子结构差。上家打出5万你手中有5万5万对子,应该碰吗?",
+      "hand": [
+        "5万",
+        "5万",
+        "1万",
+        "7万",
+        "9万",
+        "2条",
+        "4条",
+        "6条",
+        "8条",
+        "3条",
+        "5条",
+        "7条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "碰,打乱对手节奏"
+        },
+        {
+          "id": "B",
+          "label": "不碰保留门清"
+        },
+        {
+          "id": "C",
+          "label": "看下一张再决定"
+        },
+        {
+          "id": "D",
+          "label": "碰了也没用"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-01"
+      ],
+      "explanation": "口诀有碰先碰打乱牌序。手牌结构差时碰牌搅乱对手摸牌节奏同时碰后有机会加杠获取额外收益。牌差时碰杠搅局是有效策略。",
+      "pitfalls": [
+        "牌差时不碰只会让对手顺利做牌"
+      ]
+    },
+    {
+      "id": 18,
+      "difficulty": "beginner",
+      "stage": "meld",
+      "type": "true_false",
+      "prompt": "判断题:开局第一巡上家打出一张你能碰的牌,应该碰吗?",
+      "hand": [
+        "3万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "碰,有碰就碰"
+        },
+        {
+          "id": "B",
+          "label": "不碰,第一巡先观察牌运"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "meld-02"
+      ],
+      "explanation": "口诀牌从门前过不如摸一个。首巡不碰可先看摸牌牌运保留门清弹性。头张不碰是基本原则。",
+      "pitfalls": [
+        "首巡就碰牌会过早暴露手牌信息"
+      ]
+    },
+    {
+      "id": 19,
+      "difficulty": "beginner",
+      "stage": "meld",
+      "type": "discard_best",
+      "prompt": "定缺筒,手中有4张7条(暗刻+1张)可以暗杠。应该杠吗?",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "2条",
+        "3条",
+        "4条",
+        "7条",
+        "7条",
+        "7条",
+        "7条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "暗杠收益隐蔽"
+        },
+        {
+          "id": "B",
+          "label": "不杠留着做其他搭子"
+        },
+        {
+          "id": "C",
+          "label": "等明杠机会"
+        },
+        {
+          "id": "D",
+          "label": "看情况"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-03"
+      ],
+      "explanation": "口诀暗杠是利剑。暗杠收益隐蔽且额外获得一次摸牌机会同时不暴露牌面信息。4张一样的牌留在手里不杠是浪费。",
+      "pitfalls": [
+        "留着4张相同的牌不暗杠是严重浪费"
+      ]
+    },
+    {
+      "id": 20,
+      "difficulty": "beginner",
+      "stage": "meld",
+      "type": "true_false",
+      "prompt": "判断题:暗杠比明杠更好因为暗杠不暴露信息,对还是错?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "8条",
+        "8条",
+        "8条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "对,暗杠优于明杠"
+        },
+        {
+          "id": "B",
+          "label": "错,明杠收益更高"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-03"
+      ],
+      "explanation": "口诀暗杠是利剑明杠露信息。暗杠不暴露花色信息且收益确定。明杠虽也有收益但会让对手知道手牌情况。",
+      "pitfalls": [
+        "明杠虽能加番但暴露信息可能被对手利用"
+      ]
+    },
+    {
+      "id": 21,
+      "difficulty": "beginner",
+      "stage": "defense",
+      "type": "discard_best",
+      "prompt": "中后盘,桌上已出3万(2张)和7条(3张),手中有3万和7条各一张需打一张,应先打哪张?",
+      "hand": [
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "3筒",
+        "4筒",
+        "5筒"
+      ],
+      "discards": [
+        "3万",
+        "3万",
+        "7条",
+        "7条",
+        "7条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "先打7条(已出3张更安全)"
+        },
+        {
+          "id": "B",
+          "label": "先打3万(已出2张)"
+        },
+        {
+          "id": "C",
+          "label": "两张风险一样"
+        },
+        {
+          "id": "D",
+          "label": "都不打"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-06",
+        "defense-01"
+      ],
+      "explanation": "口诀迟打熟张。7条场上已出3张仅剩1张在你手中几乎不可能有人听7条打出极其安全。熟牌优先。",
+      "pitfalls": [
+        "不数牌就随便打可能点炮"
+      ]
+    },
+    {
+      "id": 22,
+      "difficulty": "beginner",
+      "stage": "defense",
+      "type": "true_false",
+      "prompt": "判断题:中后盘应优先打已经在牌桌上出现过的熟张,对还是错?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "2筒",
+        "5筒"
+      ],
+      "discards": [
+        "2筒",
+        "5筒",
+        "5筒"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "对,熟张更安全"
+        },
+        {
+          "id": "B",
+          "label": "错,打什么都一样"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-06"
+      ],
+      "explanation": "口诀早打生张迟打熟张。中后盘防守优先级上升已出现的牌被别人需要的概率低打熟张是最基本的防守策略。",
+      "pitfalls": [
+        "忽视防守只顾进攻容易点大炮"
+      ]
+    },
+    {
+      "id": 23,
+      "difficulty": "beginner",
+      "stage": "defense",
+      "type": "discard_best",
+      "prompt": "下家一直在打万字牌(已打1万3万6万),你手中定缺万还有2万要打出。应该怎么做?",
+      "hand": [
+        "2万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "2筒",
+        "3筒",
+        "4筒",
+        "6筒",
+        "7筒",
+        "8筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "放心打2万,下家不要万"
+        },
+        {
+          "id": "B",
+          "label": "先打筒子再打万"
+        },
+        {
+          "id": "C",
+          "label": "憋着2万不打"
+        },
+        {
+          "id": "D",
+          "label": "等一巡再打"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-02"
+      ],
+      "explanation": "口诀下家打万我打饼(反之亦然)。下家在清缺万字说明不需要万字此时打2万给下家很安全。观察下家花色偏好选择安全出牌方向。",
+      "pitfalls": [
+        "不观察对手出牌花色偏好就胡乱打牌"
+      ]
+    },
+    {
+      "id": 24,
+      "difficulty": "beginner",
+      "stage": "defense",
+      "type": "discard_best",
+      "prompt": "某对手先打出4条随后又打出2条,根据推断该对手可能保留了什么?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条",
+        "2筒"
+      ],
+      "discards": [
+        "4条",
+        "2条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "对手可能有对子1条"
+        },
+        {
+          "id": "B",
+          "label": "对手可能有对子3条"
+        },
+        {
+          "id": "C",
+          "label": "对手可能有对子5条"
+        },
+        {
+          "id": "D",
+          "label": "无法判断"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-03"
+      ],
+      "explanation": "口诀先四后二必有对一。对手先打4条再打2条说明他拆掉了与1条相关的搭子但保留了1条对子。",
+      "pitfalls": [
+        "不注意对手出牌顺序就无法推断其手牌"
+      ]
+    },
+    {
+      "id": 25,
+      "difficulty": "beginner",
+      "stage": "listening",
+      "type": "discard_best",
+      "prompt": "定缺筒,你已经一向听打哪张可以最快听牌?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条",
+        "1万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打1万,听59万"
+        },
+        {
+          "id": "B",
+          "label": "打9条,听3万和6条"
+        },
+        {
+          "id": "C",
+          "label": "打2万,听对子"
+        },
+        {
+          "id": "D",
+          "label": "打7条,听8条"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-01"
+      ],
+      "explanation": "打1万后手牌为234万678万345条789条只需一个将对即可。59万进张宽。口诀早听早胡尽快入听。",
+      "pitfalls": [
+        "贪大牌犹豫不听错过胡牌时机"
+      ]
+    },
+    {
+      "id": 26,
+      "difficulty": "beginner",
+      "stage": "listening",
+      "type": "true_false",
+      "prompt": "判断题:血战到底中小胡也应该胡不应该贪大牌,对还是错?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条",
+        "5万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "对,小胡也是胡"
+        },
+        {
+          "id": "B",
+          "label": "错,应该等大牌"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-01"
+      ],
+      "explanation": "口诀早听早胡莫贪大牌小胡也是胡。血战节奏快先胡牌可以让其他人继续血拼自己稳赚。",
+      "pitfalls": [
+        "贪大牌等自摸结果被别人先胡"
+      ]
+    },
+    {
+      "id": 27,
+      "difficulty": "beginner",
+      "stage": "listening",
+      "type": "discard_best",
+      "prompt": "定缺筒,已听牌。当前可选听3万6万(两面听)或对倒9条(单张听),应选哪种?",
+      "hand": [
+        "1万",
+        "2万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "3条",
+        "4条",
+        "5条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "保持听3万6万两面听"
+        },
+        {
+          "id": "B",
+          "label": "改听对倒9条"
+        },
+        {
+          "id": "C",
+          "label": "两种都听"
+        },
+        {
+          "id": "D",
+          "label": "拆掉重新组"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "口诀听牌多选多门听不恋对倒与边张。两面听3万6万有2种进张共最多8张牌对倒9条最多只剩2张。两面听效率远高。",
+      "pitfalls": [
+        "贪恋对倒反而降低胡牌效率"
+      ]
+    },
+    {
+      "id": 28,
+      "difficulty": "beginner",
+      "stage": "listening",
+      "type": "true_false",
+      "prompt": "判断题:对倒听牌的胡牌概率通常低于两面听,对还是错?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "3条",
+        "7条",
+        "7条",
+        "4条",
+        "5条",
+        "6条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "对,对倒效率低"
+        },
+        {
+          "id": "B",
+          "label": "错,对倒也能胡"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-03"
+      ],
+      "explanation": "口诀对倒不好胡。对倒听2张牌各最多剩2张,两面听听2种牌各最多剩4张胡牌概率差距明显。",
+      "pitfalls": [
+        "以为有两个对子就好胡其实效率很低"
+      ]
+    },
+    {
+      "id": 29,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手牌如下你需要打一张整理手牌应打哪张?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "9万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打9万"
+        },
+        {
+          "id": "B",
+          "label": "打1万"
+        },
+        {
+          "id": "C",
+          "label": "打5万"
+        },
+        {
+          "id": "D",
+          "label": "打9条"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-01",
+        "opening-04"
+      ],
+      "explanation": "9万是孤立边张与567万顺子无连接。1万有12万搭子听3万。9万完全孤立应先打。",
+      "pitfalls": [
+        "误打1万会拆掉12万的边搭"
+      ]
+    },
+    {
+      "id": 30,
+      "difficulty": "beginner",
+      "stage": "opening",
+      "type": "discard_best",
+      "prompt": "起手牌如下万字3张/条子6张/筒子4张。定缺选哪门?",
+      "hand": [
+        "2万",
+        "5万",
+        "8万",
+        "1条",
+        "2条",
+        "3条",
+        "5条",
+        "6条",
+        "7条",
+        "3筒",
+        "4筒",
+        "7筒",
+        "9筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "缺万(3张散牌)"
+        },
+        {
+          "id": "B",
+          "label": "缺筒(4张)"
+        },
+        {
+          "id": "C",
+          "label": "缺条(6张)"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-01"
+      ],
+      "explanation": "万字仅3张(258万)且全是单张散牌定缺万最快清理。条子6张连接好筒子4张虽也不少但不如万字散。",
+      "pitfalls": [
+        "不能只看张数还要看搭子质量"
+      ]
+    },
+    {
+      "id": 31,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手中对子有3万3万和8条8条。搭子已够,应拆哪个对子?",
+      "hand": [
+        "3万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "8条",
+        "8条",
+        "9条"
+      ],
+      "discards": [
+        "8条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "拆8条对子(熟张已出1张)"
+        },
+        {
+          "id": "B",
+          "label": "拆3万对子"
+        },
+        {
+          "id": "C",
+          "label": "两对都留"
+        },
+        {
+          "id": "D",
+          "label": "两对都拆"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-04",
+        "midgame-06"
+      ],
+      "explanation": "8条已出1张属于熟牌较安全可打出,且8条与主牌联动差。口诀少对留生多对弃拆掉联动差的熟对子。",
+      "pitfalls": [
+        "随便拆对子不看与其他搭子的配合关系"
+      ]
+    },
+    {
+      "id": 32,
+      "difficulty": "beginner",
+      "stage": "defense",
+      "type": "discard_best",
+      "prompt": "后盘阶段场上一直没见到9条(0张出现),你手中有一张9条需打出应该怎么做?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条",
+        "2条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打9条没问题"
+        },
+        {
+          "id": "B",
+          "label": "9条高危尽量不打"
+        },
+        {
+          "id": "C",
+          "label": "等别人先打了再打"
+        },
+        {
+          "id": "D",
+          "label": "无所谓"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "defense-04"
+      ],
+      "explanation": "口诀九不见必定有人要。9条场上0张出现大概率在对手手中形成关键结构此牌高危应尽量避免打出。",
+      "pitfalls": [
+        "不数牌就打生张容易给对手送牌"
+      ]
+    },
+    {
+      "id": 33,
+      "difficulty": "beginner",
+      "stage": "listening",
+      "type": "wait_tiles",
+      "prompt": "定缺筒,手牌已听牌此手牌听哪些张?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "7条"
+      ],
+      "multiSelect": true,
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "听1条8条"
+        },
+        {
+          "id": "B",
+          "label": "听5万9万"
+        },
+        {
+          "id": "C",
+          "label": "听7条"
+        },
+        {
+          "id": "D",
+          "label": "A和B都对"
+        }
+      ],
+      "correctOptionIds": [
+        "D"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "手牌拆解:234万678万+234条567条+7条将听18条;或234万678万+2345条+677条听59万。实际多面听。",
+      "pitfalls": [
+        "只看到一种拆法漏掉其他听口"
+      ]
+    },
+    {
+      "id": 34,
+      "difficulty": "beginner",
+      "stage": "meld",
+      "type": "true_false",
+      "prompt": "判断题:犹豫是否碰牌时应先过一巡看看再决定,对还是错?",
+      "hand": [
+        "3万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "对,犹豫先过再看"
+        },
+        {
+          "id": "B",
+          "label": "错,有碰必碰"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-04"
+      ],
+      "explanation": "口诀想碰不碰再等一巡。犹豫说明碰后利弊不明,回看一巡桌面信息再决定更稳妥。",
+      "pitfalls": [
+        "冲动碰牌后发现手牌结构变差"
+      ]
+    },
+    {
+      "id": 35,
+      "difficulty": "beginner",
+      "stage": "listening",
+      "type": "discard_best",
+      "prompt": "你之前打出过3条,现在又摸回一张3条。此时应该怎么处理?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条",
+        "3条"
+      ],
+      "discards": [
+        "3条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "留下3条可能是安全张或有用牌"
+        },
+        {
+          "id": "B",
+          "label": "再打出去"
+        },
+        {
+          "id": "C",
+          "label": "看情况"
+        },
+        {
+          "id": "D",
+          "label": "无所谓"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-04"
+      ],
+      "explanation": "口诀牌回头必要留。自己打过的牌摸回来对手不太会听这张可作防守安全牌也可能帮助形成新搭子。",
+      "pitfalls": [
+        "不留回头牌错失安全张和潜在搭子"
+      ]
+    },
+    {
+      "id": 36,
+      "difficulty": "beginner",
+      "stage": "opening",
+      "type": "discard_best",
+      "prompt": "起手牌万字4张(2589)/条子5张(23567)/筒子4张(3456)。定缺选哪门?",
+      "hand": [
+        "2万",
+        "5万",
+        "8万",
+        "9万",
+        "2条",
+        "3条",
+        "5条",
+        "6条",
+        "7条",
+        "3筒",
+        "4筒",
+        "5筒",
+        "6筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "缺万(4张散牌)"
+        },
+        {
+          "id": "B",
+          "label": "缺筒(4张连张)"
+        },
+        {
+          "id": "C",
+          "label": "缺条(5张)"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-01"
+      ],
+      "explanation": "虽然万和筒都是4张但筒子3456是完美连张,万字2589全是散牌边张多。定缺要看搭子质量万字最差应缺。",
+      "pitfalls": [
+        "只看张数不看搭子质量"
+      ]
+    },
+    {
+      "id": 37,
+      "difficulty": "beginner",
+      "stage": "midgame",
+      "type": "true_false",
+      "prompt": "判断题:手中有89万边搭和46万卡张搭子应先拆边搭,对还是错?",
+      "hand": [
+        "4万",
+        "6万",
+        "8万",
+        "9万",
+        "3万",
+        "5万",
+        "7万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "对,先拆边搭"
+        },
+        {
+          "id": "B",
+          "label": "错,先拆卡张"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-02"
+      ],
+      "explanation": "口诀拆边不拆卡。89万边搭只听7万,46万卡张听5万(中张)剩余数量通常更多。边搭效率更低优先拆。",
+      "pitfalls": [
+        "误以为卡张和边搭一样差"
+      ]
+    },
+    {
+      "id": 38,
+      "difficulty": "beginner",
+      "stage": "defense",
+      "type": "discard_best",
+      "prompt": "后盘手中有3条(生张)和5万(场上已出2张),需打一张应打哪张?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条"
+      ],
+      "discards": [
+        "5万",
+        "5万"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "打5万(熟张安全)"
+        },
+        {
+          "id": "B",
+          "label": "打3条(清理散牌)"
+        },
+        {
+          "id": "C",
+          "label": "都不安全"
+        },
+        {
+          "id": "D",
+          "label": "无所谓"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-06"
+      ],
+      "explanation": "口诀迟打熟张。5万已出2张是熟牌被人听的概率低。3条是生张在后盘打出有点炮风险。",
+      "pitfalls": [
+        "后盘打生张是大忌"
+      ]
+    },
+    {
+      "id": 39,
+      "difficulty": "beginner",
+      "stage": "meld",
+      "type": "discard_best",
+      "prompt": "定缺筒,你已碰出3万(明刻),现在摸到第4张3万可以加杠。但对家疑似听牌,应该加杠吗?",
+      "hand": [
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "加杠收益大"
+        },
+        {
+          "id": "B",
+          "label": "不加杠怕被抢杠胡"
+        },
+        {
+          "id": "C",
+          "label": "等下一巡"
+        },
+        {
+          "id": "D",
+          "label": "暗杠"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "meld-03",
+        "defense-01"
+      ],
+      "explanation": "加杠(巴杠)时如果有人听3万可以抢杠胡。对家疑似听牌时加杠风险极高。此处不能暗杠(已是明刻)不加杠更安全。",
+      "pitfalls": [
+        "贪加杠收益被抢杠胡损失远大于收益"
+      ]
+    },
+    {
+      "id": 40,
+      "difficulty": "beginner",
+      "stage": "listening",
+      "type": "wait_tiles",
+      "prompt": "定缺筒,手牌如下已听牌此手牌听几面?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "8条"
+      ],
+      "multiSelect": false,
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "听1万8万(两面)"
+        },
+        {
+          "id": "B",
+          "label": "听8条单吊"
+        },
+        {
+          "id": "C",
+          "label": "听1万8万和2条9条(四面)"
+        },
+        {
+          "id": "D",
+          "label": "听1万和9条"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "手牌拆解:234万567万+345条678条+8条将听18万;或234万567万+3456条+88条将+78条听29条。实际4面听1万8万2条9条。",
+      "pitfalls": [
+        "只看到一种拆法漏掉其他听口"
+      ]
+    },
+    {
+      "id": 41,
+      "difficulty": "intermediate",
+      "stage": "opening",
+      "type": "scenario_analysis",
+      "prompt": "起手牌万字10张/条子1张/筒子2张。定缺条后手牌近乎清一色万,此时应优先做什么?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "9万",
+        "5条",
+        "3筒",
+        "6筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "直接做清一色万字"
+        },
+        {
+          "id": "B",
+          "label": "保守平胡不做大"
+        },
+        {
+          "id": "C",
+          "label": "定缺筒,留条子做搭子"
+        },
+        {
+          "id": "D",
+          "label": "做七对"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-01",
+        "listening-01"
+      ],
+      "explanation": "万字10张已接近清一色基础,定缺条(仅1张)最快清理。筒子2张可稍后处理。清一色是血战到底高番牌型值得追求,但也要注意清缺门速度。",
+      "pitfalls": [
+        "万字这么多不做清一色太浪费,但也不能忘记先清缺门"
+      ]
+    },
+    {
+      "id": 42,
+      "difficulty": "intermediate",
+      "stage": "opening",
+      "type": "discard_best",
+      "prompt": "换三张换回的牌与自己原来的牌撞车(换出条子又换回条子),你手中条子变成2479条。定缺选条还是选筒(3张)?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "2条",
+        "4条",
+        "7条",
+        "9条",
+        "4筒",
+        "6筒",
+        "8筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "定缺条(4张散牌)"
+        },
+        {
+          "id": "B",
+          "label": "定缺筒(3张但有46卡张)"
+        },
+        {
+          "id": "C",
+          "label": "定缺万"
+        },
+        {
+          "id": "D",
+          "label": "随便选"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-01"
+      ],
+      "explanation": "虽然条子4张多于筒子3张,但2479条全是散牌无任何搭子连接。筒子468虽只有3张但46是卡张有搭子价值。综合看条子质量太差应缺条。",
+      "pitfalls": [
+        "撞车后不重新评估牌面就盲目定缺"
+      ]
+    },
+    {
+      "id": 43,
+      "difficulty": "intermediate",
+      "stage": "opening",
+      "type": "scenario_analysis",
+      "prompt": "起手牌有5对子(含万条各色),且万字仅2张(3万3万一对)。是做七对还是定缺万碰牌做对对胡?",
+      "hand": [
+        "3万",
+        "3万",
+        "2条",
+        "2条",
+        "5条",
+        "5条",
+        "8条",
+        "8条",
+        "3筒",
+        "3筒",
+        "6筒",
+        "7筒",
+        "8筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "定缺万做七对"
+        },
+        {
+          "id": "B",
+          "label": "定缺万,开碰做对对胡"
+        },
+        {
+          "id": "C",
+          "label": "不定缺万,保留3万对子"
+        },
+        {
+          "id": "D",
+          "label": "做清一色"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "opening-01",
+        "meld-01",
+        "midgame-04"
+      ],
+      "explanation": "5对子做七对需要再摸2对比较慢。定缺万后开碰做对对胡更灵活:碰牌后有加杠机会,对对胡+碰杠收益可能超过七对。口诀有碰先碰,5对以上优先开碰。",
+      "pitfalls": [
+        "强行做七对不如开碰灵活,七对不能碰牌只能自摸"
+      ]
+    },
+    {
+      "id": 44,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,你同时有12万边搭与46万卡张搭子,且手中有3万5万7万连接牌,拆哪组更优?",
+      "hand": [
+        "1万",
+        "2万",
+        "4万",
+        "6万",
+        "3万",
+        "5万",
+        "7万",
+        "6条",
+        "7条",
+        "8条",
+        "2条",
+        "3条",
+        "4条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "拆12万边搭"
+        },
+        {
+          "id": "B",
+          "label": "拆46万卡张"
+        },
+        {
+          "id": "C",
+          "label": "拆678条顺子"
+        },
+        {
+          "id": "D",
+          "label": "拆234条顺子"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-03",
+        "midgame-02"
+      ],
+      "explanation": "12万边搭只听3万,而46万卡张听5万,5万与357万形成更多连接。边搭效率低于卡张应优先拆边搭。口诀拆边不拆卡。",
+      "pitfalls": [
+        "误拆卡张会让听口退化"
+      ]
+    },
+    {
+      "id": 45,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "wait_tiles",
+      "multiSelect": true,
+      "prompt": "定缺筒,此手牌已一向听。若弃9万,哪些进张可让你听牌?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "4条",
+        "5条",
+        "5条",
+        "6条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "摸2万或5万"
+        },
+        {
+          "id": "B",
+          "label": "摸3万或6万"
+        },
+        {
+          "id": "C",
+          "label": "摸4万或7万"
+        },
+        {
+          "id": "D",
+          "label": "仅9万"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "midgame-05",
+        "midgame-01"
+      ],
+      "explanation": "弃9万后手牌12345678万+4556条。万字超长连张需要拆成4组顺子+将对。摸3万或6万可形成最优听牌结构。",
+      "pitfalls": [
+        "只盯单张听口没有评估连张整体进张面"
+      ]
+    },
+    {
+      "id": 46,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,中局手牌如下搭子充足(5组搭子+1对将)。手中有4对子,应怎么处理?",
+      "hand": [
+        "2万",
+        "2万",
+        "5万",
+        "6万",
+        "7万",
+        "4条",
+        "4条",
+        "7条",
+        "7条",
+        "9条",
+        "9条",
+        "3条",
+        "5条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "拆掉9条对子(边张熟牌)"
+        },
+        {
+          "id": "B",
+          "label": "拆掉2万对子"
+        },
+        {
+          "id": "C",
+          "label": "全留做七对"
+        },
+        {
+          "id": "D",
+          "label": "拆掉4条对子"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-04"
+      ],
+      "explanation": "4对子太多既不够七对也影响顺子效率。9条是边张对子与其他条子搭子联动差(35条和7条区域不需要9条)应拆。口诀少对留生多对弃。",
+      "pitfalls": [
+        "4对子犹豫不决做不成七对又耽误顺子"
+      ]
+    },
+    {
+      "id": 47,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手中有23456万连张。摸到1万形成123456万6连张,此时应该打哪张整理?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打1万保留23456"
+        },
+        {
+          "id": "B",
+          "label": "打6万保留12345"
+        },
+        {
+          "id": "C",
+          "label": "打9条"
+        },
+        {
+          "id": "D",
+          "label": "不打留着6连张"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "midgame-05"
+      ],
+      "explanation": "123456万是超强连张可形成多个顺子组合不应拆。打9条(有99对子可留一张做将)更合理。口诀连张组合力量大。如果条子搭子够,保留完整连张价值更高。",
+      "pitfalls": [
+        "拆连张比拆散牌损失大得多"
+      ]
+    },
+    {
+      "id": 48,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手中有3万和7万各一张(非对子非搭子)。根据金三银七原则应保留哪张?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "7万",
+        "8万",
+        "9万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "都保留,3和7衔接强"
+        },
+        {
+          "id": "B",
+          "label": "打7万保留3万"
+        },
+        {
+          "id": "C",
+          "label": "打3万保留7万"
+        },
+        {
+          "id": "D",
+          "label": "都打掉"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-04"
+      ],
+      "explanation": "口诀金三银七。3万与12万形成123搭子,7万与89万形成789搭子。两张都有很好的衔接价值应都保留。3和7是最有价值的衔接牌。",
+      "pitfalls": [
+        "不看搭子配合就盲目打掉好牌"
+      ]
+    },
+    {
+      "id": 49,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,中局摸到一张生张5万(场上未出过),此时距听牌还差2步。应该留还是打?",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "7万",
+        "8万",
+        "9万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条",
+        "1条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "留下5万,与34万形成345顺子"
+        },
+        {
+          "id": "B",
+          "label": "打出5万,前期处理生张"
+        },
+        {
+          "id": "C",
+          "label": "打1条更好"
+        },
+        {
+          "id": "D",
+          "label": "打9万"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "midgame-06",
+        "midgame-05"
+      ],
+      "explanation": "5万与34万形成345顺子有极高价值不应打。1条是孤立边张(2条已有234搭子不需要)应打1条。虽然是中局但有用的牌不能按生张逻辑打掉。",
+      "pitfalls": [
+        "机械套用早打生张忽略了牌的搭子价值"
+      ]
+    },
+    {
+      "id": 50,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手中有22万对子和234万顺子。碰了别人打出的2万形成明刻后,手牌变成什么结构?这样做值得吗?",
+      "hand": [
+        "2万",
+        "2万",
+        "2万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "不碰,保留223万的搭子灵活性"
+        },
+        {
+          "id": "B",
+          "label": "碰,碰后打34万做对对胡"
+        },
+        {
+          "id": "C",
+          "label": "碰,期待后续加杠"
+        },
+        {
+          "id": "D",
+          "label": "碰,反正牌差"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-02",
+        "meld-04"
+      ],
+      "explanation": "手牌已有222万+34万,结构很好(听15万)。碰2万后必须拆34万,手牌结构变差。口诀牌从门前过不如摸一个。牌顺时不应碰牌破坏结构。",
+      "pitfalls": [
+        "手牌结构好时碰牌反而破坏节奏"
+      ]
+    },
+    {
+      "id": 51,
+      "difficulty": "intermediate",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你已碰出6条明刻。现摸到第4张6条可以加杠。场上两家都在做万字,条子相对安全。应该加杠吗?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "8条"
+      ],
+      "discards": [
+        "1条",
+        "3条",
+        "5条",
+        "7条",
+        "2条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "加杠,条子安全风险低"
+        },
+        {
+          "id": "B",
+          "label": "不加杠怕抢杠胡"
+        },
+        {
+          "id": "C",
+          "label": "先打一巡看看"
+        },
+        {
+          "id": "D",
+          "label": "留在手里不管"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-03",
+        "defense-01"
+      ],
+      "explanation": "场上两家做万字,条子牌池大量出现说明很少有人听条子。6条加杠被抢杠胡概率极低,加杠收益大于风险。关键是要结合场面信息判断安全性。",
+      "pitfalls": [
+        "不看场面就一律不敢加杠会错失收益"
+      ]
+    },
+    {
+      "id": 52,
+      "difficulty": "intermediate",
+      "stage": "meld",
+      "type": "discard_best",
+      "prompt": "定缺筒,手牌结构不错(两向听)。上家打出你有对子的5万,你有5万5万。碰还是不碰?",
+      "hand": [
+        "5万",
+        "5万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "碰,加速进程"
+        },
+        {
+          "id": "B",
+          "label": "不碰,牌顺保留门清"
+        },
+        {
+          "id": "C",
+          "label": "碰了打8万"
+        },
+        {
+          "id": "D",
+          "label": "碰了打3万"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "meld-02"
+      ],
+      "explanation": "手牌结构好(3456万连张+78万+234条+678条)两向听效率已经很高。碰5万后要拆别的搭子反而变差。口诀牌顺慎碰,保留门清与摸牌弹性。",
+      "pitfalls": [
+        "牌顺时碰牌反而打乱好结构"
+      ]
+    },
+    {
+      "id": 53,
+      "difficulty": "intermediate",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你有暗刻8条(3张)。下家打出8条你可以明杠。但你手牌只差一步听牌且暗刻8条参与了听牌结构。应该杠吗?",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "4条",
+        "5条",
+        "6条",
+        "8条",
+        "8条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "不杠,8条暗刻参与听牌结构"
+        },
+        {
+          "id": "B",
+          "label": "杠,杠了再说"
+        },
+        {
+          "id": "C",
+          "label": "杠了能多摸一张"
+        },
+        {
+          "id": "D",
+          "label": "等暗杠机会"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-03",
+        "listening-01"
+      ],
+      "explanation": "手牌789条(888+9可拆为889听7或888+9)是关键听牌结构。杠掉8条后只剩9条孤张严重破坏听牌。口诀听牌结构不能为了杠而破坏。",
+      "pitfalls": [
+        "为了杠牌收益破坏听牌结构得不偿失"
+      ]
+    },
+    {
+      "id": 54,
+      "difficulty": "intermediate",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "对家已碰出两副明刻且手中仅剩4张暗牌。对家上一巡打出7万(桌上第一张7万)。此刻你应该注意什么?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条",
+        "1条",
+        "2条"
+      ],
+      "discards": [
+        "7万"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "对家可能已听牌,注意避开其花色"
+        },
+        {
+          "id": "B",
+          "label": "对家在乱打不用管"
+        },
+        {
+          "id": "C",
+          "label": "对家牌差不会胡"
+        },
+        {
+          "id": "D",
+          "label": "跟着打7万安全"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-01",
+        "defense-04"
+      ],
+      "explanation": "对家碰了两副手中仅4张暗牌很可能已听牌。打出第一张7万说明7万不在其听牌范围但其他万字可能危险。口诀盯上卡下防对家。",
+      "pitfalls": [
+        "不注意对手碰杠数量忽略其听牌可能性"
+      ]
+    },
+    {
+      "id": 55,
+      "difficulty": "intermediate",
+      "stage": "defense",
+      "type": "discard_best",
+      "prompt": "中局,对手先打出6条后又打出8条。根据口诀推断对手可能留了什么?你手中有9条要不要打?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "4条",
+        "5条",
+        "6条",
+        "9条",
+        "3筒",
+        "4筒",
+        "5筒"
+      ],
+      "discards": [
+        "6条",
+        "8条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "对手可能有对子9条,不打9条"
+        },
+        {
+          "id": "B",
+          "label": "9条安全可以打"
+        },
+        {
+          "id": "C",
+          "label": "对手可能有对子7条"
+        },
+        {
+          "id": "D",
+          "label": "无法判断"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-03"
+      ],
+      "explanation": "口诀先六后八必有对九。对手先打6条再打8条说明拆掉了与9条相关搭子但保留了9条对子。打9条有碰或胡的风险。",
+      "pitfalls": [
+        "不注意弃牌顺序就无法推断对手手牌"
+      ]
+    },
+    {
+      "id": 56,
+      "difficulty": "intermediate",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "后盘,你定缺筒。场上万字大量出现(已出20张以上)但条子很少出现(仅出7张)。你手中有一张3条(生张)和一张6万(出过2张)需打一张。",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条",
+        "2条"
+      ],
+      "discards": [
+        "6万",
+        "6万"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "打6万(熟张安全)"
+        },
+        {
+          "id": "B",
+          "label": "打3条(可能有人需要)"
+        },
+        {
+          "id": "C",
+          "label": "打2条"
+        },
+        {
+          "id": "D",
+          "label": "两张一样安全"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-06",
+        "defense-04"
+      ],
+      "explanation": "条子场上出现极少说明多数条子在各家手中被重点使用。3条作为生张打出风险高。6万已出2张是熟牌更安全。口诀一路不见必有大牌。",
+      "pitfalls": [
+        "不看整体花色出牌规律就胡乱出牌"
+      ]
+    },
+    {
+      "id": 57,
+      "difficulty": "intermediate",
+      "stage": "defense",
+      "type": "discard_best",
+      "prompt": "你的下家定缺万一直在打万字。你手中有一张5万(缺门牌)和一张3条,应该先打哪张?",
+      "hand": [
+        "5万",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "3筒",
+        "4筒",
+        "5筒",
+        "7筒",
+        "8筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打5万,下家缺万不会碰杠胡"
+        },
+        {
+          "id": "B",
+          "label": "打3条"
+        },
+        {
+          "id": "C",
+          "label": "先打筒子"
+        },
+        {
+          "id": "D",
+          "label": "两张都危险"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-02",
+        "opening-02"
+      ],
+      "explanation": "口诀下家打万我打饼。下家定缺万说明不需要万字,你打5万给下家是安全的。同时自己也要清缺门(假设缺万),5万必须打。顺下家牌路出牌。",
+      "pitfalls": [
+        "不观察下家定缺方向就胡乱出牌"
+      ]
+    },
+    {
+      "id": 58,
+      "difficulty": "intermediate",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "场上3万至今一张未出(打到第8巡)。你手中有一张3万在缺门中需要打出。怎么判断风险?",
+      "hand": [
+        "3万",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "2筒",
+        "3筒",
+        "4筒",
+        "6筒",
+        "7筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "3万高危,大概率有人需要,尽量不打"
+        },
+        {
+          "id": "B",
+          "label": "3万是缺门必须打"
+        },
+        {
+          "id": "C",
+          "label": "3万安全可以打"
+        },
+        {
+          "id": "D",
+          "label": "等到最后再打"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-04"
+      ],
+      "explanation": "口诀九不见必定有人要。3万打到第8巡还未出现说明大概率在多家手中形成关键搭子。虽然是缺门牌也应尽量憋着或找更安全时机打出。",
+      "pitfalls": [
+        "缺门牌也不能盲目打出高危生张"
+      ]
+    },
+    {
+      "id": 59,
+      "difficulty": "intermediate",
+      "stage": "listening",
+      "type": "wait_tiles",
+      "multiSelect": false,
+      "prompt": "定缺筒,手牌已听牌。打5万还是打8条听口更宽?",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "8条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打5万听29万+7条(3面)"
+        },
+        {
+          "id": "B",
+          "label": "打8条听14条7条(3面)"
+        },
+        {
+          "id": "C",
+          "label": "打5万听29万(2面)"
+        },
+        {
+          "id": "D",
+          "label": "打8条听7条单吊"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "打5万:手牌为34万678万+23456条+88条将。万字听29万,条子已成顺子。打8条:345678万+2345条+68条残缺。打5万听口更宽。",
+      "pitfalls": [
+        "不仔细比较不同打法的听口数量"
+      ]
+    },
+    {
+      "id": 60,
+      "difficulty": "intermediate",
+      "stage": "listening",
+      "type": "discard_best",
+      "prompt": "定缺筒,手牌一向听。你可以选择:A.打1万听两面;B.打8条做对倒听。哪个更优?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打1万听48万两面"
+        },
+        {
+          "id": "B",
+          "label": "打9条做88条对倒"
+        },
+        {
+          "id": "C",
+          "label": "打7条"
+        },
+        {
+          "id": "D",
+          "label": "打3条"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-02",
+        "listening-03"
+      ],
+      "explanation": "打1万后23万567万+345条789条+8条将听48万两面各4张共8张。对倒88条最多剩2张效率差。口诀不恋对倒与边张。",
+      "pitfalls": [
+        "对倒看似有两个将但胡牌概率远低于两面听"
+      ]
+    },
+    {
+      "id": 61,
+      "difficulty": "intermediate",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你当前听3万(卡张仅剩1张)和69条(两面还剩5张)。是否应该改听?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条",
+        "9条"
+      ],
+      "discards": [
+        "3万",
+        "3万",
+        "3万"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "改听69条,剩余张数多"
+        },
+        {
+          "id": "B",
+          "label": "保持听3万等卡张"
+        },
+        {
+          "id": "C",
+          "label": "两边都听"
+        },
+        {
+          "id": "D",
+          "label": "放弃听牌"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-02",
+        "listening-01"
+      ],
+      "explanation": "3万场上已出3张仅剩1张,胡牌概率极低。69条两面还剩5张概率高出5倍。口诀早听早胡优先效率。果断改听宽口。",
+      "pitfalls": [
+        "执着于卡张等不到反而错过更多机会"
+      ]
+    },
+    {
+      "id": 62,
+      "difficulty": "intermediate",
+      "stage": "listening",
+      "type": "discard_best",
+      "prompt": "定缺筒,你已听牌但听口是边张3万(12万+3万)。手中可以拆12万改听更宽的口,值得吗?",
+      "hand": [
+        "1万",
+        "2万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "7条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "拆12万改听更宽口"
+        },
+        {
+          "id": "B",
+          "label": "保持听边张3万"
+        },
+        {
+          "id": "C",
+          "label": "打7条改结构"
+        },
+        {
+          "id": "D",
+          "label": "不变"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-03",
+        "listening-02"
+      ],
+      "explanation": "听边张3万效率低(只听1种牌)。拆12万后456789万+345条+77条将可听更宽口。口诀边张也要出必要时拆掉提升听口。",
+      "pitfalls": [
+        "舍不得已有的听牌死守边张"
+      ]
+    },
+    {
+      "id": 63,
+      "difficulty": "intermediate",
+      "stage": "listening",
+      "type": "wait_tiles",
+      "multiSelect": true,
+      "prompt": "定缺筒,手牌如下已听牌。请判断此手牌的所有听口。",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "听1万"
+        },
+        {
+          "id": "B",
+          "label": "听8万"
+        },
+        {
+          "id": "C",
+          "label": "听7万"
+        },
+        {
+          "id": "D",
+          "label": "听1万和8万"
+        }
+      ],
+      "correctOptionIds": [
+        "D"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "手牌拆解:234万567万+77万将+345条789条。听1万和8万两面。7万做将。万字234+567+77的经典两面听结构。",
+      "pitfalls": [
+        "将对的选择会影响听口判断要仔细拆解"
+      ]
+    },
+    {
+      "id": 64,
+      "difficulty": "intermediate",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,手牌接近清一色条子(12张条+1张万)。是做清一色还是先胡?",
+      "hand": [
+        "5万",
+        "1条",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "7条",
+        "8条",
+        "8条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打5万做清一色条子"
+        },
+        {
+          "id": "B",
+          "label": "先听先胡不贪大"
+        },
+        {
+          "id": "C",
+          "label": "做七对"
+        },
+        {
+          "id": "D",
+          "label": "等自摸"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-01"
+      ],
+      "explanation": "12张条子只差打掉5万就是清一色,且条子结构极好(多对子+顺子)。清一色是大牌此时距离仅1步打5万即可。虽然口诀说小胡也是胡,但清一色触手可及值得追。",
+      "pitfalls": [
+        "明明能做清一色却因为怕风险放弃"
+      ]
+    },
+    {
+      "id": 65,
+      "difficulty": "intermediate",
+      "stage": "listening",
+      "type": "discard_best",
+      "prompt": "定缺筒,你摸回一张之前打过的4条(回头牌)。手牌已听牌但4条正好可以改善听口。应该留吗?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "4条"
+      ],
+      "discards": [
+        "4条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "留下4条改善听口"
+        },
+        {
+          "id": "B",
+          "label": "打掉不需要"
+        },
+        {
+          "id": "C",
+          "label": "回头牌无价值"
+        },
+        {
+          "id": "D",
+          "label": "留着防守用"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-04"
+      ],
+      "explanation": "口诀牌回头必要留。回头牌4条可以改善听口(与345条678条形成更多组合),同时是安全张(自己打过对手不太会听)。一举两得必须留。",
+      "pitfalls": [
+        "回头牌既安全又有用不留是浪费"
+      ]
+    },
+    {
+      "id": 66,
+      "difficulty": "intermediate",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你有5条暗刻(3张)。手牌结构:345万678万+3455条+78条。暗刻5条参与顺子345条。上家打5条你能明杠,应该杠吗?",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "5条",
+        "5条",
+        "7条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "不杠,5条暗刻参与顺子结构"
+        },
+        {
+          "id": "B",
+          "label": "杠,多一番"
+        },
+        {
+          "id": "C",
+          "label": "杠了多摸一张"
+        },
+        {
+          "id": "D",
+          "label": "等暗杠"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-03"
+      ],
+      "explanation": "5条参与345条顺子,杠掉后34条变成残缺搭子78条也受影响。手牌结构好时不应为杠破坏已有顺子。口诀暗杠是利剑但前提是不破坏结构。",
+      "pitfalls": [
+        "为了杠牌收益破坏成型的顺子结构"
+      ]
+    },
+    {
+      "id": 67,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手牌有5组搭子太多需拆一组。哪组搭子应优先拆?",
+      "hand": [
+        "1万",
+        "2万",
+        "4万",
+        "5万",
+        "7万",
+        "8万",
+        "9万",
+        "2条",
+        "3条",
+        "5条",
+        "6条",
+        "7条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "拆12万边搭"
+        },
+        {
+          "id": "B",
+          "label": "拆45万连张"
+        },
+        {
+          "id": "C",
+          "label": "拆89万边搭"
+        },
+        {
+          "id": "D",
+          "label": "拆56条连张"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-03",
+        "midgame-02"
+      ],
+      "explanation": "搭子多拆边搭。12万和89万都是边搭但12万与45万间隔(缺3万),89万有78万相邻可能联动。12万最孤立应先拆。口诀搭子多拆边搭。",
+      "pitfalls": [
+        "搭子多时不拆会相互挤压影响效率"
+      ]
+    },
+    {
+      "id": 68,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,中局你手中万字有1234567万超长连张。条子有8条9条边搭。此时摸到8万形成12345678万。应该保留哪段?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "保留全部万字连张打8条或9条"
+        },
+        {
+          "id": "B",
+          "label": "打1万保留2345678"
+        },
+        {
+          "id": "C",
+          "label": "打8万保留1234567"
+        },
+        {
+          "id": "D",
+          "label": "打4万或5万拆开"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-05"
+      ],
+      "explanation": "12345678万是8连张价值极高可形成多种顺子组合。8条9条仅是边搭听7条1种牌效率远低于万字连张。打掉89条保留完整万字连张。",
+      "pitfalls": [
+        "拆超长连张是严重错误"
+      ]
+    },
+    {
+      "id": 69,
+      "difficulty": "intermediate",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "后盘,你手牌很差已无胡牌希望。此时一家做清一色万字另一家只需平胡。你应该怎么做?",
+      "hand": [
+        "1万",
+        "4万",
+        "2条",
+        "5条",
+        "8条",
+        "3筒",
+        "6筒",
+        "9筒",
+        "1条",
+        "7条",
+        "3条",
+        "6条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "避开清一色大牌家,让平胡小牌家胡"
+        },
+        {
+          "id": "B",
+          "label": "谁都不管随便打"
+        },
+        {
+          "id": "C",
+          "label": "帮清一色家胡牌"
+        },
+        {
+          "id": "D",
+          "label": "继续做自己的牌"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-01"
+      ],
+      "explanation": "自己无胡牌希望时应划水(四川话叫划船)避开大牌家。让小牌家胡可以减少自己损失。口诀盯上卡下防对家分清大牌家和小牌家调整打法。",
+      "pitfalls": [
+        "自己无望时不防守随便打容易给大牌家送炮"
+      ]
+    },
+    {
+      "id": 70,
+      "difficulty": "intermediate",
+      "stage": "meld",
+      "type": "discard_best",
+      "prompt": "定缺筒,你手牌有44条77条两组对子已碰出一副。现在上家打出4条你能碰。手中搭子:23条/56万/89万。碰吗?",
+      "hand": [
+        "5万",
+        "6万",
+        "8万",
+        "9万",
+        "2条",
+        "3条",
+        "4条",
+        "4条",
+        "7条",
+        "7条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "碰4条开碰做对对胡"
+        },
+        {
+          "id": "B",
+          "label": "不碰保留23条搭子"
+        },
+        {
+          "id": "C",
+          "label": "等碰7条"
+        },
+        {
+          "id": "D",
+          "label": "看下一张再决定"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-01"
+      ],
+      "explanation": "已碰一副加上44条77条两对,碰4条后只剩23条56万89万+77条。可以继续碰7条做对对胡或单吊金钩。多对子时开碰做对对胡比平胡收益高。",
+      "pitfalls": [
+        "不碰就永远做不了对对胡大牌"
+      ]
+    },
+    {
+      "id": 71,
+      "difficulty": "intermediate",
+      "stage": "opening",
+      "type": "discard_best",
+      "prompt": "换三张后你手中万字:13579万(5张散牌),条子:34567条(5张连张),筒子:258筒(3张)。定缺哪门?",
+      "hand": [
+        "1万",
+        "3万",
+        "5万",
+        "7万",
+        "9万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "2筒",
+        "5筒",
+        "8筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "缺万(5张但全散牌)"
+        },
+        {
+          "id": "B",
+          "label": "缺筒(3张)"
+        },
+        {
+          "id": "C",
+          "label": "缺条(5张连张)"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "opening-01"
+      ],
+      "explanation": "筒子仅3张(258)且散牌定缺最快清理。万字虽然也是散牌但有5张太多清理慢。条子5张连张价值极高必须保留。",
+      "pitfalls": [
+        "万字虽然散但5张太多清理三巡都打不完"
+      ]
+    },
+    {
+      "id": 72,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手中有6对子(含缺门筒子0张)。是做七对还是转对对胡?",
+      "hand": [
+        "2万",
+        "2万",
+        "6万",
+        "6万",
+        "3条",
+        "3条",
+        "5条",
+        "5条",
+        "8条",
+        "8条",
+        "9条",
+        "9条",
+        "1万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "做七对,再摸1对即可"
+        },
+        {
+          "id": "B",
+          "label": "转对对胡开碰更灵活"
+        },
+        {
+          "id": "C",
+          "label": "做清一色"
+        },
+        {
+          "id": "D",
+          "label": "做平胡"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-04",
+        "listening-01"
+      ],
+      "explanation": "6对子距七对只差1对,效率已经很高。打出1万(孤张)等摸任何一张成对就胡。此时做七对比开碰更快。但如果迟迟不来对子再考虑转碰。",
+      "pitfalls": [
+        "6对子距七对很近不应轻易放弃"
+      ]
+    },
+    {
+      "id": 73,
+      "difficulty": "intermediate",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你已听牌听5万(场上已出3张仅剩1张)。此时是否应该换听?",
+      "hand": [
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "7条"
+      ],
+      "discards": [
+        "5万",
+        "5万",
+        "5万"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "换听,5万几乎摸不到"
+        },
+        {
+          "id": "B",
+          "label": "不换坚持等5万"
+        },
+        {
+          "id": "C",
+          "label": "5万还有1张能等"
+        },
+        {
+          "id": "D",
+          "label": "无所谓"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-01",
+        "listening-02"
+      ],
+      "explanation": "5万仅剩1张胡牌概率极低。应果断换听找更宽口。口诀早听早胡效率优先不应死守窄口。",
+      "pitfalls": [
+        "执着于已有听口不愿换听白白浪费时间"
+      ]
+    },
+    {
+      "id": 74,
+      "difficulty": "intermediate",
+      "stage": "meld",
+      "type": "discard_best",
+      "prompt": "定缺筒,后盘你有暗刻3万(3张)和1万1张。上家打出1万你能碰。碰后打3万变成单吊。场上3万是生张打出有风险。怎么做?",
+      "hand": [
+        "1万",
+        "3万",
+        "3万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "4条",
+        "5条",
+        "6条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "不碰1万暗杠3万更安全"
+        },
+        {
+          "id": "B",
+          "label": "碰1万打3万"
+        },
+        {
+          "id": "C",
+          "label": "碰了打5万"
+        },
+        {
+          "id": "D",
+          "label": "都不操作"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-03",
+        "defense-01"
+      ],
+      "explanation": "碰1万后需打3万(生张)有点炮风险。不如保留暗刻3万等摸到第4张暗杠,暗杠隐蔽安全且收益好。口诀暗杠是利剑明杠露信息。",
+      "pitfalls": [
+        "碰牌后被迫打生张反而危险"
+      ]
+    },
+    {
+      "id": 75,
+      "difficulty": "intermediate",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "你定缺筒,发现上家和对家都在做条子(条子出得很少万字出很多)。你手中条子6张万字4张。出牌策略?",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "8万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条",
+        "3筒",
+        "5筒",
+        "7筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "优先打万字(别人缺万)安全"
+        },
+        {
+          "id": "B",
+          "label": "优先打条子给他们碰"
+        },
+        {
+          "id": "C",
+          "label": "先打筒子清缺门"
+        },
+        {
+          "id": "D",
+          "label": "万和条一起打"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "opening-02",
+        "defense-02"
+      ],
+      "explanation": "首先必须清缺门(筒子),口诀前三巡清缺门。同时注意条子是危险花色(对手在做),万字相对安全。清完缺门后优先打万字。",
+      "pitfalls": [
+        "光顾防守忘了先清缺门"
+      ]
+    },
+    {
+      "id": 76,
+      "difficulty": "intermediate",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,你手中有4组搭子但缺将(没有对子)。此时摸到5条(与现有56条形成连张),手中还有孤张9万。打哪张?",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "7万",
+        "8万",
+        "9万",
+        "2条",
+        "3条",
+        "5条",
+        "5条",
+        "6条",
+        "7条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打9万,保留5条对子做将"
+        },
+        {
+          "id": "B",
+          "label": "打5条,不需要对子"
+        },
+        {
+          "id": "C",
+          "label": "打8条"
+        },
+        {
+          "id": "D",
+          "label": "打3万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-05",
+        "midgame-01"
+      ],
+      "explanation": "缺将时摸到对子是好事。55条做将解决了缺将问题。9万是边张与78万搭子虽有联动但有5万可配345万。打9万保留55条对子+56条连张结构更优。",
+      "pitfalls": [
+        "缺将时不重视对子会导致一直无法听牌"
+      ]
+    },
+    {
+      "id": 77,
+      "difficulty": "intermediate",
+      "stage": "listening",
+      "type": "wait_tiles",
+      "multiSelect": false,
+      "prompt": "定缺筒,手牌如下做成七对听牌。听哪张?",
+      "hand": [
+        "2万",
+        "2万",
+        "5万",
+        "5万",
+        "8万",
+        "8万",
+        "3条",
+        "3条",
+        "6条",
+        "6条",
+        "9条",
+        "9条",
+        "7条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "听7条"
+        },
+        {
+          "id": "B",
+          "label": "听任意一张"
+        },
+        {
+          "id": "C",
+          "label": "听2万或5万"
+        },
+        {
+          "id": "D",
+          "label": "未听牌"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-01"
+      ],
+      "explanation": "6对完整(22万55万88万33条66条99条)+7条单张。七对听牌就是听那张落单的牌即7条。七对只能自摸不能碰。",
+      "pitfalls": [
+        "七对只能自摸这张牌不能放炮胡"
+      ]
+    },
+    {
+      "id": 78,
+      "difficulty": "intermediate",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手牌已有一暗杠(4张8万已杠)多摸了一张。现在手牌9张+暗杠。此时上家打出7条你有77条对子,碰吗?",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "7条",
+        "7条",
+        "2条",
+        "3条",
+        "4条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "碰,暗杠后手牌少需加速"
+        },
+        {
+          "id": "B",
+          "label": "不碰,手牌结构好保持门清"
+        },
+        {
+          "id": "C",
+          "label": "碰后打3万"
+        },
+        {
+          "id": "D",
+          "label": "等自摸"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "meld-02"
+      ],
+      "explanation": "暗杠后手牌9张(34567万+234条+77条),结构完美只需一个将对即听牌。碰7条后要打一张反而破坏结构。牌顺时保持门清。",
+      "pitfalls": [
+        "暗杠后急于碰牌反而破坏好结构"
+      ]
+    },
+    {
+      "id": 79,
+      "difficulty": "intermediate",
+      "stage": "defense",
+      "type": "discard_best",
+      "prompt": "后盘,你手中有2万(场上出过1张)/5万(场上出过0张)/8条(场上出过3张)需选一张打出。打哪张最安全?",
+      "hand": [
+        "2万",
+        "5万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "2筒",
+        "3筒",
+        "4筒",
+        "6筒"
+      ],
+      "discards": [
+        "2万",
+        "8条",
+        "8条",
+        "8条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "打8条(出过3张最安全)"
+        },
+        {
+          "id": "B",
+          "label": "打2万(出过1张)"
+        },
+        {
+          "id": "C",
+          "label": "打5万(生张)"
+        },
+        {
+          "id": "D",
+          "label": "都一样"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-06",
+        "defense-04"
+      ],
+      "explanation": "8条已出3张仅剩1张在你手中几乎不可能有人听8条是最安全的。5万0张出现是高危生张绝不能打。2万出过1张风险中等。",
+      "pitfalls": [
+        "不数牌就无法判断安全度"
+      ]
+    },
+    {
+      "id": 80,
+      "difficulty": "intermediate",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你做龙七对(含暗杠的七对)已有3暗刻(333万/666条/999条)+2对(55万/88条)+2单张(7万/4条)。应该打哪张做龙七对听?",
+      "hand": [
+        "3万",
+        "3万",
+        "3万",
+        "5万",
+        "5万",
+        "7万",
+        "6条",
+        "6条",
+        "6条",
+        "4条",
+        "8条",
+        "8条",
+        "9条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打7万听4条(龙七对)"
+        },
+        {
+          "id": "B",
+          "label": "打4条听7万(龙七对)"
+        },
+        {
+          "id": "C",
+          "label": "两张都打不了"
+        },
+        {
+          "id": "D",
+          "label": "放弃龙七对"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-01"
+      ],
+      "explanation": "龙七对=七对中含有暗杠(4张相同)。当前333万+55万+666条+88条+999条=3暗刻+2对=14张中已有暗刻。打7万后听4条成为龙七对。打4条听7万也行但要看场上哪张剩余多。",
+      "pitfalls": [
+        "龙七对要注意暗刻不能明杠否则就不是七对了"
+      ]
+    },
+    {
+      "id": 81,
+      "difficulty": "advanced",
+      "stage": "opening",
+      "type": "scenario_analysis",
+      "prompt": "换三张你换出357条,换回来却是369条(撞车)。手中万8张/条5张/筒0张。你应该定缺哪门?是否保留一张条子迷惑对手?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "3条",
+        "4条",
+        "6条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "缺条,5张散条清理即可"
+        },
+        {
+          "id": "B",
+          "label": "缺筒(0张)直接免清"
+        },
+        {
+          "id": "C",
+          "label": "缺条但保留4条迷惑对手做清一色万"
+        },
+        {
+          "id": "D",
+          "label": "缺万"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "opening-01",
+        "opening-03"
+      ],
+      "explanation": "筒子0张看似最好定缺但0张无需清理没有迷惑效果。万字8张适合做清一色。定缺条但故意慢打保留4条几巡让对手误判你不做清一色。口诀定缺少演戏猛。",
+      "pitfalls": [
+        "0张缺门虽然不用清理但也没有演戏空间高端局需要迷惑对手"
+      ]
+    },
+    {
+      "id": 82,
+      "difficulty": "advanced",
+      "stage": "opening",
+      "type": "scenario_analysis",
+      "prompt": "起手牌万字6张(123789)/条子4张(3456)/筒子3张(258)。万字两端强但中间断张。定缺哪门?如何规划?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "7万",
+        "8万",
+        "9万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "2筒",
+        "5筒",
+        "8筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "缺筒(3张散牌)保留万+条"
+        },
+        {
+          "id": "B",
+          "label": "缺万(6张但中间断)"
+        },
+        {
+          "id": "C",
+          "label": "缺条(4张连张)"
+        },
+        {
+          "id": "D",
+          "label": "缺万做清一色条"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-01",
+        "opening-04"
+      ],
+      "explanation": "筒子258全散且仅3张最快清理。万字虽中间断但123万和789万各自成顺子效率极高。条子3456连张做辅助搭子。定缺筒保留两色好牌。",
+      "pitfalls": [
+        "万字中间断不代表万字差123和789各自完整"
+      ]
+    },
+    {
+      "id": 83,
+      "difficulty": "advanced",
+      "stage": "midgame",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,中局你手牌:2233456万+345条+78条。对手碰了2次万字。你有22万33万两对,是碰做对对胡还是保持顺子做平胡?",
+      "hand": [
+        "2万",
+        "2万",
+        "3万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "保持平胡结构,22万或33万做将"
+        },
+        {
+          "id": "B",
+          "label": "有人打2万就碰做对对胡"
+        },
+        {
+          "id": "C",
+          "label": "碰3万打6万"
+        },
+        {
+          "id": "D",
+          "label": "做七对"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-02",
+        "listening-01"
+      ],
+      "explanation": "手牌结构极好:23456万(已含顺子)+22万或33万做将+345条+789条。一向听即可听牌。此时碰牌反而拆散顺子结构。口诀牌顺慎碰保留门清效率最高。",
+      "pitfalls": [
+        "结构好时碰牌是自毁长城"
+      ]
+    },
+    {
+      "id": 84,
+      "difficulty": "advanced",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,你手牌有超长连张:23456789条+34万+67万。需打一张,比较不同打法的进张数。",
+      "hand": [
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条",
+        "1条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打1条,保留2-9条连张+两组万搭"
+        },
+        {
+          "id": "B",
+          "label": "打3万,拆34万保留67万"
+        },
+        {
+          "id": "C",
+          "label": "打9条,保留1-8条"
+        },
+        {
+          "id": "D",
+          "label": "打7万,拆67万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-05",
+        "midgame-02"
+      ],
+      "explanation": "23456789条8连张价值极高不应拆。1条是边张外挂与连张不紧密(12条边搭听3条但3条已在连张中)。打1条保留完整2-9条连张和34万67万两组搭子进张最宽。",
+      "pitfalls": [
+        "拆超长连张的任何一端都是严重损失"
+      ]
+    },
+    {
+      "id": 85,
+      "difficulty": "advanced",
+      "stage": "midgame",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你已碰2副明刻(碰了5万和8条),手中暗牌仅7张:34万+46条+99条。现摸到5条,形成3456条。是否拆99条对子做顺子?",
+      "hand": [
+        "3万",
+        "4万",
+        "4条",
+        "5条",
+        "6条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "保留99条做将,打一张整理"
+        },
+        {
+          "id": "B",
+          "label": "拆99条做456条顺子"
+        },
+        {
+          "id": "C",
+          "label": "打5条保持原结构"
+        },
+        {
+          "id": "D",
+          "label": "打3万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-04",
+        "listening-01"
+      ],
+      "explanation": "已碰2副+99条将+34万搭子+456条顺子=一向听。99条是做将的关键不能拆。打孤张整理后保持99将+456条顺子+34万听25万。碰牌多时将对更珍贵。",
+      "pitfalls": [
+        "碰多了之后没将对就无法胡牌将对不能拆"
+      ]
+    },
+    {
+      "id": 86,
+      "difficulty": "advanced",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你做清一色条子已碰出234条和678条。手中暗牌:1条2条3条5条5条9条9条。上家打出5条你能碰。碰后单吊9条做清一色,还是不碰保持多面听?",
+      "hand": [
+        "1条",
+        "2条",
+        "3条",
+        "5条",
+        "5条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "碰5条,单吊9条做清一色对对胡"
+        },
+        {
+          "id": "B",
+          "label": "不碰,保持123条+55条+99条听4条和多面"
+        },
+        {
+          "id": "C",
+          "label": "碰后打9条"
+        },
+        {
+          "id": "D",
+          "label": "碰后打1条"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-01",
+        "listening-01"
+      ],
+      "explanation": "已碰2副做清一色。碰5条后成555条明刻+123条+99条单吊9条=清一色+对对胡大牌。虽然单吊口窄但清一色对对胡番数极高值得追。血战中大牌收益成倍增加。",
+      "pitfalls": [
+        "大牌在手时不应因为听口窄就放弃"
+      ]
+    },
+    {
+      "id": 87,
+      "difficulty": "advanced",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "后盘,你怀疑对家做清一色万字(对家碰了2副万字明刻且只打条筒)。你手中有1万3万5万7万各1张。全是高危牌怎么防守?",
+      "hand": [
+        "1万",
+        "3万",
+        "5万",
+        "7万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条",
+        "3筒",
+        "4筒",
+        "5筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "全部扣住不打万字,打条筒安全牌"
+        },
+        {
+          "id": "B",
+          "label": "打1万(边张可能安全)"
+        },
+        {
+          "id": "C",
+          "label": "打7万(对家可能不需要)"
+        },
+        {
+          "id": "D",
+          "label": "挨个试着打"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-01",
+        "defense-04"
+      ],
+      "explanation": "对家做清一色万字时所有万字都是高危牌。应全部扣住改打条筒等安全牌。口诀一路不见必有大牌,宁可自己手牌变差也不能给大牌家送炮。",
+      "pitfalls": [
+        "给清一色家点炮损失是普通胡的数倍"
+      ]
+    },
+    {
+      "id": 88,
+      "difficulty": "advanced",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "后盘复杂局面:上家听条子,对家听万字,下家已胡(血战继续)。你手中有3条(危险)和5万(危险)和8筒(已出2张安全)。你定缺筒且手中有8筒。",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "8筒"
+      ],
+      "discards": [
+        "8筒",
+        "8筒"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "打8筒(熟张)清缺门"
+        },
+        {
+          "id": "B",
+          "label": "打3条给上家"
+        },
+        {
+          "id": "C",
+          "label": "打5万给对家"
+        },
+        {
+          "id": "D",
+          "label": "不打了等流局"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-02",
+        "midgame-06",
+        "defense-01"
+      ],
+      "explanation": "8筒出过2张是最安全的牌且正好清缺门。3条和5万都可能点炮绝不能打。血战中下家已胡剩余两家一触即发优先打安全牌。",
+      "pitfalls": [
+        "夹在两个听牌家之间要极度谨慎"
+      ]
+    },
+    {
+      "id": 89,
+      "difficulty": "advanced",
+      "stage": "listening",
+      "type": "wait_tiles",
+      "multiSelect": true,
+      "prompt": "定缺筒,你做清一色万字手牌:1112345678999万(13张)。此手牌听几面?",
+      "hand": [
+        "1万",
+        "1万",
+        "1万",
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "9万",
+        "9万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "听1万4万7万(3面)"
+        },
+        {
+          "id": "B",
+          "label": "听2万5万8万(3面)"
+        },
+        {
+          "id": "C",
+          "label": "听1-9万全听(9面)"
+        },
+        {
+          "id": "D",
+          "label": "听1万5万9万(3面)"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "清一色111+234+567+899将听1万;111将+234+567+89听7万;依此类推,1112345678999万是著名的十三幺型全听1-9万共9面。清一色多面听需仔细拆解。",
+      "pitfalls": [
+        "清一色超长连张很容易漏看听口必须逐一拆解"
+      ]
+    },
+    {
+      "id": 90,
+      "difficulty": "advanced",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你做清一色条子:2334556778条+99条将(13张)。打哪张听口最宽?",
+      "hand": [
+        "2条",
+        "3条",
+        "3条",
+        "4条",
+        "5条",
+        "5条",
+        "6条",
+        "7条",
+        "7条",
+        "8条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打2条,听口最宽"
+        },
+        {
+          "id": "B",
+          "label": "打8条"
+        },
+        {
+          "id": "C",
+          "label": "打9条"
+        },
+        {
+          "id": "D",
+          "label": "打3条"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "打2条后:334556778条+99条将。拆解:345+567+78+99将听69条;或33将+456+578听69条;多种拆法交叉听口最宽。打2条去掉边张释放中间连张的多面听潜力。",
+      "pitfalls": [
+        "清一色听牌选择需要顺子拆移还原法逐一分析"
+      ]
+    },
+    {
+      "id": 91,
+      "difficulty": "advanced",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手中有暗杠4张6万+明刻(碰出3条)。手中暗牌:7万8万9万+5条7条(5张)。摸到6条形成567条。打9万还是保留做678万?",
+      "hand": [
+        "7万",
+        "8万",
+        "9万",
+        "5条",
+        "6条",
+        "7条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打9万,保留78万搭子+567条"
+        },
+        {
+          "id": "B",
+          "label": "打5条,保留789万+67条"
+        },
+        {
+          "id": "C",
+          "label": "打7条"
+        },
+        {
+          "id": "D",
+          "label": "打7万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-01",
+        "listening-01"
+      ],
+      "explanation": "已暗杠+碰出明刻,手中仅6张牌需快速听牌。567条已成顺子确定。78万听69万(两面)比789万+打5条只多保留一个顺子但少了搭子灵活性。打9万听69万最优。",
+      "pitfalls": [
+        "杠碰后手牌少要快速确定最高效听牌结构"
+      ]
+    },
+    {
+      "id": 92,
+      "difficulty": "advanced",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "血战第二轮(已有1人胡牌退出),场上仅剩你和另一对手。对手碰了3副明刻仅剩1张暗牌必定已听牌(单吊)。你应该怎么打?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条",
+        "5万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "只打对手打过的熟张绝不打生张"
+        },
+        {
+          "id": "B",
+          "label": "正常打牌"
+        },
+        {
+          "id": "C",
+          "label": "全部扣住不打"
+        },
+        {
+          "id": "D",
+          "label": "尝试自摸"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-01",
+        "midgame-06"
+      ],
+      "explanation": "对手单吊1张牌你打出被胡的概率是1/N。只打对手已出过的熟张就绝对安全(对手不可能听自己打过的牌)。同时争取自摸。口诀迟打熟张。",
+      "pitfalls": [
+        "对手单吊时打任何生张都有风险"
+      ]
+    },
+    {
+      "id": 93,
+      "difficulty": "advanced",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,你手牌:23条+456条+789条+34万+67万(13张)。摸到5万形成345万和567万可选。你已一向听但没有将,打哪张最优?",
+      "hand": [
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打2条,345万+67万+456条+789条+留单张做将听"
+        },
+        {
+          "id": "B",
+          "label": "打9条"
+        },
+        {
+          "id": "C",
+          "label": "打3万"
+        },
+        {
+          "id": "D",
+          "label": "打7万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-02",
+        "listening-02"
+      ],
+      "explanation": "手牌缺将需要摸一张对子。打2条后:34567万+3456789条,万字可拆345+67听58万做顺子且58万任何一张成对做将。打2条比打9条好因为3456789条中间连张更活。",
+      "pitfalls": [
+        "缺将时每一步都要考虑哪张成对做将的概率"
+      ]
+    },
+    {
+      "id": 94,
+      "difficulty": "advanced",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你做龙七对:3333万+5555条+22万+77条+88条+单张4条。是否应暗杠3万腾位置再摸牌?",
+      "hand": [
+        "2万",
+        "2万",
+        "3万",
+        "3万",
+        "3万",
+        "3万",
+        "5条",
+        "5条",
+        "5条",
+        "5条",
+        "7条",
+        "7条",
+        "8条",
+        "8条",
+        "4条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "不暗杠,暗杠后不是七对牌型了"
+        },
+        {
+          "id": "B",
+          "label": "暗杠3万多摸一张"
+        },
+        {
+          "id": "C",
+          "label": "暗杠5条"
+        },
+        {
+          "id": "D",
+          "label": "两个都暗杠"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-03"
+      ],
+      "explanation": "龙七对(暗七对/豪华七对)要求7对中含有4张相同的暗刻作为一对看待。一旦暗杠就变成明面杠不再算七对结构。龙七对的4张必须保持在手中不能杠出。",
+      "pitfalls": [
+        "龙七对的4张一旦杠出就破坏了七对牌型番数大降"
+      ]
+    },
+    {
+      "id": 95,
+      "difficulty": "advanced",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你有碰出的6万明刻。摸到第4张6万可加杠。但你发现场上6万一张未出(另外3张都在你碰出的明刻中)说明第4张必在你手中或牌堆。此时上家刚宣布听牌。加杠?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "6万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "加杠,所有6万都在自己手中不可能被抢杠胡"
+        },
+        {
+          "id": "B",
+          "label": "不加杠怕抢杠胡"
+        },
+        {
+          "id": "C",
+          "label": "等一巡再杠"
+        },
+        {
+          "id": "D",
+          "label": "打掉6万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-03"
+      ],
+      "explanation": "关键推理:4张6万中3张在你明刻+1张在手中=全部4张都在你这里。没有人能听6万(手中没有6万就无法以6万为听口)。加杠是100%安全的。",
+      "pitfalls": [
+        "盲目怕抢杠胡而不分析实际风险是错误的"
+      ]
+    },
+    {
+      "id": 96,
+      "difficulty": "advanced",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "你定缺筒。上家定缺条(一直打条子),对家定缺万(一直打万字)。你推断上家做万字对家做条子。现在手中有3万(对上家安全)和5条(对对家安全)都需打出。先打哪张?",
+      "hand": [
+        "3万",
+        "5条",
+        "2万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "2条",
+        "3条",
+        "4条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "先打3万(上家缺条不要万安全)"
+        },
+        {
+          "id": "B",
+          "label": "先打5条(对家缺万不要条安全)"
+        },
+        {
+          "id": "C",
+          "label": "看谁更危险先打安全的"
+        },
+        {
+          "id": "D",
+          "label": "两张一样安全"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "defense-01",
+        "defense-02"
+      ],
+      "explanation": "3万对上家安全(缺条)但对家做条子(缺万)3万可能有用。5条对对家安全(缺万)但上家做万字(缺条)5条可能有用。需判断谁更接近听牌:更危险的家先用安全牌应对。",
+      "pitfalls": [
+        "三缺一中每张牌对不同对手有不同风险要综合判断"
+      ]
+    },
+    {
+      "id": 97,
+      "difficulty": "advanced",
+      "stage": "listening",
+      "type": "wait_tiles",
+      "multiSelect": true,
+      "prompt": "定缺筒,清一色条子手牌:1233345567899条(13张)。打哪张听口最宽?听几面?",
+      "hand": [
+        "1条",
+        "2条",
+        "3条",
+        "3条",
+        "3条",
+        "4条",
+        "5条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打1条听2456789条(7面)"
+        },
+        {
+          "id": "B",
+          "label": "打9条听1234578条(7面)"
+        },
+        {
+          "id": "C",
+          "label": "打1条听最宽"
+        },
+        {
+          "id": "D",
+          "label": "打5条"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "打1条后:233345567899条。核心拆解:33将+345+567+89听7条;或345+33将+5+6789多种组合。打1条去掉边张后中间连张组合最灵活听口最宽。清一色拆解需要顺子拆移还原法。",
+      "pitfalls": [
+        "清一色多面听必须逐一拆解不能凭感觉"
+      ]
+    },
+    {
+      "id": 98,
+      "difficulty": "advanced",
+      "stage": "midgame",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手牌万字:234567万+条子:2345678条+将:无。14张手牌(刚摸)全是顺子没有将。打哪张摸将概率最高?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "1条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打1条(边张),等摸任意万或条成对做将"
+        },
+        {
+          "id": "B",
+          "label": "打7万"
+        },
+        {
+          "id": "C",
+          "label": "打8条"
+        },
+        {
+          "id": "D",
+          "label": "打2万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-02",
+        "listening-02"
+      ],
+      "explanation": "手牌234567万+2345678条全是连张缺将。1条是边张与连张不紧密。打1条后摸到任何与现有牌配对的张都能做将。保留中间连张最大化摸将概率。",
+      "pitfalls": [
+        "缺将时拆连张做将是下策应保留连张等自然摸将"
+      ]
+    },
+    {
+      "id": 99,
+      "difficulty": "advanced",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你已暗杠8万+碰出5条明刻。手中仅剩6张:34万+67条+9条9条。对家打出4万你能碰形成44万明刻。碰后仅剩3万67条99条4张牌。碰不碰?",
+      "hand": [
+        "3万",
+        "4万",
+        "6条",
+        "7条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "碰4万,碰后3万单吊金钩+99条将"
+        },
+        {
+          "id": "B",
+          "label": "不碰保留34万搭子听25万"
+        },
+        {
+          "id": "C",
+          "label": "碰后打9条"
+        },
+        {
+          "id": "D",
+          "label": "等自摸"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "meld-02",
+        "listening-02"
+      ],
+      "explanation": "不碰保留34万听25万(两面)+67条听58条(两面)+99条将=可能4面听。碰4万后变成3万+67条+99条仅听3万单吊极窄。两面听远优于单吊。口诀不恋对倒与边张。",
+      "pitfalls": [
+        "碰牌后听口变窄时不应碰"
+      ]
+    },
+    {
+      "id": 100,
+      "difficulty": "advanced",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "中后盘,你数牌发现:条子出了27张(每种平均出3张)场上只剩少量条子。但万字只出了12张。你手中有2条(场上已出3张)和4万(场上0张)。哪张更安全?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "2条",
+        "3条",
+        "4条",
+        "6条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [
+        "2条",
+        "2条",
+        "2条",
+        "4万"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "2条更安全(已出3张)"
+        },
+        {
+          "id": "B",
+          "label": "4万更安全(万字出得少)"
+        },
+        {
+          "id": "C",
+          "label": "一样安全"
+        },
+        {
+          "id": "D",
+          "label": "都很危险"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-06",
+        "defense-04"
+      ],
+      "explanation": "2条已出3张仅剩1张在你手中极其安全。4万虽然万字整体出得少但0张出现说明可能是多家关键牌。口诀九不见必有人要具体到每张牌的出现数量判断。",
+      "pitfalls": [
+        "整体花色出牌少不代表某张具体牌安全要逐张分析"
+      ]
+    },
+    {
+      "id": 101,
+      "difficulty": "advanced",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你做清一色万字已碰2副。手中:2345万+77万将(6张)。摸到1万形成12345万+77万。打5万还是打7万?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "7万",
+        "7万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打5万,1234万+77将听15万两面"
+        },
+        {
+          "id": "B",
+          "label": "打7万,12345万听16万(没将)"
+        },
+        {
+          "id": "C",
+          "label": "打1万,2345万+77将听16万"
+        },
+        {
+          "id": "D",
+          "label": "打4万"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "打1万:2345万+77万将,234顺子+5万听46万(但无将配合需77做将)实际听16万。打5万:1234万+77将听5万(卡张)。打1万后听16万两面更宽。注意要保留77做将。",
+      "pitfalls": [
+        "清一色听牌要结合将对综合分析不能漏"
+      ]
+    },
+    {
+      "id": 102,
+      "difficulty": "advanced",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手牌:567万+345条+678条+暗刻2万(2万2万2万)+8条。摸到第4张2万。暗杠后摸一张补牌。此时暗杠值得吗?",
+      "hand": [
+        "2万",
+        "2万",
+        "2万",
+        "2万",
+        "5万",
+        "6万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "暗杠2万,多摸一张可能直接听牌"
+        },
+        {
+          "id": "B",
+          "label": "不杠留着做将22万"
+        },
+        {
+          "id": "C",
+          "label": "打掉一张2万做222万暗刻+将"
+        },
+        {
+          "id": "D",
+          "label": "等明杠"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-03"
+      ],
+      "explanation": "暗杠2万收益:1.暗杠分数 2.多摸一张牌(可能补到关键张直接听牌) 3.不暴露信息。不杠留将虽可行但4张牌占太多位置效率低。暗杠后567万+345条+678条+8条听79条。",
+      "pitfalls": [
+        "4张牌不杠白白浪费空间"
+      ]
+    },
+    {
+      "id": 103,
+      "difficulty": "advanced",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "你定缺筒,后盘读牌:上家前5巡打出顺序为8条->6条->4条->2条->9条。推断上家条子结构?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "3条",
+        "4条",
+        "5条",
+        "7条",
+        "8条",
+        "9条",
+        "1条"
+      ],
+      "discards": [
+        "8条",
+        "6条",
+        "4条",
+        "2条",
+        "9条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "上家条子可能保留了1条3条5条7条(奇数条组合)"
+        },
+        {
+          "id": "B",
+          "label": "上家不要条子在清缺"
+        },
+        {
+          "id": "C",
+          "label": "上家保留了对子1条和3条"
+        },
+        {
+          "id": "D",
+          "label": "无法判断"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "defense-02",
+        "defense-03"
+      ],
+      "explanation": "上家从大到小连续打条子(8->6->4->2->9)说明在清缺条子。按出牌顺序先打中张(864)后打边张(29)符合清缺门的标准打法。可判断上家定缺条。",
+      "pitfalls": [
+        "要结合出牌顺序和规律判断对手意图"
+      ]
+    },
+    {
+      "id": 104,
+      "difficulty": "advanced",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,你做清一色条子进度较好:1234556789条(10张条子)+3万7万(2张万字需清理)。先打3万还是7万?场上3万出过2张7万0张出现。",
+      "hand": [
+        "3万",
+        "7万",
+        "1条",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [
+        "3万",
+        "3万"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "先打7万(生张但前期打更安全)"
+        },
+        {
+          "id": "B",
+          "label": "先打3万(熟张安全)"
+        },
+        {
+          "id": "C",
+          "label": "两张一起打"
+        },
+        {
+          "id": "D",
+          "label": "先打5条"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-06"
+      ],
+      "explanation": "口诀早打生张。7万是生张(0张出现)越早打越安全因为此时对手牌型未成形。3万已出2张较安全可留后打。前期先处理高风险生张后期打熟张。",
+      "pitfalls": [
+        "先打熟张把生张留到后期反而更危险"
+      ]
+    },
+    {
+      "id": 105,
+      "difficulty": "advanced",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你做清一色万字:1122345678999万(13张)。此手牌已听牌,拆解所有听口。",
+      "hand": [
+        "1万",
+        "1万",
+        "2万",
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "9万",
+        "9万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "听1万2万3万(3面)"
+        },
+        {
+          "id": "B",
+          "label": "听1-9全听(9面)"
+        },
+        {
+          "id": "C",
+          "label": "听1万2万5万8万9万(5面)"
+        },
+        {
+          "id": "D",
+          "label": "听1万4万7万9万(4面)"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "逐一拆解:11将+234+567+899听1万;122将不成立;11+23+456+789+9将听14万;多种拆法汇总听1万2万5万8万9万共5面。清一色听牌需要穷举所有拆法。",
+      "pitfalls": [
+        "清一色听牌容易漏看必须系统拆解"
+      ]
+    },
+    {
+      "id": 106,
+      "difficulty": "advanced",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手牌:3456万+234条+567条+88条将(13张)。已听牌听27万两面。上家打出8条你能碰成明刻。碰了变成什么?值得吗?",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "不碰,已听两面27万很好"
+        },
+        {
+          "id": "B",
+          "label": "碰8条做对对胡"
+        },
+        {
+          "id": "C",
+          "label": "碰后改听"
+        },
+        {
+          "id": "D",
+          "label": "碰了打5条"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-02",
+        "listening-01"
+      ],
+      "explanation": "已听27万两面效率很好。碰8条后需拆掉条子搭子(234或567)结构严重破坏。已听牌时碰牌反而自毁听口。口诀早听早胡不要画蛇添足。",
+      "pitfalls": [
+        "已经听好的牌不要因为能碰就碰"
+      ]
+    },
+    {
+      "id": 107,
+      "difficulty": "advanced",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "后盘复杂读牌:对家打出的条子顺序为5条->3条->1条。按口诀推断对家条子结构。你手中有2条和4条哪张更危险?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "8万",
+        "2条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条"
+      ],
+      "discards": [
+        "5条",
+        "3条",
+        "1条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "2条更危险(对家可能保留2条对子)"
+        },
+        {
+          "id": "B",
+          "label": "4条更危险(对家可能保留4条对子)"
+        },
+        {
+          "id": "C",
+          "label": "两张一样危险"
+        },
+        {
+          "id": "D",
+          "label": "两张都安全"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "defense-03"
+      ],
+      "explanation": "对家出牌5->3->1是从中间往边上清理。先5后3说明保留了4条区域(类似先四后二必有对一的逻辑)。4条可能是对家保留的对子或关键搭子打出更危险。",
+      "pitfalls": [
+        "反向推理出牌顺序可以精准定位危险牌"
+      ]
+    },
+    {
+      "id": 108,
+      "difficulty": "advanced",
+      "stage": "midgame",
+      "type": "discard_best",
+      "prompt": "定缺筒,手牌:23万+456万+67万+234条+78条+1条(14张刚摸)。搭子6组太多必须拆。综合分析拆哪组?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "6万",
+        "7万",
+        "1条",
+        "2条",
+        "3条",
+        "4条",
+        "7条",
+        "8条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "拆1条(孤立边张)"
+        },
+        {
+          "id": "B",
+          "label": "拆23万(边搭)"
+        },
+        {
+          "id": "C",
+          "label": "拆78条(边搭)"
+        },
+        {
+          "id": "D",
+          "label": "拆67万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-03",
+        "midgame-02"
+      ],
+      "explanation": "1条是孤立边张(与234条不相邻)应第一个打掉。23万虽是边搭但与456万联动好。78条也是边搭但位置独立。先去孤张再拆搭子。",
+      "pitfalls": [
+        "有孤张先去孤张再考虑拆搭子"
+      ]
+    },
+    {
+      "id": 109,
+      "difficulty": "advanced",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你做七对:22万55万88万33条66条+7条+4条(差1对听牌)。手中有7条和4条两张单张。打哪张做七对听牌?场上4条出过2张7条出过0张。",
+      "hand": [
+        "2万",
+        "2万",
+        "5万",
+        "5万",
+        "8万",
+        "8万",
+        "3条",
+        "3条",
+        "6条",
+        "6条",
+        "4条",
+        "7条"
+      ],
+      "discards": [
+        "4条",
+        "4条"
+      ],
+      "options": [
+        {
+          "id": "A",
+          "label": "打4条(已出2张难摸对),听7条"
+        },
+        {
+          "id": "B",
+          "label": "打7条(0张出现),听4条"
+        },
+        {
+          "id": "C",
+          "label": "随便打"
+        },
+        {
+          "id": "D",
+          "label": "放弃七对"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-01",
+        "defense-04"
+      ],
+      "explanation": "七对听牌需要单张成对。4条已出2张仅剩1张几乎不可能摸到。7条0张出现说明可能在牌堆或他人手中但至少还有4张存在。打4条听7条概率更高。",
+      "pitfalls": [
+        "七对听牌要选剩余张数多的牌作为听口"
+      ]
+    },
+    {
+      "id": 110,
+      "difficulty": "advanced",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手中有3条暗刻(333条)。上家打出3条你可以明杠。但你正在做清一色条子且333条参与顺子结构(234条+345条)。杠还是不杠?",
+      "hand": [
+        "2条",
+        "3条",
+        "3条",
+        "3条",
+        "4条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "不杠,333条拆开参与顺子效率更高"
+        },
+        {
+          "id": "B",
+          "label": "杠,多一番收益"
+        },
+        {
+          "id": "C",
+          "label": "杠了多摸一张"
+        },
+        {
+          "id": "D",
+          "label": "暗杠更好"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-03"
+      ],
+      "explanation": "333条可拆为234条+345条两个顺子使用效率极高。杠掉后少了一张3条破坏两个顺子结构。清一色中间张暗刻常常拆开做顺子更优。不是所有暗刻都该杠。",
+      "pitfalls": [
+        "清一色中暗刻拆成顺子往往比杠更有价值"
+      ]
+    },
+    {
+      "id": 111,
+      "difficulty": "advanced",
+      "stage": "opening",
+      "type": "scenario_analysis",
+      "prompt": "起手万字7张(1234567)+条子3张(789)+筒子3张(369)。万字可做清一色但条子789已成顺子。定缺条还是筒?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "7条",
+        "8条",
+        "9条",
+        "3筒",
+        "6筒",
+        "9筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "缺筒做清一色万,789条可换或打掉"
+        },
+        {
+          "id": "B",
+          "label": "缺条,789顺子也值钱"
+        },
+        {
+          "id": "C",
+          "label": "缺筒保留条子做双色"
+        },
+        {
+          "id": "D",
+          "label": "不做清一色"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "opening-01"
+      ],
+      "explanation": "万字1234567是7连张做清一色价值极高。定缺筒(3张369散牌好清理)。789条虽是顺子但做清一色必须放弃。清一色收益远高于保留一个顺子。",
+      "pitfalls": [
+        "做清一色时不要舍不得已成的顺子"
+      ]
+    },
+    {
+      "id": 112,
+      "difficulty": "advanced",
+      "stage": "midgame",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手牌:22334455万+678条+99条(14张摸牌后)。有4对子可做七对也可做顺子。综合分析应走哪条路线?",
+      "hand": [
+        "2万",
+        "2万",
+        "3万",
+        "3万",
+        "4万",
+        "4万",
+        "5万",
+        "5万",
+        "6条",
+        "7条",
+        "8条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "做顺子平胡:234万+345万+25将+678条+99将"
+        },
+        {
+          "id": "B",
+          "label": "做七对:需再摸3对太慢"
+        },
+        {
+          "id": "C",
+          "label": "碰牌做对对胡"
+        },
+        {
+          "id": "D",
+          "label": "做清一色万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-04",
+        "listening-01"
+      ],
+      "explanation": "22334455万拆为234万+345万+22或55做将效率极高,配合678条+99条将一向听即可。七对需要再摸3对太慢。口诀早听早胡走顺子路线最快。",
+      "pitfalls": [
+        "4对子不够做七对走顺子更高效"
+      ]
+    },
+    {
+      "id": 113,
+      "difficulty": "advanced",
+      "stage": "listening",
+      "type": "wait_tiles",
+      "multiSelect": true,
+      "prompt": "定缺筒,手牌:23456789万+456条+77条将(13张)。已听牌,所有听口是?",
+      "hand": [
+        "2万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "9万",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "7条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "听1万(1面)"
+        },
+        {
+          "id": "B",
+          "label": "听1万和7万(2面)"
+        },
+        {
+          "id": "C",
+          "label": "听1万4万7万(3面)"
+        },
+        {
+          "id": "D",
+          "label": "听1万和4万(2面)"
+        }
+      ],
+      "correctOptionIds": [
+        "C"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "23456789万8连张+456条+77将。拆法:234+567+89听7万(做将需77条);234+5678+9听7万;23+456+789听14万;多种拆法汇总听147万3面。",
+      "pitfalls": [
+        "8连张的听口比想象的多要逐一拆解"
+      ]
+    },
+    {
+      "id": 114,
+      "difficulty": "advanced",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "血战后期你已胡牌退出。场上剩2家:A做清一色条子差1张,B普通牌型差2张。B问你划船(配合)策略。你会怎么建议?",
+      "hand": [],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "B应扣住条子不打避免A清一色胡大牌"
+        },
+        {
+          "id": "B",
+          "label": "B应正常打牌"
+        },
+        {
+          "id": "C",
+          "label": "B应故意放炮给A"
+        },
+        {
+          "id": "D",
+          "label": "B应弃胡防守"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-01",
+        "defense-04"
+      ],
+      "explanation": "A做清一色差1张非常危险。B应扣住所有条子改打万筒安全牌。即使B自己慢1-2巡也比让A胡清一色好(清一色赔付翻倍)。口诀避开大牌家让小牌家胡。",
+      "pitfalls": [
+        "不帮大牌家是血战基本策略"
+      ]
+    },
+    {
+      "id": 115,
+      "difficulty": "advanced",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你碰出2副万字(碰3万和7万)。手中暗牌:4万5万6万+88条+1条(7张但含缺门0张)。摸到8条第3张形成暗刻。是暗杠8条还是保留做将?",
+      "hand": [
+        "4万",
+        "5万",
+        "6万",
+        "8条",
+        "8条",
+        "8条",
+        "1条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "暗杠8条多摸一张寻找听牌"
+        },
+        {
+          "id": "B",
+          "label": "保留88条做将不杠"
+        },
+        {
+          "id": "C",
+          "label": "等加杠机会"
+        },
+        {
+          "id": "D",
+          "label": "打1条保留888条"
+        }
+      ],
+      "correctOptionIds": [
+        "B"
+      ],
+      "ruleRefs": [
+        "meld-03"
+      ],
+      "explanation": "已碰2副+456万顺子=3组,只需88将+1组搭子即可胡牌。暗杠8条后没有将无法胡牌。88条做将是必须的。有时候暗杠不如保留做将。",
+      "pitfalls": [
+        "暗杠后没将无法胡牌将对是胡牌必要条件"
+      ]
+    },
+    {
+      "id": 116,
+      "difficulty": "advanced",
+      "stage": "midgame",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你手牌:345万+678万+34条+56条+7条+9条(14张)。搭子充足但重叠。需打1张,比较打7条和9条的区别。",
+      "hand": [
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "3条",
+        "4条",
+        "5条",
+        "6条",
+        "7条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打9条(孤立边张与其他搭子无联动)"
+        },
+        {
+          "id": "B",
+          "label": "打7条(与56条重叠)"
+        },
+        {
+          "id": "C",
+          "label": "打3条"
+        },
+        {
+          "id": "D",
+          "label": "打3万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "midgame-02",
+        "midgame-03"
+      ],
+      "explanation": "9条是孤立边张与3456条区域无联动。7条与56条形成567条有搭子价值。虽然看似都是边缘牌但7条有联动9条完全孤立。先去孤张。",
+      "pitfalls": [
+        "要看每张牌与相邻牌的联动关系再决定去留"
+      ]
+    },
+    {
+      "id": 117,
+      "difficulty": "advanced",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你做清一色万字:22334567889万(11张手牌已碰出1副)。打哪张听口最宽?",
+      "hand": [
+        "2万",
+        "2万",
+        "3万",
+        "3万",
+        "4万",
+        "5万",
+        "6万",
+        "7万",
+        "8万",
+        "8万",
+        "9万"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打9万,听口最宽"
+        },
+        {
+          "id": "B",
+          "label": "打2万"
+        },
+        {
+          "id": "C",
+          "label": "打3万"
+        },
+        {
+          "id": "D",
+          "label": "打8万"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "打9万后:2233456788万。拆解:22将+345+678+3将不行;23+345+678+22将听14万;33将+2+45678+8听多面。打9万去掉末端边张释放中间连张最大听面。",
+      "pitfalls": [
+        "清一色打哪张听最宽需要逐一拆解比较"
+      ]
+    },
+    {
+      "id": 118,
+      "difficulty": "advanced",
+      "stage": "defense",
+      "type": "scenario_analysis",
+      "prompt": "后盘,你通过数牌发现:全场108张条子牌中已出36张,各家手中+牌堆约72张条子。某对手手中至少有8张条子(碰2副+4张暗牌全条)。打条子危险吗?",
+      "hand": [
+        "1万",
+        "2万",
+        "3万",
+        "5万",
+        "6万",
+        "7万",
+        "2条",
+        "4条",
+        "6条",
+        "8条",
+        "3筒",
+        "5筒",
+        "7筒"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "该对手做清一色条子,打条子极其危险"
+        },
+        {
+          "id": "B",
+          "label": "条子出了很多应该安全"
+        },
+        {
+          "id": "C",
+          "label": "只有边张条子安全"
+        },
+        {
+          "id": "D",
+          "label": "无法判断"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "defense-04",
+        "defense-01"
+      ],
+      "explanation": "对手碰2副条子+暗牌全条说明在做清一色条子。虽然场上条子出了不少但对手手中高度集中条子任何条子都可能是其听口。打条子极其危险。",
+      "pitfalls": [
+        "整体出牌多不代表某个对手不需要,要结合个人出牌分析"
+      ]
+    },
+    {
+      "id": 119,
+      "difficulty": "advanced",
+      "stage": "meld",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒,你已暗杠5万+碰出8条。手中:3万4万6万7万+23条+9条9条(8张)。对家打出9条你能碰成明刻。碰后仅剩34万67万23条5张。碰不碰?",
+      "hand": [
+        "3万",
+        "4万",
+        "6万",
+        "7万",
+        "2条",
+        "3条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "不碰,99条做将更重要"
+        },
+        {
+          "id": "B",
+          "label": "碰9条打2条做对对胡"
+        },
+        {
+          "id": "C",
+          "label": "碰后3467万两面+23条听14条"
+        },
+        {
+          "id": "D",
+          "label": "碰后只能单吊"
+        }
+      ],
+      "correctOptionIds": [
+        "A"
+      ],
+      "ruleRefs": [
+        "meld-02",
+        "listening-02"
+      ],
+      "explanation": "99条做将配合34万听25万(两面)+67万听58万(两面)+23条听14条(两面)=6面听极宽。碰掉99条后没有将只能做对对胡难度大增。保留将对是胡牌基础。",
+      "pitfalls": [
+        "将对是胡牌必要条件不能为碰牌牺牲"
+      ]
+    },
+    {
+      "id": 120,
+      "difficulty": "advanced",
+      "stage": "listening",
+      "type": "scenario_analysis",
+      "prompt": "定缺筒终极题:你做清一色条子手牌1234555678999条(碰出0副全门清13张)。分析最优打法和听口。",
+      "hand": [
+        "1条",
+        "2条",
+        "3条",
+        "4条",
+        "5条",
+        "5条",
+        "5条",
+        "6条",
+        "7条",
+        "8条",
+        "9条",
+        "9条",
+        "9条"
+      ],
+      "discards": [],
+      "options": [
+        {
+          "id": "A",
+          "label": "打1条听25条8条(3面)"
+        },
+        {
+          "id": "B",
+          "label": "打4条听多面"
+        },
+        {
+          "id": "C",
+          "label": "打5条听14条(2面)"
+        },
+        {
+          "id": "D",
+          "label": "已经听牌不用打"
+        }
+      ],
+      "correctOptionIds": [
+        "D"
+      ],
+      "ruleRefs": [
+        "listening-02"
+      ],
+      "explanation": "14张牌说明刚摸牌。123+45+5+5+678+999拆解:123+456+789+55将+9单张?不对。再拆:123+555+678+999听4条;123+4+555+6789+99不成立;实际此手牌14张需打1张。仔细拆:打任意1张后分析。实际应打1条后2345+55将+678+999听14条多面。",
+      "pitfalls": [
+        "14张牌必须打1张才能听牌不要忘记"
+      ]
+    }
+  ]
+}

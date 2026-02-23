@@ -1,11 +1,20 @@
-export type RuleStageId = 'opening' | 'midgame' | 'meld' | 'defense' | 'listening';
+export type RuleStageId =
+  | 'opening'
+  | 'midgame'
+  | 'meld'
+  | 'defense'
+  | 'listening';
 
 export type QuestionType =
   | 'discard_best'
   | 'wait_tiles'
   | 'safe_discard'
   | 'peng_or_pass'
-  | 'dingque_or_huansan';
+  | 'dingque_or_huansan'
+  | 'judge_pattern'
+  | 'true_false'
+  | 'analyze_situation'
+  | 'choose_strategy';
 
 export interface RuleTag {
   id: string;
@@ -51,6 +60,7 @@ export interface ChallengeStage {
   description: string;
   questionIds: string[];
   recommendedRuleTags: string[];
+  difficulty: 1 | 2 | 3;
 }
 
 export interface UserAnswerRecord {
